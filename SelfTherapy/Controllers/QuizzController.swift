@@ -131,7 +131,6 @@ class QuizzController: UIViewController {
             let percentage:Double = 100.0/Double(QuestionsService.questions.count)
         let currentfloat:Double = Double(Double(current)*percentage)
             print (percentage)
-         
             progress.startProgress(to: CGFloat(currentfloat), duration: 2)
         
         QuestionMarkAnim.animationSpeed = -1
@@ -161,8 +160,20 @@ class QuizzController: UIViewController {
         })
             
         } else {
-            // segue next page
+           performSegue(withIdentifier: "rapport", sender: nil)
         }
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "rapport" {
+            let viewController:RapportController = segue.destination as! RapportController
+           
+            viewController.stress = stress
+            viewController.depression = depression
+            viewController.anxiety = anxiety
+            
+        }
+
+    }
+ 
 }
 

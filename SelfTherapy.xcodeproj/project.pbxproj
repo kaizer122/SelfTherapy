@@ -20,6 +20,9 @@
 		2386E6692263378E0090AA32 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386E6682263378E0090AA32 /* constants.swift */; };
 		2386E66D226338890090AA32 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386E66C226338890090AA32 /* Question.swift */; };
 		2386E66F226339810090AA32 /* QuestionsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386E66E226339810090AA32 /* QuestionsService.swift */; };
+		2386E6712263B13B0090AA32 /* RapportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386E6702263B13B0090AA32 /* RapportController.swift */; };
+		2386E6742263F2500090AA32 /* welcome.json in Resources */ = {isa = PBXBuildFile; fileRef = 2386E6722263F24F0090AA32 /* welcome.json */; };
+		2386E6752263F2500090AA32 /* warning.json in Resources */ = {isa = PBXBuildFile; fileRef = 2386E6732263F2500090AA32 /* warning.json */; };
 		E96C5C22FEA0B36E7A6D2212 /* Pods_SelfTherapy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 945031ACBC4117E538ED1478 /* Pods_SelfTherapy.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +42,9 @@
 		2386E6682263378E0090AA32 /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		2386E66C226338890090AA32 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		2386E66E226339810090AA32 /* QuestionsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsService.swift; sourceTree = "<group>"; };
+		2386E6702263B13B0090AA32 /* RapportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RapportController.swift; sourceTree = "<group>"; };
+		2386E6722263F24F0090AA32 /* welcome.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = welcome.json; sourceTree = "<group>"; };
+		2386E6732263F2500090AA32 /* warning.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = warning.json; sourceTree = "<group>"; };
 		39127AF7CCDAD445406EC5B2 /* Pods-SelfTherapy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SelfTherapy.release.xcconfig"; path = "Target Support Files/Pods-SelfTherapy/Pods-SelfTherapy.release.xcconfig"; sourceTree = "<group>"; };
 		8DE4281C3E62858982DC7F1B /* Pods-SelfTherapy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SelfTherapy.debug.xcconfig"; path = "Target Support Files/Pods-SelfTherapy/Pods-SelfTherapy.debug.xcconfig"; sourceTree = "<group>"; };
 		945031ACBC4117E538ED1478 /* Pods_SelfTherapy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SelfTherapy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,6 +104,7 @@
 				2386E6492260E9320090AA32 /* SecondViewController.swift */,
 				2386E65D2262292E0090AA32 /* StartController.swift */,
 				2386E65F226229550090AA32 /* QuizzController.swift */,
+				2386E6702263B13B0090AA32 /* RapportController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -130,6 +137,8 @@
 		2386E66122622B260090AA32 /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				2386E6732263F2500090AA32 /* warning.json */,
+				2386E6722263F24F0090AA32 /* welcome.json */,
 				2386E66422622BA20090AA32 /* QuestionMark.json */,
 			);
 			path = Animations;
@@ -225,6 +234,8 @@
 				2386E6522260E9360090AA32 /* LaunchScreen.storyboard in Resources */,
 				2386E64F2260E9360090AA32 /* Assets.xcassets in Resources */,
 				2386E64D2260E9320090AA32 /* Main.storyboard in Resources */,
+				2386E6752263F2500090AA32 /* warning.json in Resources */,
+				2386E6742263F2500090AA32 /* welcome.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +333,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2386E6712263B13B0090AA32 /* RapportController.swift in Sources */,
 				2386E66F226339810090AA32 /* QuestionsService.swift in Sources */,
 				2386E64A2260E9320090AA32 /* SecondViewController.swift in Sources */,
 				2386E66D226338890090AA32 /* Question.swift in Sources */,

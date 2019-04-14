@@ -84,6 +84,213 @@
             </objects>
             <point key="canvasLocation" x="1911" y="28"/>
         </scene>
+        <!--Rapport Controller-->
+        <scene sceneID="lNk-dD-MeU">
+            <objects>
+                <viewController id="aaU-Pz-dlN" customClass="RapportController" customModule="SelfTherapy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MPk-uX-c4w">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PIh-Zx-Kmz" customClass="UICircularProgressRing" customModule="UICircularProgressRing">
+                                <rect key="frame" x="56" y="41" width="263" height="149"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Depression" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tpL-PE-EWn">
+                                        <rect key="frame" x="54.5" y="100" width="154" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="tpL-PE-EWn" firstAttribute="centerX" secondItem="PIh-Zx-Kmz" secondAttribute="centerX" id="S7P-vj-3DG"/>
+                                    <constraint firstAttribute="bottom" secondItem="tpL-PE-EWn" secondAttribute="bottom" constant="13" id="c5S-0o-Uad"/>
+                                    <constraint firstItem="tpL-PE-EWn" firstAttribute="top" secondItem="PIh-Zx-Kmz" secondAttribute="top" constant="100" id="z2d-3B-BSj"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                        <real key="value" value="100"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="innerRingColor">
+                                        <color key="value" red="0.0" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isClockwise" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                                        <real key="value" value="170"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="endAngle">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="fullCircle" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="innerRingWidth">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="outerRingWidth">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="innerRingSpacing">
+                                        <real key="value" value="-50"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="66w-wp-j21" customClass="UICircularProgressRing" customModule="UICircularProgressRing">
+                                <rect key="frame" x="56" y="191" width="263" height="150"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anxiety" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z1a-b0-250">
+                                        <rect key="frame" x="79.5" y="100" width="104" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="z1a-b0-250" secondAttribute="bottom" constant="14" id="Mrn-ov-Kqv"/>
+                                    <constraint firstItem="z1a-b0-250" firstAttribute="centerX" secondItem="66w-wp-j21" secondAttribute="centerX" id="RL1-rn-ZEN"/>
+                                    <constraint firstItem="z1a-b0-250" firstAttribute="top" secondItem="66w-wp-j21" secondAttribute="top" constant="100" id="aiI-iT-LSM"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                        <real key="value" value="100"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="innerRingColor">
+                                        <color key="value" red="0.0" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isClockwise" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                                        <real key="value" value="170"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="endAngle">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="fullCircle" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="innerRingWidth">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="outerRingWidth">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="innerRingSpacing">
+                                        <real key="value" value="-50"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5cB-QK-Ggh" customClass="UICircularProgressRing" customModule="UICircularProgressRing">
+                                <rect key="frame" x="56" y="342" width="263" height="150"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stress" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78G-ok-C95">
+                                        <rect key="frame" x="88" y="100" width="87" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="78G-ok-C95" firstAttribute="centerX" secondItem="5cB-QK-Ggh" secondAttribute="centerX" id="bCh-TC-06b"/>
+                                    <constraint firstItem="78G-ok-C95" firstAttribute="top" secondItem="5cB-QK-Ggh" secondAttribute="top" constant="100" id="zVg-Sn-Mf3"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                        <real key="value" value="100"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="innerRingColor">
+                                        <color key="value" red="0.0" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isClockwise" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                                        <real key="value" value="170"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="fullCircle" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="innerRingWidth">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="outerRingWidth">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="innerRingSpacing">
+                                        <real key="value" value="-50"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="endAngle">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rHo-GB-KyN" customClass="RoundedButton" customModule="SelfTherapy" customModuleProvider="target">
+                                <rect key="frame" x="69" y="489" width="237" height="54"/>
+                                <color key="backgroundColor" red="0.9882352941176471" green="0.17254901960784313" blue="0.28039383561643838" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <state key="normal" title="Register to save your data">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.98431372549999996" green="0.48627450979999998" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l5T-Qj-PBy" customClass="LOTAnimationView">
+                                <rect key="frame" x="127" y="543" width="121" height="121"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="121" id="T0v-mz-9pp"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5cB-QK-Ggh" firstAttribute="centerX" secondItem="MPk-uX-c4w" secondAttribute="centerX" id="3Xa-H6-l9l"/>
+                            <constraint firstItem="F3E-hv-JW9" firstAttribute="bottom" secondItem="l5T-Qj-PBy" secondAttribute="bottom" constant="3" id="CJN-Kh-1zj"/>
+                            <constraint firstItem="5cB-QK-Ggh" firstAttribute="top" secondItem="66w-wp-j21" secondAttribute="bottom" id="FZG-RW-IF0"/>
+                            <constraint firstItem="66w-wp-j21" firstAttribute="centerX" secondItem="MPk-uX-c4w" secondAttribute="centerX" id="YeZ-Sr-cPx"/>
+                            <constraint firstItem="66w-wp-j21" firstAttribute="leading" secondItem="5cB-QK-Ggh" secondAttribute="leading" id="cAW-OG-7zN"/>
+                            <constraint firstItem="l5T-Qj-PBy" firstAttribute="top" secondItem="rHo-GB-KyN" secondAttribute="bottom" id="gGJ-JT-ZVu"/>
+                            <constraint firstItem="66w-wp-j21" firstAttribute="top" secondItem="PIh-Zx-Kmz" secondAttribute="bottom" constant="1" id="gYB-g7-HXT"/>
+                            <constraint firstItem="PIh-Zx-Kmz" firstAttribute="leading" secondItem="F3E-hv-JW9" secondAttribute="leading" constant="56" id="hNJ-hV-oSn"/>
+                            <constraint firstItem="PIh-Zx-Kmz" firstAttribute="top" secondItem="F3E-hv-JW9" secondAttribute="top" constant="21" id="l3m-np-EsM"/>
+                            <constraint firstItem="l5T-Qj-PBy" firstAttribute="leading" secondItem="F3E-hv-JW9" secondAttribute="leading" constant="127" id="mUc-XD-2J5"/>
+                            <constraint firstItem="F3E-hv-JW9" firstAttribute="bottom" secondItem="5cB-QK-Ggh" secondAttribute="bottom" constant="175" id="mvO-jR-Chr"/>
+                            <constraint firstItem="l5T-Qj-PBy" firstAttribute="centerX" secondItem="MPk-uX-c4w" secondAttribute="centerX" id="nxn-sf-POu"/>
+                            <constraint firstItem="PIh-Zx-Kmz" firstAttribute="centerX" secondItem="MPk-uX-c4w" secondAttribute="centerX" id="o98-aO-48L"/>
+                            <constraint firstItem="PIh-Zx-Kmz" firstAttribute="leading" secondItem="66w-wp-j21" secondAttribute="leading" id="tYH-av-LkD"/>
+                            <constraint firstItem="rHo-GB-KyN" firstAttribute="top" secondItem="66w-wp-j21" secondAttribute="bottom" constant="148" id="uUj-cS-Ps9"/>
+                            <constraint firstItem="rHo-GB-KyN" firstAttribute="centerX" secondItem="MPk-uX-c4w" secondAttribute="centerX" id="zH4-IA-7gB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="F3E-hv-JW9"/>
+                    </view>
+                    <connections>
+                        <outlet property="anxCircle" destination="66w-wp-j21" id="VwN-Fu-hp2"/>
+                        <outlet property="depCircle" destination="PIh-Zx-Kmz" id="02e-dV-Jdc"/>
+                        <outlet property="stressCircle" destination="5cB-QK-Ggh" id="eDY-jc-TAT"/>
+                        <outlet property="warningAnim" destination="l5T-Qj-PBy" id="QHC-9Y-PeF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TVd-ZP-IUl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="348" y="391"/>
+        </scene>
         <!--Quizz Controller-->
         <scene sceneID="3cW-nY-TCP">
             <objects>
@@ -189,6 +396,12 @@
                                         <color key="value" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isClockwise" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="endAngle">
+                                        <real key="value" value="90"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="mbI-Gf-3pU" customClass="RoundedButton" customModule="SelfTherapy" customModuleProvider="target">
@@ -208,6 +421,14 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="optClicked:" destination="Vb0-3f-2pb" eventType="touchUpInside" id="4nt-Wi-GG5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fct-Jg-vXy">
+                                <rect key="frame" x="24" y="20" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Skip"/>
+                                <connections>
+                                    <segue destination="aaU-Pz-dlN" kind="show" identifier="rapport" id="gzU-vd-j2c"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -251,11 +472,12 @@
                         <outlet property="answer4" destination="mbI-Gf-3pU" id="D4u-Hb-ooz"/>
                         <outlet property="progress" destination="sqn-Ti-TTc" id="G3C-dm-4qj"/>
                         <outlet property="quesTxt" destination="R1A-cn-6jg" id="KWN-bv-2cW"/>
+                        <segue destination="aaU-Pz-dlN" kind="show" identifier="rapport" id="UfU-Ti-UBW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qec-Ar-tHr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="376.80000000000001" y="-331.48425787106447"/>
+            <point key="canvasLocation" x="348" y="-394"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -280,4 +502,7 @@
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="gzU-vd-j2c"/>
+    </inferredMetricsTieBreakers>
 </document>
