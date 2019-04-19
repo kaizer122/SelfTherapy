@@ -12,6 +12,8 @@ import Lottie
 
 class RapportController: UIViewController {
 
+    @IBOutlet weak var registerBtn: RoundedButton!
+    @IBOutlet weak var backBtn: UIButton!
     @IBOutlet var warningAnim: LOTAnimationView!
     @IBOutlet weak var anxCircle: UICircularProgressRing!
     @IBOutlet weak var stressCircle: UICircularProgressRing!
@@ -20,12 +22,13 @@ class RapportController: UIViewController {
     var anxiety = 0
     var stress = 0
     var depression = 0
+    var mode : String = "all"
     
     override func viewDidLoad() {
         super.viewDidLoad()
       
         setupCirclesAnims()
-        // Do any additional setup after loading the view.
+        setupMode()
     }
     func setupCirclesAnims () {
         warningAnim.setAnimation(named: "warning")
@@ -38,6 +41,41 @@ class RapportController: UIViewController {
         stressCircle.outerCapStyle = CGLineCap.round
         anxCircle.style = .gradient(options: options)
         anxCircle.outerCapStyle = CGLineCap.round
+    }
+    func setupMode() {
+        switch mode {
+        case "Depression":
+            anxCircle.isHidden = true
+            stressCircle.isHidden = true
+             backBtn.isHidden = false
+            registerBtn.isHidden = true
+            warningAnim.isHidden = true
+        case "anxiete":
+            depCircle.isHidden = true
+            stressCircle.isHidden = true
+             backBtn.isHidden = false
+            registerBtn.isHidden = true
+            warningAnim.isHidden = true
+        case "stress":
+            depCircle.isHidden = true
+            anxCircle.isHidden = true
+               backBtn.isHidden = false
+            registerBtn.isHidden = true
+            warningAnim.isHidden = true
+        case "all":
+            depCircle.isHidden = false
+            anxCircle.isHidden = false
+             stressCircle.isHidden = false
+            backBtn.isHidden = true
+            if (AuthService.instance.isLoggedIn){
+                registerBtn.isHidden = true
+                warningAnim.isHidden = true
+            }
+        default:
+            
+            return
+            
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

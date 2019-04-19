@@ -13,7 +13,7 @@
         <!--First-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="SelfTherapy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="startVC" id="9pv-A4-QxB" customClass="FirstViewController" customModule="SelfTherapy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,12 +32,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nYD-95-mHH">
-                                <rect key="frame" x="42" y="48" width="290" height="57"/>
+                                <rect key="frame" x="42" y="147" width="290" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nu9-RJ-l50">
+                                <rect key="frame" x="42" y="39" width="44" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="logout"/>
+                                <connections>
+                                    <action selector="logoutClicked:" destination="9pv-A4-QxB" eventType="touchUpInside" id="qkK-Pj-mNd"/>
+                                    <segue destination="a0F-rT-DbV" kind="show" id="Gxa-DX-Dce"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -55,7 +64,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="882" y="972"/>
+            <point key="canvasLocation" x="880.79999999999995" y="971.96401799100454"/>
         </scene>
         <!--Quizzs-->
         <scene sceneID="wg7-f3-ORb">
@@ -77,9 +86,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9dx-3M-63O">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="161.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="162"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="t9O-Od-IiV">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="161.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="162"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="C7k-6x-bnj">
@@ -133,6 +142,9 @@
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Quizzs" id="cPa-gy-q4n"/>
+                    <connections>
+                        <segue destination="Vb0-3f-2pb" kind="show" identifier="SecondToQuizz" id="CCy-t0-xO2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -320,6 +332,17 @@
                                     <constraint firstAttribute="width" constant="121" id="nrr-SV-ujo"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VXP-Js-OID">
+                                <rect key="frame" x="16" y="20" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="HaI-H5-xxi"/>
+                                    <constraint firstAttribute="height" constant="50" id="hSY-4s-KEh"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="smackBack"/>
+                                <connections>
+                                    <segue destination="WPA-fi-KPD" kind="show" id="HvG-zI-Ysx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -329,6 +352,8 @@
                             <constraint firstItem="5cB-QK-Ggh" firstAttribute="top" secondItem="66w-wp-j21" secondAttribute="bottom" id="FZG-RW-IF0"/>
                             <constraint firstItem="rHo-GB-KyN" firstAttribute="leading" secondItem="F3E-hv-JW9" secondAttribute="leading" constant="20" id="Gfb-Z0-N3Y"/>
                             <constraint firstItem="5cB-QK-Ggh" firstAttribute="height" secondItem="66w-wp-j21" secondAttribute="height" id="Ktn-C8-HDN"/>
+                            <constraint firstItem="VXP-Js-OID" firstAttribute="leading" secondItem="F3E-hv-JW9" secondAttribute="leading" constant="16" id="Rm1-Ov-8rc"/>
+                            <constraint firstItem="VXP-Js-OID" firstAttribute="top" secondItem="F3E-hv-JW9" secondAttribute="top" id="WTc-hC-dUb"/>
                             <constraint firstItem="66w-wp-j21" firstAttribute="centerX" secondItem="MPk-uX-c4w" secondAttribute="centerX" id="YeZ-Sr-cPx"/>
                             <constraint firstItem="F3E-hv-JW9" firstAttribute="trailing" secondItem="rHo-GB-KyN" secondAttribute="trailing" constant="20" id="b0o-PL-NCE"/>
                             <constraint firstItem="66w-wp-j21" firstAttribute="leading" secondItem="5cB-QK-Ggh" secondAttribute="leading" id="cAW-OG-7zN"/>
@@ -349,14 +374,16 @@
                     </view>
                     <connections>
                         <outlet property="anxCircle" destination="66w-wp-j21" id="VwN-Fu-hp2"/>
+                        <outlet property="backBtn" destination="VXP-Js-OID" id="uwP-wy-qmU"/>
                         <outlet property="depCircle" destination="PIh-Zx-Kmz" id="02e-dV-Jdc"/>
+                        <outlet property="registerBtn" destination="rHo-GB-KyN" id="0dS-gG-2q8"/>
                         <outlet property="stressCircle" destination="5cB-QK-Ggh" id="eDY-jc-TAT"/>
                         <outlet property="warningAnim" destination="l5T-Qj-PBy" id="QHC-9Y-PeF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TVd-ZP-IUl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2130" y="1157"/>
+            <point key="canvasLocation" x="-2130.4000000000001" y="1156.3718140929536"/>
         </scene>
         <!--Quizz Controller-->
         <scene sceneID="3cW-nY-TCP">
@@ -771,10 +798,10 @@
             </objects>
             <point key="canvasLocation" x="-615" y="218"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--StartVC-->
         <scene sceneID="Gc8-wd-Ayw">
             <objects>
-                <tabBarController id="WPA-fi-KPD" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="StartVC" id="WPA-fi-KPD" customClass="StartVC" customModule="SelfTherapy" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ar4-dy-Ehx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1005,10 +1032,12 @@
         <image name="first" width="30" height="30"/>
         <image name="googleBtn" width="165" height="71"/>
         <image name="logoself" width="547" height="600"/>
+        <image name="smackBack" width="28" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JsC-Kj-EKJ"/>
-        <segue reference="6hp-vr-hkb"/>
+        <segue reference="eKx-62-rSn"/>
+        <segue reference="HvG-zI-Ysx"/>
+        <segue reference="Gxa-DX-Dce"/>
         <segue reference="gzU-vd-j2c"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -27,7 +27,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GIDSignInDelegate {
         // google
         GIDSignIn.sharedInstance()?.clientID = "85103153019-7qe42kd70v0lg45su7jl7o3g6lm9s927.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self
+        if (AuthService.instance.isLoggedIn) {
+     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+     let startVC = storyBoard.instantiateViewController(withIdentifier: "StartVC") as! StartVC
         
+        self.window?.rootViewController = startVC
+        
+            self.window?.makeKeyAndVisible()
+            
+        }
         
         return true
     }
@@ -40,6 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GIDSignInDelegate {
                                                               annotation: options[UIApplication.OpenURLOptionsKey.annotation])
         return returnFB || returnGoogle
     }
+    
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         GIDSignIn.sharedInstance().signOut()
         if let error = error {

@@ -34,11 +34,12 @@ class QuizzController: UIViewController {
     var stress = 0
     var depression = 0
     var currentQuestion : Question?
+    var mode:String = "all"
     
     override func viewDidLoad() {
         super.viewDidLoad()
     setupButtons()
-    loadQuestions()
+        loadQuestions(mode: mode)
        
     }
     func setupButtons() {
@@ -94,12 +95,13 @@ class QuizzController: UIViewController {
      
     }
     
-    func loadQuestions() {
-        QuestionsService.instance.getQuestions(){ (success) in
+    func loadQuestions(mode: String) {
+        QuestionsService.instance.getQuestions(mode: mode){ (success) in
             if success {
               self.current = 0
                 self.currentQuestion = QuestionsService.questions[0]
               self.goToQuestion(at: 0)
+                debugPrint(QuestionsService.questions.count)
           
            	  }
             else {
@@ -186,6 +188,7 @@ class QuizzController: UIViewController {
             viewController.stress = stress
             viewController.depression = depression
             viewController.anxiety = anxiety
+            viewController.mode = mode
             
         }
 

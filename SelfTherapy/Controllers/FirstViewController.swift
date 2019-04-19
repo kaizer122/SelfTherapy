@@ -26,5 +26,9 @@ class FirstViewController: UIViewController {
             debugPrint(AuthService.instance.userEmail)
         }
     }
+    @IBAction func logoutClicked(_ sender: Any) {
+        AuthService.instance.logoutUser()
+   
+    }
 }
 
