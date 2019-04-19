@@ -18,6 +18,7 @@ class QuizzController: UIViewController {
     @IBOutlet weak var answer2: UIButton!
     @IBOutlet weak var answer3: UIButton!
     @IBOutlet weak var answer4: UIButton!
+    @IBOutlet weak var bottomView: UIView!
     @IBOutlet var progress: UICircularProgressRing!
     @IBOutlet var quesTxt: UILabel!
     @IBOutlet var QuestionMarkAnim: LOTAnimationView!
@@ -36,17 +37,32 @@ class QuizzController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    setupConstraints()
+    setupButtons()
     loadQuestions()
        
     }
-    func setupConstraints() {
-        ans1Constraint.constant -= view.bounds.width
-        ans2Constraint.constant -= view.bounds.width
-        ans3Constraint.constant -= view.bounds.width
-        ans4Constraint.constant -= view.bounds.width
+    func setupButtons() {
+        answer1.titleLabel?.adjustsFontSizeToFitWidth = true
+        answer1.titleLabel?.lineBreakMode = .byWordWrapping
+            answer1.titleLabel?.numberOfLines = 2
+        answer2.titleLabel?.adjustsFontSizeToFitWidth = true
+        answer2.titleLabel?.lineBreakMode = .byClipping
+        answer2.titleLabel?.numberOfLines = 2
+        answer3.titleLabel?.adjustsFontSizeToFitWidth = true
+        answer3.titleLabel?.lineBreakMode = .byClipping
+        answer3.titleLabel?.numberOfLines = 2
+        answer4.titleLabel?.adjustsFontSizeToFitWidth = true
+        answer4.titleLabel?.lineBreakMode = .byClipping
+        answer4.titleLabel?.numberOfLines = 2
+        
+        ans1Constraint.constant -= self.view.bounds.width
+        ans2Constraint.constant -= self.view.bounds.width
+        ans3Constraint.constant -= self.view.bounds.width
+        ans4Constraint.constant -= self.view.bounds.width
         quesTxt.alpha = 0
     }
+  
+        
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         startAnimation(name: "QuestionMark", anim: QuestionMarkAnim)

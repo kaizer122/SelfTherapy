@@ -43,9 +43,7 @@ class QuestionsService {
                                                                            categorie: json[i]["categorie"].stringValue,
                                                                            reponses: reps))
                           
-                            for element in  QuestionsService.questions[i].reponses {
-                                print(element)
-                            }
+                       
                         }
                         
                        }

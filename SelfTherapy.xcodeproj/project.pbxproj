@@ -23,6 +23,12 @@
 		2386E6712263B13B0090AA32 /* RapportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386E6702263B13B0090AA32 /* RapportController.swift */; };
 		2386E6742263F2500090AA32 /* welcome.json in Resources */ = {isa = PBXBuildFile; fileRef = 2386E6722263F24F0090AA32 /* welcome.json */; };
 		2386E6752263F2500090AA32 /* warning.json in Resources */ = {isa = PBXBuildFile; fileRef = 2386E6732263F2500090AA32 /* warning.json */; };
+		23E42E262269C72E00B05EC7 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E42E242269C72D00B05EC7 /* LoginVC.swift */; };
+		23E42E272269C72E00B05EC7 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E42E252269C72E00B05EC7 /* RegisterVC.swift */; };
+		23E42E292269C84F00B05EC7 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E42E282269C84F00B05EC7 /* AuthService.swift */; };
+		23E42E2C2269CEF500B05EC7 /* RoundedButton2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E42E2B2269CEF500B05EC7 /* RoundedButton2.swift */; };
+		23E42E2E2269FFA600B05EC7 /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23E42E2D2269FFA500B05EC7 /* credentials.plist */; };
+		23E42E32226A661A00B05EC7 /* QuizzCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E42E31226A661A00B05EC7 /* QuizzCell.swift */; };
 		E96C5C22FEA0B36E7A6D2212 /* Pods_SelfTherapy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 945031ACBC4117E538ED1478 /* Pods_SelfTherapy.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +51,13 @@
 		2386E6702263B13B0090AA32 /* RapportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RapportController.swift; sourceTree = "<group>"; };
 		2386E6722263F24F0090AA32 /* welcome.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = welcome.json; sourceTree = "<group>"; };
 		2386E6732263F2500090AA32 /* warning.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = warning.json; sourceTree = "<group>"; };
+		23E42E242269C72D00B05EC7 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		23E42E252269C72E00B05EC7 /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		23E42E282269C84F00B05EC7 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		23E42E2A2269CBDB00B05EC7 /* SelfTherapy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SelfTherapy.entitlements; sourceTree = "<group>"; };
+		23E42E2B2269CEF500B05EC7 /* RoundedButton2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton2.swift; sourceTree = "<group>"; };
+		23E42E2D2269FFA500B05EC7 /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
+		23E42E31226A661A00B05EC7 /* QuizzCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzCell.swift; sourceTree = "<group>"; };
 		39127AF7CCDAD445406EC5B2 /* Pods-SelfTherapy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SelfTherapy.release.xcconfig"; path = "Target Support Files/Pods-SelfTherapy/Pods-SelfTherapy.release.xcconfig"; sourceTree = "<group>"; };
 		8DE4281C3E62858982DC7F1B /* Pods-SelfTherapy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SelfTherapy.debug.xcconfig"; path = "Target Support Files/Pods-SelfTherapy/Pods-SelfTherapy.debug.xcconfig"; sourceTree = "<group>"; };
 		945031ACBC4117E538ED1478 /* Pods_SelfTherapy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SelfTherapy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +96,7 @@
 		2386E6442260E9320090AA32 /* SelfTherapy */ = {
 			isa = PBXGroup;
 			children = (
+				23E42E2A2269CBDB00B05EC7 /* SelfTherapy.entitlements */,
 				2386E66B226338750090AA32 /* Entities */,
 				2386E65C226228740090AA32 /* Helpers */,
 				2386E65B2262286B0090AA32 /* Views */,
@@ -90,6 +104,7 @@
 				2386E6592262284A0090AA32 /* Controllers */,
 				2386E6452260E9320090AA32 /* AppDelegate.swift */,
 				2386E64B2260E9320090AA32 /* Main.storyboard */,
+				23E42E2D2269FFA500B05EC7 /* credentials.plist */,
 				2386E64E2260E9360090AA32 /* Assets.xcassets */,
 				2386E6502260E9360090AA32 /* LaunchScreen.storyboard */,
 				2386E6532260E9360090AA32 /* Info.plist */,
@@ -100,6 +115,8 @@
 		2386E6592262284A0090AA32 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				23E42E242269C72D00B05EC7 /* LoginVC.swift */,
+				23E42E252269C72E00B05EC7 /* RegisterVC.swift */,
 				2386E6472260E9320090AA32 /* FirstViewController.swift */,
 				2386E6492260E9320090AA32 /* SecondViewController.swift */,
 				2386E65D2262292E0090AA32 /* StartController.swift */,
@@ -112,6 +129,7 @@
 		2386E65A2262285C0090AA32 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				23E42E282269C84F00B05EC7 /* AuthService.swift */,
 				2386E66E226339810090AA32 /* QuestionsService.swift */,
 			);
 			path = Services;
@@ -120,7 +138,9 @@
 		2386E65B2262286B0090AA32 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				23E42E2B2269CEF500B05EC7 /* RoundedButton2.swift */,
 				2386E666226234E80090AA32 /* RoundedButton.swift */,
+				23E42E31226A661A00B05EC7 /* QuizzCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -204,6 +224,11 @@
 				TargetAttributes = {
 					2386E6412260E9320090AA32 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -235,6 +260,7 @@
 				2386E64F2260E9360090AA32 /* Assets.xcassets in Resources */,
 				2386E64D2260E9320090AA32 /* Main.storyboard in Resources */,
 				2386E6752263F2500090AA32 /* warning.json in Resources */,
+				23E42E2E2269FFA600B05EC7 /* credentials.plist in Resources */,
 				2386E6742263F2500090AA32 /* welcome.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -333,14 +359,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23E42E262269C72E00B05EC7 /* LoginVC.swift in Sources */,
 				2386E6712263B13B0090AA32 /* RapportController.swift in Sources */,
 				2386E66F226339810090AA32 /* QuestionsService.swift in Sources */,
 				2386E64A2260E9320090AA32 /* SecondViewController.swift in Sources */,
 				2386E66D226338890090AA32 /* Question.swift in Sources */,
 				2386E667226234E80090AA32 /* RoundedButton.swift in Sources */,
+				23E42E2C2269CEF500B05EC7 /* RoundedButton2.swift in Sources */,
+				23E42E292269C84F00B05EC7 /* AuthService.swift in Sources */,
 				2386E6462260E9320090AA32 /* AppDelegate.swift in Sources */,
+				23E42E32226A661A00B05EC7 /* QuizzCell.swift in Sources */,
 				2386E6692263378E0090AA32 /* constants.swift in Sources */,
 				2386E65E2262292E0090AA32 /* StartController.swift in Sources */,
+				23E42E272269C72E00B05EC7 /* RegisterVC.swift in Sources */,
 				2386E6482260E9320090AA32 /* FirstViewController.swift in Sources */,
 				2386E660226229550090AA32 /* QuizzController.swift in Sources */,
 			);
@@ -490,6 +521,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SL53WS7H35;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.framework/Headers\"",
@@ -508,7 +540,66 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = esprit.iot.SelfTherapy;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-framework",
+					"\"Alamofire\"",
+					"-framework",
+					"\"Bolts\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"FBSDKCoreKit\"",
+					"-framework",
+					"\"FBSDKLoginKit\"",
+					"-framework",
+					"\"FBSDKShareKit\"",
+					"-framework",
+					"\"GTMSessionFetcher\"",
+					"-framework",
+					"\"GoogleSignIn\"",
+					"-framework",
+					"\"GoogleToolboxForMac\"",
+					"-framework",
+					"\"LocalAuthentication\"",
+					"-framework",
+					"\"Lottie\"",
+					"-framework",
+					"\"SafariServices\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SwiftyJSON\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UICircularProgressRing\"",
+					"-framework",
+					"\"UIKit\"",
+					"-weak_framework",
+					"\"Accounts\"",
+					"-weak_framework",
+					"\"AudioToolbox\"",
+					"-weak_framework",
+					"\"CoreGraphics\"",
+					"-weak_framework",
+					"\"CoreLocation\"",
+					"-weak_framework",
+					"\"Foundation\"",
+					"-weak_framework",
+					"\"QuartzCore\"",
+					"-weak_framework",
+					"\"Security\"",
+					"-weak_framework",
+					"\"Social\"",
+					"-weak_framework",
+					"\"UIKit\"",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sim1.SelfTherapy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -521,6 +612,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SL53WS7H35;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.framework/Headers\"",
@@ -539,7 +631,66 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = esprit.iot.SelfTherapy;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-framework",
+					"\"Alamofire\"",
+					"-framework",
+					"\"Bolts\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"FBSDKCoreKit\"",
+					"-framework",
+					"\"FBSDKLoginKit\"",
+					"-framework",
+					"\"FBSDKShareKit\"",
+					"-framework",
+					"\"GTMSessionFetcher\"",
+					"-framework",
+					"\"GoogleSignIn\"",
+					"-framework",
+					"\"GoogleToolboxForMac\"",
+					"-framework",
+					"\"LocalAuthentication\"",
+					"-framework",
+					"\"Lottie\"",
+					"-framework",
+					"\"SafariServices\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SwiftyJSON\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UICircularProgressRing\"",
+					"-framework",
+					"\"UIKit\"",
+					"-weak_framework",
+					"\"Accounts\"",
+					"-weak_framework",
+					"\"AudioToolbox\"",
+					"-weak_framework",
+					"\"CoreGraphics\"",
+					"-weak_framework",
+					"\"CoreLocation\"",
+					"-weak_framework",
+					"\"Foundation\"",
+					"-weak_framework",
+					"\"QuartzCore\"",
+					"-weak_framework",
+					"\"Security\"",
+					"-weak_framework",
+					"\"Social\"",
+					"-weak_framework",
+					"\"UIKit\"",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sim1.SelfTherapy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

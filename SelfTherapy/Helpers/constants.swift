@@ -11,21 +11,18 @@ import Foundation
 typealias CompletionHandler = (_ Success: Bool) -> ()
 
 // URL Constants
-let BASE_URL = "http://192.168.1.3/"
-let URL_QUESTIONS = "\(BASE_URL)questionRep"
-let URL_LOGIN = "\(BASE_URL)login13"
-let URL_REGISTER = "\(BASE_URL)inscrit"
+let BASE_URL = "http://41.226.11.252:1180/psypocket/"
+let URL_QUESTIONS = "\(BASE_URL)questionRep.php"
+let URL_LOGIN = "\(BASE_URL)login13.php"
+let URL_REGISTER = "\(BASE_URL)inscrit.php"
 
 // Notification Constants
 // let NOTIF_DEVICE_DATA_DID_CHANGE = Notification.Name("notifDeviceDataChanged")
 // let NOTIF_DEVICES_ADDED = Notification.Name("addedNewDevices")
 // Segues
-let LOGIN_TO_MENU = "LoginToMenu"
-let REGISTER_TO_MENU = "RegisterToMenu"
+let LOGIN_TO_MENU = "loginToMenu"
+let REGISTER_TO_MENU = "registerToMenu"
 let MENU_TO_REGISTER = "MenuToLogin"
-let REGISTER_TO_LOGIN  = "RegisterToLogin"
-let DEVICES_TO_SCHEDULE     =  "devicesToSchedule"
-let SCHEDULE_TO_MENU =  "ScheduleToMenu"
 
 
 // User Defaults

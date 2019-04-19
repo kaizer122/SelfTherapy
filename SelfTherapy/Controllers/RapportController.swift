@@ -47,14 +47,5 @@ class RapportController: UIViewController {
         anxCircle.startProgress(to: CGFloat((anxiety*100) / 60), duration: 5)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

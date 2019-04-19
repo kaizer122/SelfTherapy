@@ -10,11 +10,21 @@ import UIKit
 
 class FirstViewController: UIViewController {
 
+    @IBOutlet weak var username: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        setupUserInfo()
     }
 
-
+    func setupUserInfo () {
+        if AuthService.instance.isLoggedIn {
+            username.text = AuthService.instance.username
+     
+        }
+        else {
+            debugPrint(AuthService.instance.userEmail)
+        }
+    }
 }
 

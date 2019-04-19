@@ -34,10 +34,10 @@ class RoundedButton: UIButton {
     
     func setupView() {
         self.titleLabel?.adjustsFontSizeToFitWidth = true
-        self.titleEdgeInsets.top = 2
-        self.titleEdgeInsets.bottom = 2
-        self.titleEdgeInsets.left = 4
-        self.titleEdgeInsets.right = 4
+        self.titleEdgeInsets.top = 10
+        self.titleEdgeInsets.bottom = 10
+        self.titleEdgeInsets.left = 10
+        self.titleEdgeInsets.right = 10
         self.layer.cornerRadius = cornerRadius
         self.layer.borderWidth = 4
         self.layer.borderColor = borderColor.cgColor 
