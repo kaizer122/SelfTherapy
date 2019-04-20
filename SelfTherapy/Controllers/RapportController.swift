@@ -18,7 +18,7 @@ class RapportController: UIViewController {
     @IBOutlet weak var anxCircle: UICircularProgressRing!
     @IBOutlet weak var stressCircle: UICircularProgressRing!
     @IBOutlet weak var depCircle: UICircularProgressRing!
-    var options = UICircularGradientOptions(startPosition: .left, endPosition: .right, colors:  [UIColor.green ,UIColor.orange, UIColor.red], colorLocations: [0.1,0.5, 1.0])
+    var options = UICircularRingGradientOptions(startPosition: .left, endPosition: .right, colors:  [UIColor.green ,UIColor.orange, UIColor.red], colorLocations: [0.1,0.5, 1.0])
     var anxiety = 0
     var stress = 0
     var depression = 0
@@ -35,11 +35,11 @@ class RapportController: UIViewController {
         warningAnim.loopAnimation = true
         warningAnim.animationSpeed = 1
         warningAnim.play()
-        depCircle.style = .gradient(options: options)
+        depCircle.gradientOptions = options
         depCircle.outerCapStyle = CGLineCap.round
-        stressCircle.style = .gradient(options: options)
+        stressCircle.gradientOptions = options
         stressCircle.outerCapStyle = CGLineCap.round
-        anxCircle.style = .gradient(options: options)
+        anxCircle.gradientOptions = options
         anxCircle.outerCapStyle = CGLineCap.round
     }
     func setupMode() {

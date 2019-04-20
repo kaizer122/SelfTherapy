@@ -29,6 +29,8 @@
 		23E42E2E2269FFA600B05EC7 /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23E42E2D2269FFA500B05EC7 /* credentials.plist */; };
 		23E42E32226A661A00B05EC7 /* QuizzCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E42E31226A661A00B05EC7 /* QuizzCell.swift */; };
 		23E42E34226A7D6E00B05EC7 /* StartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E42E33226A7D6E00B05EC7 /* StartVC.swift */; };
+		23E42E58226B3EDC00B05EC7 /* PredictController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E42E57226B3EDC00B05EC7 /* PredictController.swift */; };
+		23E42E5A226B3F2000B05EC7 /* PredictionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E42E59226B3F2000B05EC7 /* PredictionsCell.swift */; };
 		E96C5C22FEA0B36E7A6D2212 /* Pods_SelfTherapy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 945031ACBC4117E538ED1478 /* Pods_SelfTherapy.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +60,8 @@
 		23E42E2D2269FFA500B05EC7 /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
 		23E42E31226A661A00B05EC7 /* QuizzCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzCell.swift; sourceTree = "<group>"; };
 		23E42E33226A7D6E00B05EC7 /* StartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartVC.swift; sourceTree = "<group>"; };
+		23E42E57226B3EDC00B05EC7 /* PredictController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictController.swift; sourceTree = "<group>"; };
+		23E42E59226B3F2000B05EC7 /* PredictionsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionsCell.swift; sourceTree = "<group>"; };
 		39127AF7CCDAD445406EC5B2 /* Pods-SelfTherapy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SelfTherapy.release.xcconfig"; path = "Target Support Files/Pods-SelfTherapy/Pods-SelfTherapy.release.xcconfig"; sourceTree = "<group>"; };
 		8DE4281C3E62858982DC7F1B /* Pods-SelfTherapy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SelfTherapy.debug.xcconfig"; path = "Target Support Files/Pods-SelfTherapy/Pods-SelfTherapy.debug.xcconfig"; sourceTree = "<group>"; };
 		945031ACBC4117E538ED1478 /* Pods_SelfTherapy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SelfTherapy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				23E42E2A2269CBDB00B05EC7 /* SelfTherapy.entitlements */,
+				2386E66122622B260090AA32 /* Animations */,
 				2386E66B226338750090AA32 /* Entities */,
 				2386E65C226228740090AA32 /* Helpers */,
 				2386E65B2262286B0090AA32 /* Views */,
@@ -108,7 +113,6 @@
 				2386E64E2260E9360090AA32 /* Assets.xcassets */,
 				2386E6502260E9360090AA32 /* LaunchScreen.storyboard */,
 				2386E6532260E9360090AA32 /* Info.plist */,
-				23E42E33226A7D6E00B05EC7 /* StartVC.swift */,
 			);
 			path = SelfTherapy;
 			sourceTree = "<group>";
@@ -116,6 +120,8 @@
 		2386E6592262284A0090AA32 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				23E42E33226A7D6E00B05EC7 /* StartVC.swift */,
+				23E42E57226B3EDC00B05EC7 /* PredictController.swift */,
 				23E42E242269C72D00B05EC7 /* LoginVC.swift */,
 				23E42E252269C72E00B05EC7 /* RegisterVC.swift */,
 				2386E6472260E9320090AA32 /* FirstViewController.swift */,
@@ -138,6 +144,7 @@
 		2386E65B2262286B0090AA32 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				23E42E59226B3F2000B05EC7 /* PredictionsCell.swift */,
 				23E42E2B2269CEF500B05EC7 /* RoundedButton2.swift */,
 				2386E666226234E80090AA32 /* RoundedButton.swift */,
 				23E42E31226A661A00B05EC7 /* QuizzCell.swift */,
@@ -148,7 +155,6 @@
 		2386E65C226228740090AA32 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				2386E66122622B260090AA32 /* Animations */,
 				2386E6682263378E0090AA32 /* constants.swift */,
 			);
 			path = Helpers;
@@ -360,6 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23E42E262269C72E00B05EC7 /* LoginVC.swift in Sources */,
+				23E42E58226B3EDC00B05EC7 /* PredictController.swift in Sources */,
 				2386E6712263B13B0090AA32 /* RapportController.swift in Sources */,
 				2386E66F226339810090AA32 /* QuestionsService.swift in Sources */,
 				2386E64A2260E9320090AA32 /* SecondViewController.swift in Sources */,
@@ -372,6 +379,7 @@
 				2386E6692263378E0090AA32 /* constants.swift in Sources */,
 				23E42E272269C72E00B05EC7 /* RegisterVC.swift in Sources */,
 				2386E6482260E9320090AA32 /* FirstViewController.swift in Sources */,
+				23E42E5A226B3F2000B05EC7 /* PredictionsCell.swift in Sources */,
 				2386E660226229550090AA32 /* QuizzController.swift in Sources */,
 				23E42E34226A7D6E00B05EC7 /* StartVC.swift in Sources */,
 			);

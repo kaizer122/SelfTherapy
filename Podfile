@@ -6,12 +6,13 @@ target 'SelfTherapy' do
   use_frameworks!
 
   # Pods for SelfTherapy
-pod 'lottie-ios'
+
 pod 'Alamofire', '~> 4.3'
-pod 'SwiftyJSON', '~> 4.0'
+pod 'SwiftyJSON', '~> 4.2.0'
 pod 'FBSDKCoreKit'
 pod 'FBSDKLoginKit'
 pod 'FBSDKShareKit'
 pod 'GoogleSignIn'
-pod 'UICircularProgressRing'
+pod 'UICircularProgressRing','~> 6.0.0'
+pod 'lottie-ios','~> 2.5.2'
 end

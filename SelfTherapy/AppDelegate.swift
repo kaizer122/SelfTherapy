@@ -10,6 +10,7 @@ import UIKit
 import FBSDKCoreKit
 import GoogleSignIn
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate , GIDSignInDelegate {
     
@@ -27,6 +28,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GIDSignInDelegate {
         // google
         GIDSignIn.sharedInstance()?.clientID = "85103153019-7qe42kd70v0lg45su7jl7o3g6lm9s927.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self
+//        //clarifai
+//        let APIKey = "eb776905869b4312a5642115dc859e19"
+//        Clarifai.sharedInstance().start(apiKey: APIKey)
+        // login control
         if (AuthService.instance.isLoggedIn) {
      let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
      let startVC = storyBoard.instantiateViewController(withIdentifier: "StartVC") as! StartVC
