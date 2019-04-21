@@ -31,7 +31,7 @@ class RapportController: UIViewController {
         setupMode()
     }
     func setupCirclesAnims () {
-        warningAnim.setAnimation(named: "warning")
+        warningAnim.setAnimation(named: "nuage")
         warningAnim.loopAnimation = true
         warningAnim.animationSpeed = 1
         warningAnim.play()

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2342B5A2226C9DA3003B0EAB /* alert.json in Resources */ = {isa = PBXBuildFile; fileRef = 2342B5A1226C9DA3003B0EAB /* alert.json */; };
 		2386E6462260E9320090AA32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386E6452260E9320090AA32 /* AppDelegate.swift */; };
 		2386E6482260E9320090AA32 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386E6472260E9320090AA32 /* FirstViewController.swift */; };
 		2386E64A2260E9320090AA32 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386E6492260E9320090AA32 /* SecondViewController.swift */; };
@@ -22,6 +23,8 @@
 		2386E6712263B13B0090AA32 /* RapportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386E6702263B13B0090AA32 /* RapportController.swift */; };
 		2386E6742263F2500090AA32 /* welcome.json in Resources */ = {isa = PBXBuildFile; fileRef = 2386E6722263F24F0090AA32 /* welcome.json */; };
 		2386E6752263F2500090AA32 /* warning.json in Resources */ = {isa = PBXBuildFile; fileRef = 2386E6732263F2500090AA32 /* warning.json */; };
+		23BB3C97226CA1BC00373743 /* alert2.json in Resources */ = {isa = PBXBuildFile; fileRef = 23BB3C96226CA1BB00373743 /* alert2.json */; };
+		23BB3C99226CA3DA00373743 /* nuage.json in Resources */ = {isa = PBXBuildFile; fileRef = 23BB3C98226CA3DA00373743 /* nuage.json */; };
 		23E42E262269C72E00B05EC7 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E42E242269C72D00B05EC7 /* LoginVC.swift */; };
 		23E42E272269C72E00B05EC7 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E42E252269C72E00B05EC7 /* RegisterVC.swift */; };
 		23E42E292269C84F00B05EC7 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E42E282269C84F00B05EC7 /* AuthService.swift */; };
@@ -35,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2342B5A1226C9DA3003B0EAB /* alert.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = alert.json; sourceTree = "<group>"; };
 		2386E6422260E9320090AA32 /* SelfTherapy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SelfTherapy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2386E6452260E9320090AA32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2386E6472260E9320090AA32 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -52,6 +56,8 @@
 		2386E6702263B13B0090AA32 /* RapportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RapportController.swift; sourceTree = "<group>"; };
 		2386E6722263F24F0090AA32 /* welcome.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = welcome.json; sourceTree = "<group>"; };
 		2386E6732263F2500090AA32 /* warning.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = warning.json; sourceTree = "<group>"; };
+		23BB3C96226CA1BB00373743 /* alert2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = alert2.json; sourceTree = "<group>"; };
+		23BB3C98226CA3DA00373743 /* nuage.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nuage.json; sourceTree = "<group>"; };
 		23E42E242269C72D00B05EC7 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		23E42E252269C72E00B05EC7 /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		23E42E282269C84F00B05EC7 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -163,8 +169,11 @@
 		2386E66122622B260090AA32 /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				23BB3C96226CA1BB00373743 /* alert2.json */,
+				2342B5A1226C9DA3003B0EAB /* alert.json */,
 				2386E6732263F2500090AA32 /* warning.json */,
 				2386E6722263F24F0090AA32 /* welcome.json */,
+				23BB3C98226CA3DA00373743 /* nuage.json */,
 				2386E66422622BA20090AA32 /* QuestionMark.json */,
 			);
 			path = Animations;
@@ -263,7 +272,10 @@
 			files = (
 				2386E66522622BA20090AA32 /* QuestionMark.json in Resources */,
 				2386E6522260E9360090AA32 /* LaunchScreen.storyboard in Resources */,
+				2342B5A2226C9DA3003B0EAB /* alert.json in Resources */,
 				2386E64F2260E9360090AA32 /* Assets.xcassets in Resources */,
+				23BB3C99226CA3DA00373743 /* nuage.json in Resources */,
+				23BB3C97226CA1BC00373743 /* alert2.json in Resources */,
 				2386E64D2260E9320090AA32 /* Main.storyboard in Resources */,
 				2386E6752263F2500090AA32 /* warning.json in Resources */,
 				23E42E2E2269FFA600B05EC7 /* credentials.plist in Resources */,
