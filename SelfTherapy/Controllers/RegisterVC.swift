@@ -145,7 +145,7 @@ class RegisterVC: UIViewController ,GIDSignInUIDelegate {
                 })
             }else {
                 // already registred
-                AuthService.instance.loginUser(email: username, password: password, completion: {
+                AuthService.instance.loginUser(email: email, password: password, completion: {
                     (success) in
                     if success {
                         print ("logged in new user!")
@@ -166,6 +166,8 @@ class RegisterVC: UIViewController ,GIDSignInUIDelegate {
     }
     @IBAction func googleBtnClicked(_ sender: Any) {
         print("clicked google")
+        spinner.isHidden = false
+        spinner.startAnimating()
         GIDSignIn.sharedInstance()?.signIn()
     }
 

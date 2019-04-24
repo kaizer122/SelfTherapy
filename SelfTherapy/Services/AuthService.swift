@@ -77,16 +77,20 @@ class AuthService {
             "password": password
             ]
         
-        Alamofire.request(URL_LOGIN, method: .post, parameters: body).responseJSON { (response) in
-            
+        Alamofire.request(URL_LOGIN, method: .post, parameters: body).responseString { (response) in
+          
             if response.result.error == nil {
-               
+                let data = response.result.value
+                debugPrint(data)
+                if ( (data?.contains("true"))! ) {
                     self.username = email
                     self.userEmail = email
                     self.isLoggedIn = true
-             
+
                     completion(true)
-            
+                } else {
+                    completion(false)
+                }
                 }
              else {
                 completion(false)

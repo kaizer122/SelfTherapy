@@ -7,16 +7,23 @@
 //
 
 import UIKit
+import Lottie
 
 class FirstViewController: UIViewController {
 
     @IBOutlet weak var username: UILabel!
+    @IBOutlet weak var welcomeAnim: LOTAnimationView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         setupUserInfo()
+        setupAnim()
     }
-
+    func setupAnim (){
+        welcomeAnim.setAnimation(named: "success")
+        welcomeAnim.animationSpeed = 1
+        welcomeAnim.play()
+    }
     func setupUserInfo () {
         if AuthService.instance.isLoggedIn {
             username.text = AuthService.instance.username

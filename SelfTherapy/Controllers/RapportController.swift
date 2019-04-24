@@ -18,7 +18,7 @@ class RapportController: UIViewController {
     @IBOutlet weak var anxCircle: UICircularProgressRing!
     @IBOutlet weak var stressCircle: UICircularProgressRing!
     @IBOutlet weak var depCircle: UICircularProgressRing!
-    var options = UICircularRingGradientOptions(startPosition: .left, endPosition: .right, colors:  [UIColor.green ,UIColor.orange, UIColor.red], colorLocations: [0.1,0.5, 1.0])
+    let options = UICircularRingGradientOptions(startPosition: .left, endPosition: .right, colors:  [UIColor.green ,UIColor.orange, UIColor.red], colorLocations: [0.1,0.5, 1.0])
     var anxiety = 0
     var stress = 0
     var depression = 0
