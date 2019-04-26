@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--First View Controller-->
+        <!--Home-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController storyboardIdentifier="startVC" id="9pv-A4-QxB" customClass="FirstViewController" customModule="SelfTherapy" customModuleProvider="target" sceneMemberID="viewController">
@@ -56,7 +56,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="contacts" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="homeIcon" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="username" destination="nYD-95-mHH" id="bat-Sm-COz"/>
                         <outlet property="welcomeAnim" destination="VTT-tU-gNM" id="V5E-Sd-0zv"/>
@@ -158,7 +158,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" image="pizzabg" translatesAutoresizingMaskIntoConstraints="NO" id="lqe-Ah-pIh">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="lqe-Ah-pIh">
                                 <rect key="frame" x="0.0" y="20" width="375" height="541.5"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Take a picture of your pizza to finish this step!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdE-KB-uzW">
@@ -202,6 +202,54 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PbO-ou-iqF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1168.8" y="1737.481259370315"/>
+        </scene>
+        <!--Stats-->
+        <scene sceneID="DNJ-Ey-1mO">
+            <objects>
+                <viewController id="U3w-8R-YQE" customClass="statController" customModule="SelfTherapy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RMa-cn-LNp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eq1-60-SJb" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="16" y="67" width="330" height="371"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cUL-gM-9eq">
+                                <rect key="frame" x="29" y="517" width="305" height="29"/>
+                                <segments>
+                                    <segment title="All"/>
+                                    <segment title="Stress"/>
+                                    <segment title="Anxiety"/>
+                                    <segment title="Depression"/>
+                                </segments>
+                                <connections>
+                                    <action selector="change:" destination="U3w-8R-YQE" eventType="valueChanged" id="t36-QE-ho0"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Eq1-60-SJb" firstAttribute="leading" secondItem="XI6-VG-FmU" secondAttribute="leading" constant="16" id="4XF-pQ-i3o"/>
+                            <constraint firstItem="cUL-gM-9eq" firstAttribute="top" secondItem="Eq1-60-SJb" secondAttribute="bottom" constant="79" id="9YK-4G-Xpe"/>
+                            <constraint firstItem="cUL-gM-9eq" firstAttribute="leading" secondItem="XI6-VG-FmU" secondAttribute="leading" constant="29" id="GfZ-se-pCE"/>
+                            <constraint firstItem="Eq1-60-SJb" firstAttribute="top" secondItem="XI6-VG-FmU" secondAttribute="top" constant="47" id="MNI-SV-7br"/>
+                            <constraint firstItem="XI6-VG-FmU" firstAttribute="trailing" secondItem="cUL-gM-9eq" secondAttribute="trailing" constant="41" id="MdI-y2-4LH"/>
+                            <constraint firstItem="XI6-VG-FmU" firstAttribute="bottom" secondItem="cUL-gM-9eq" secondAttribute="bottom" constant="73" id="RTX-Kb-Jsw"/>
+                            <constraint firstItem="XI6-VG-FmU" firstAttribute="trailing" secondItem="Eq1-60-SJb" secondAttribute="trailing" constant="29" id="Xev-0F-GaS"/>
+                            <constraint firstItem="cUL-gM-9eq" firstAttribute="top" secondItem="Eq1-60-SJb" secondAttribute="bottom" constant="79" id="qkr-pE-Uqj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XI6-VG-FmU"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Stats" image="statsIcon" id="pnj-sD-R5l"/>
+                    <connections>
+                        <outlet property="LineChart" destination="Eq1-60-SJb" id="vin-uO-ZWa"/>
+                        <outlet property="seg" destination="cUL-gM-9eq" id="Rn2-5i-Xk7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Ze-5Q-mbD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1924" y="1736.5817091454273"/>
         </scene>
         <!--Rapport Controller-->
         <scene sceneID="lNk-dD-MeU">
@@ -463,7 +511,7 @@
                                         <rect key="frame" x="22.5" y="8" width="30" height="30"/>
                                         <state key="normal" title="Skip"/>
                                         <connections>
-                                            <segue destination="aaU-Pz-dlN" kind="show" identifier="rapport" id="gzU-vd-j2c"/>
+                                            <action selector="skipClicked:" destination="Vb0-3f-2pb" eventType="touchUpInside" id="vHS-Ld-f82"/>
                                         </connections>
                                     </button>
                                     <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sqn-Ti-TTc" customClass="UICircularProgressRing" customModule="UICircularProgressRing">
@@ -865,6 +913,7 @@
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="0k0-Kp-OvJ"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="Z31-68-Vdi"/>
                         <segue destination="Ovh-RE-XBx" kind="relationship" relationship="viewControllers" id="GCc-e0-wnb"/>
+                        <segue destination="U3w-8R-YQE" kind="relationship" relationship="viewControllers" id="Ob2-OJ-VRH"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OZG-wh-CvF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1087,16 +1136,16 @@
         <image name="facebookBtn" width="165" height="60"/>
         <image name="googleBtn" width="165" height="71"/>
         <image name="helpIcon" width="36" height="36"/>
+        <image name="homeIcon" width="37.5" height="37.5"/>
         <image name="logoself" width="547" height="600"/>
         <image name="logout" width="153.60000610351562" height="153.60000610351562"/>
-        <image name="pizzabg" width="1280" height="720"/>
         <image name="quizzIcon" width="36" height="36"/>
         <image name="smackBack" width="28" height="28"/>
+        <image name="statsIcon" width="37.5" height="37.5"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="eKx-62-rSn"/>
         <segue reference="HvG-zI-Ysx"/>
         <segue reference="Gxa-DX-Dce"/>
-        <segue reference="gzU-vd-j2c"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18A391" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="All" representedClassName="All" syncable="YES" codeGenerationType="class">
+        <attribute name="ax" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dep" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stress" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Ax" representedClassName="Ax" syncable="YES" codeGenerationType="class">
+        <attribute name="ax" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Dep" representedClassName="Dep" syncable="YES" codeGenerationType="class">
+        <attribute name="dep" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Stress" representedClassName="Stress" syncable="YES" codeGenerationType="class">
+        <attribute name="stress" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="All" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="Ax" positionX="-54" positionY="18" width="128" height="60"/>
+        <element name="Dep" positionX="-36" positionY="27" width="128" height="60"/>
+        <element name="Stress" positionX="-18" positionY="36" width="128" height="60"/>
+    </elements>
+</model>

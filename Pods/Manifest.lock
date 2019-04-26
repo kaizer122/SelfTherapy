@@ -6,6 +6,9 @@ PODS:
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
+  - Charts (3.2.2):
+    - Charts/Core (= 3.2.2)
+  - Charts/Core (3.2.2)
   - FBSDKCoreKit (4.44.1):
     - Bolts (~> 1.9)
   - FBSDKLoginKit (4.44.1):
@@ -31,6 +34,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.3)
+  - Charts (~> 3.2.2)
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
@@ -43,6 +47,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - Bolts
+    - Charts
     - FBSDKCoreKit
     - FBSDKLoginKit
     - FBSDKShareKit
@@ -56,6 +61,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  Charts: f69cf0518b6d1d62608ca504248f1bbe0b6ae77e
   FBSDKCoreKit: a823ae35bdb60ebb8d7a7e51abe7c5d87d2bfced
   FBSDKLoginKit: 54ae59987f2a8703021557c90a9aebb9e5c2bef6
   FBSDKShareKit: 526d4cfb713d24855fa23d0dd74e191accd3a720
@@ -66,6 +72,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   UICircularProgressRing: 2ef1293241b83d8020ede21a8fe3b3d859525730
 
-PODFILE CHECKSUM: ea258246da8d37ca967d88674f915e65a5ea7e27
+PODFILE CHECKSUM: f1aac4de0ec666d3688480ac64b2b0a132d5b575
 
 COCOAPODS: 1.6.0

@@ -63,6 +63,7 @@ class LoginVC: UIViewController , GIDSignInUIDelegate {
             if success {
                 self.spinner.isHidden = true
                 self.spinner.stopAnimating()
+                self.performSegue(withIdentifier: LOGIN_TO_MENU, sender: nil)
                print("ok")
             } else {
                 // zid alerte hnés

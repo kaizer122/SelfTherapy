@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2342B5A2226C9DA3003B0EAB /* alert.json in Resources */ = {isa = PBXBuildFile; fileRef = 2342B5A1226C9DA3003B0EAB /* alert.json */; };
+		234993EF2273239F00954CDD /* statController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234993EE2273239F00954CDD /* statController.swift */; };
+		234993F2227326BC00954CDD /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 234993F0227326BC00954CDD /* Model.xcdatamodeld */; };
 		2386E6462260E9320090AA32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386E6452260E9320090AA32 /* AppDelegate.swift */; };
 		2386E6482260E9320090AA32 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386E6472260E9320090AA32 /* FirstViewController.swift */; };
 		2386E64A2260E9320090AA32 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386E6492260E9320090AA32 /* SecondViewController.swift */; };
@@ -41,6 +43,8 @@
 
 /* Begin PBXFileReference section */
 		2342B5A1226C9DA3003B0EAB /* alert.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = alert.json; sourceTree = "<group>"; };
+		234993EE2273239F00954CDD /* statController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = statController.swift; sourceTree = "<group>"; };
+		234993F1227326BC00954CDD /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		2386E6422260E9320090AA32 /* SelfTherapy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SelfTherapy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2386E6452260E9320090AA32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2386E6472260E9320090AA32 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +93,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		234993ED2273213100954CDD /* st */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = st;
+			sourceTree = "<group>";
+		};
 		2386E6392260E9320090AA32 = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +121,7 @@
 		2386E6442260E9320090AA32 /* SelfTherapy */ = {
 			isa = PBXGroup;
 			children = (
+				234993ED2273213100954CDD /* st */,
 				23E42E2A2269CBDB00B05EC7 /* SelfTherapy.entitlements */,
 				2386E66122622B260090AA32 /* Animations */,
 				2386E66B226338750090AA32 /* Entities */,
@@ -123,6 +135,7 @@
 				2386E64E2260E9360090AA32 /* Assets.xcassets */,
 				2386E6502260E9360090AA32 /* LaunchScreen.storyboard */,
 				2386E6532260E9360090AA32 /* Info.plist */,
+				234993F0227326BC00954CDD /* Model.xcdatamodeld */,
 			);
 			path = SelfTherapy;
 			sourceTree = "<group>";
@@ -132,6 +145,7 @@
 			children = (
 				23E42E33226A7D6E00B05EC7 /* StartVC.swift */,
 				23E42E242269C72D00B05EC7 /* LoginVC.swift */,
+				234993EE2273239F00954CDD /* statController.swift */,
 				23E42E252269C72E00B05EC7 /* RegisterVC.swift */,
 				2386E6472260E9320090AA32 /* FirstViewController.swift */,
 				2386E6492260E9320090AA32 /* SecondViewController.swift */,
@@ -348,6 +362,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-SelfTherapy/Pods-SelfTherapy-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
@@ -363,6 +378,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
@@ -386,10 +402,12 @@
 			files = (
 				23E42E262269C72E00B05EC7 /* LoginVC.swift in Sources */,
 				23BB3C9D2270BA0300373743 /* Food101.mlmodel in Sources */,
+				234993EF2273239F00954CDD /* statController.swift in Sources */,
 				2386E6712263B13B0090AA32 /* RapportController.swift in Sources */,
 				2386E66F226339810090AA32 /* QuestionsService.swift in Sources */,
 				2386E64A2260E9320090AA32 /* SecondViewController.swift in Sources */,
 				2386E66D226338890090AA32 /* Question.swift in Sources */,
+				234993F2227326BC00954CDD /* Model.xcdatamodeld in Sources */,
 				2386E667226234E80090AA32 /* RoundedButton.swift in Sources */,
 				23E42E2C2269CEF500B05EC7 /* RoundedButton2.swift in Sources */,
 				23E42E292269C84F00B05EC7 /* AuthService.swift in Sources */,
@@ -747,6 +765,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		234993F0227326BC00954CDD /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				234993F1227326BC00954CDD /* Model.xcdatamodel */,
+			);
+			currentVersion = 234993F1227326BC00954CDD /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2386E63A2260E9320090AA32 /* Project object */;
 }

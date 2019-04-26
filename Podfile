@@ -15,4 +15,5 @@ pod 'FBSDKShareKit'
 pod 'GoogleSignIn'
 pod 'UICircularProgressRing','~> 6.0.0'
 pod 'lottie-ios','~> 2.5.2'
+pod 'Charts','~> 3.2.2'
 end
