@@ -8,6 +8,7 @@
 
 import UIKit
 import Lottie
+import Firebase
 
 class FirstViewController: UIViewController {
 
@@ -26,8 +27,8 @@ class FirstViewController: UIViewController {
     }
     func setupUserInfo () {
         if AuthService.instance.isLoggedIn {
-            username.text = AuthService.instance.username
-     
+            username.text = "Welcome "+AuthService.instance.username + " !"
+           
         }
         else {
             debugPrint(AuthService.instance.userEmail)

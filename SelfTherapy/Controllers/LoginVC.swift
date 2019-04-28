@@ -10,6 +10,7 @@ import UIKit
 import FBSDKLoginKit
 import FBSDKCoreKit
 import GoogleSignIn
+import Firebase
 
 
 class LoginVC: UIViewController , GIDSignInUIDelegate {
@@ -43,35 +44,19 @@ class LoginVC: UIViewController , GIDSignInUIDelegate {
         guard let pass = passwordTxt.text , passwordTxt.text != "" else {
             makeAlert(message: "invalid password")
             return }
-        
-        AuthService.instance.loginUser(email: email, password: pass) { (success) in
-            if success {
-                self.spinner.isHidden = true
-                self.spinner.stopAnimating()
-                self.performSegue(withIdentifier: LOGIN_TO_MENU, sender: nil)
+        Auth.auth().signIn(withEmail: email, password: pass) { (user, error) in
+            if error != nil {
+                print(error!)
             } else {
-                // zid alerte hnés
-                self.makeAlert(message: "invalid creditentials , please try again")
+                print("Log in successful!")
+                  self.updateLoginService()
+              //  self.performSegue(withIdentifier: "goToChat", sender: self)
             }
         }
+        
       
     }
-    // used for fb/google signin
-    public func Signin(email: String , password : String ) {
-        print ("sign in entered")
-        AuthService.instance.loginUser(email: email, password: password) { (success) in
-            if success {
-                self.spinner.isHidden = true
-                self.spinner.stopAnimating()
-                self.performSegue(withIdentifier: LOGIN_TO_MENU, sender: nil)
-               print("ok")
-            } else {
-                // zid alerte hnés
-                self.makeAlert(message: "invalid creditentials , please try again")
-            }
-        
-    }
-    }
+ 
   
     func ForgotPassword(alert: UIAlertAction!) {
         print("forgot password cool")
@@ -101,56 +86,40 @@ class LoginVC: UIViewController , GIDSignInUIDelegate {
             } else if result!.isCancelled {
                 print("cancelled facebook login")
             } else {
-                print("login success")
                 print (result!.token.tokenString!)
-               self.fetchProfile()
+             let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+                Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                        Auth.auth().currentUser?.linkAndRetrieveData(with: credential, completion: { (data, error) in
+                            if let error = error  {
+                             
+                                return
+                            }
+                                self.updateLoginService()
+                        })
+                        return
+                    }
+           
+                    //logged in
+                 self.updateLoginService()
+                   
+                   print("fb signed in")
+                }
             }
             
         }
     }
-    
-
-    
-    func fetchProfile () {
-        let parameters = ["fields": "email,first_name,last_name,picture.type(large),id"]
-        FBSDKGraphRequest(graphPath: "me", parameters: parameters).start(completionHandler:  {
-            (connection, result, error) in
-            print("d5al 1")
-            if error != nil {
-                print ("erreur : ")
-                print (error!)
-                return
-            }
-            print("t3ada")
-            guard
-                let result = result as? NSDictionary,
-                let email = result["email"] as? String,
-                let first_name = result["first_name"] as? String,
-                let last_name = result["last_name"] as? String
-                else {
-                    print ("error fetching data")
-                    return
-            }
-            print (first_name)
-            print( last_name)
-            print (email)
-            guard
-                let picture = result["picture"] as? NSDictionary,
-                let data = picture["data"] as? NSDictionary,
-                let url = data["url"] as? String
-                else {
-                    print("error image")
-                    return
-            }
-            print (url)
-            
-            self.Signin(email: "\(first_name)_\(last_name)", password: "generatedPass")
-          
-            
-    })
+    func updateLoginService(){
+        
+        AuthService.instance.userEmail = Auth.auth().currentUser!.email!
+        AuthService.instance.username = Auth.auth().currentUser!.displayName!
+       AuthService.instance.isLoggedIn = true
+         performSegue(withIdentifier: LOGIN_TO_MENU , sender: self)
+        debugPrint(AuthService.instance.userEmail)
+        debugPrint(AuthService.instance.username)
     }
 
-    
     
     func makeAlert( message: String ) {
         let alert = UIAlertController(title: "Alert !", message: message, preferredStyle: .alert)

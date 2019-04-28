@@ -19,5 +19,5 @@ class Question {
         self.categorie = categorie
         self.reponses = reponses
     }
-    
+
 }

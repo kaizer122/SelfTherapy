@@ -12,6 +12,7 @@ import SwiftyJSON
 import FBSDKCoreKit
 import FBSDKLoginKit
 import GoogleSignIn
+import Firebase
 
 class AuthService {
     static let instance = AuthService()
@@ -81,7 +82,7 @@ class AuthService {
           
             if response.result.error == nil {
                 let data = response.result.value
-                debugPrint(data)
+    
                 if ( (data?.contains("true"))! ) {
                     self.username = email
                     self.userEmail = email
@@ -107,6 +108,11 @@ class AuthService {
         
         fbloginManager.logOut()
         GIDSignIn.sharedInstance().signOut()
+        do {
+              try Auth.auth().signOut()
+        } catch {
+        print ("error: while logging out firebase")
+        }
     }
     
     

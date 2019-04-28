@@ -7,9 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		233EA1A72275260200812AA7 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233EA1A62275260200812AA7 /* ChatVC.swift */; };
+		233EA1A922752B6900812AA7 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233EA1A822752B6900812AA7 /* Message.swift */; };
 		2342B5A2226C9DA3003B0EAB /* alert.json in Resources */ = {isa = PBXBuildFile; fileRef = 2342B5A1226C9DA3003B0EAB /* alert.json */; };
 		234993EF2273239F00954CDD /* statController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234993EE2273239F00954CDD /* statController.swift */; };
 		234993F2227326BC00954CDD /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 234993F0227326BC00954CDD /* Model.xcdatamodeld */; };
+		23841A2222748BBD00086ABB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23841A2122748BBD00086ABB /* GoogleService-Info.plist */; };
+		23841A242274E05D00086ABB /* ChannelsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23841A232274E05D00086ABB /* ChannelsVC.swift */; };
+		23841A262274E43100086ABB /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23841A252274E43100086ABB /* Channel.swift */; };
 		2386E6462260E9320090AA32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386E6452260E9320090AA32 /* AppDelegate.swift */; };
 		2386E6482260E9320090AA32 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386E6472260E9320090AA32 /* FirstViewController.swift */; };
 		2386E64A2260E9320090AA32 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386E6492260E9320090AA32 /* SecondViewController.swift */; };
@@ -31,10 +36,8 @@
 		23BB3C9D2270BA0300373743 /* Food101.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 23BB3C9C2270BA0300373743 /* Food101.mlmodel */; };
 		23BB3C9F2270D5FF00373743 /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = 23BB3C9E2270D5FE00373743 /* success.json */; };
 		23E42E262269C72E00B05EC7 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E42E242269C72D00B05EC7 /* LoginVC.swift */; };
-		23E42E272269C72E00B05EC7 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E42E252269C72E00B05EC7 /* RegisterVC.swift */; };
 		23E42E292269C84F00B05EC7 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E42E282269C84F00B05EC7 /* AuthService.swift */; };
 		23E42E2C2269CEF500B05EC7 /* RoundedButton2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E42E2B2269CEF500B05EC7 /* RoundedButton2.swift */; };
-		23E42E2E2269FFA600B05EC7 /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23E42E2D2269FFA500B05EC7 /* credentials.plist */; };
 		23E42E32226A661A00B05EC7 /* QuizzCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E42E31226A661A00B05EC7 /* QuizzCell.swift */; };
 		23E42E34226A7D6E00B05EC7 /* StartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E42E33226A7D6E00B05EC7 /* StartVC.swift */; };
 		23E42E5A226B3F2000B05EC7 /* PredictionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E42E59226B3F2000B05EC7 /* PredictionsCell.swift */; };
@@ -42,9 +45,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		233EA1A62275260200812AA7 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		233EA1A822752B6900812AA7 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		2342B5A1226C9DA3003B0EAB /* alert.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = alert.json; sourceTree = "<group>"; };
 		234993EE2273239F00954CDD /* statController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = statController.swift; sourceTree = "<group>"; };
 		234993F1227326BC00954CDD /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		23841A2122748BBD00086ABB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		23841A232274E05D00086ABB /* ChannelsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsVC.swift; sourceTree = "<group>"; };
+		23841A252274E43100086ABB /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		2386E6422260E9320090AA32 /* SelfTherapy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SelfTherapy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2386E6452260E9320090AA32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2386E6472260E9320090AA32 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -68,11 +76,9 @@
 		23BB3C9C2270BA0300373743 /* Food101.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Food101.mlmodel; sourceTree = "<group>"; };
 		23BB3C9E2270D5FE00373743 /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
 		23E42E242269C72D00B05EC7 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
-		23E42E252269C72E00B05EC7 /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		23E42E282269C84F00B05EC7 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		23E42E2A2269CBDB00B05EC7 /* SelfTherapy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SelfTherapy.entitlements; sourceTree = "<group>"; };
 		23E42E2B2269CEF500B05EC7 /* RoundedButton2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton2.swift; sourceTree = "<group>"; };
-		23E42E2D2269FFA500B05EC7 /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
 		23E42E31226A661A00B05EC7 /* QuizzCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizzCell.swift; sourceTree = "<group>"; };
 		23E42E33226A7D6E00B05EC7 /* StartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartVC.swift; sourceTree = "<group>"; };
 		23E42E59226B3F2000B05EC7 /* PredictionsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionsCell.swift; sourceTree = "<group>"; };
@@ -93,13 +99,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		234993ED2273213100954CDD /* st */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = st;
-			sourceTree = "<group>";
-		};
 		2386E6392260E9320090AA32 = {
 			isa = PBXGroup;
 			children = (
@@ -121,7 +120,6 @@
 		2386E6442260E9320090AA32 /* SelfTherapy */ = {
 			isa = PBXGroup;
 			children = (
-				234993ED2273213100954CDD /* st */,
 				23E42E2A2269CBDB00B05EC7 /* SelfTherapy.entitlements */,
 				2386E66122622B260090AA32 /* Animations */,
 				2386E66B226338750090AA32 /* Entities */,
@@ -130,8 +128,8 @@
 				2386E65A2262285C0090AA32 /* Services */,
 				2386E6592262284A0090AA32 /* Controllers */,
 				2386E6452260E9320090AA32 /* AppDelegate.swift */,
+				23841A2122748BBD00086ABB /* GoogleService-Info.plist */,
 				2386E64B2260E9320090AA32 /* Main.storyboard */,
-				23E42E2D2269FFA500B05EC7 /* credentials.plist */,
 				2386E64E2260E9360090AA32 /* Assets.xcassets */,
 				2386E6502260E9360090AA32 /* LaunchScreen.storyboard */,
 				2386E6532260E9360090AA32 /* Info.plist */,
@@ -146,12 +144,13 @@
 				23E42E33226A7D6E00B05EC7 /* StartVC.swift */,
 				23E42E242269C72D00B05EC7 /* LoginVC.swift */,
 				234993EE2273239F00954CDD /* statController.swift */,
-				23E42E252269C72E00B05EC7 /* RegisterVC.swift */,
 				2386E6472260E9320090AA32 /* FirstViewController.swift */,
 				2386E6492260E9320090AA32 /* SecondViewController.swift */,
 				2386E65F226229550090AA32 /* QuizzController.swift */,
 				2386E6702263B13B0090AA32 /* RapportController.swift */,
 				23BB3C9A2270B81B00373743 /* ImageRecognitionVC.swift */,
+				23841A232274E05D00086ABB /* ChannelsVC.swift */,
+				233EA1A62275260200812AA7 /* ChatVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -202,7 +201,9 @@
 		2386E66B226338750090AA32 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				233EA1A822752B6900812AA7 /* Message.swift */,
 				2386E66C226338890090AA32 /* Question.swift */,
+				23841A252274E43100086ABB /* Channel.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -299,7 +300,7 @@
 				23BB3C97226CA1BC00373743 /* alert2.json in Resources */,
 				2386E64D2260E9320090AA32 /* Main.storyboard in Resources */,
 				2386E6752263F2500090AA32 /* warning.json in Resources */,
-				23E42E2E2269FFA600B05EC7 /* credentials.plist in Resources */,
+				23841A2222748BBD00086ABB /* GoogleService-Info.plist in Resources */,
 				2386E6742263F2500090AA32 /* welcome.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,15 +363,24 @@
 				"${PODS_ROOT}/Target Support Files/Pods-SelfTherapy/Pods-SelfTherapy-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/MessageInputBar/MessageInputBar.framework",
+				"${BUILT_PRODUCTS_DIR}/MessageKit/MessageKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/UICircularProgressRing/UICircularProgressRing.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -378,15 +388,24 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageInputBar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICircularProgressRing.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -400,12 +419,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23841A242274E05D00086ABB /* ChannelsVC.swift in Sources */,
 				23E42E262269C72E00B05EC7 /* LoginVC.swift in Sources */,
 				23BB3C9D2270BA0300373743 /* Food101.mlmodel in Sources */,
 				234993EF2273239F00954CDD /* statController.swift in Sources */,
 				2386E6712263B13B0090AA32 /* RapportController.swift in Sources */,
 				2386E66F226339810090AA32 /* QuestionsService.swift in Sources */,
+				233EA1A72275260200812AA7 /* ChatVC.swift in Sources */,
 				2386E64A2260E9320090AA32 /* SecondViewController.swift in Sources */,
+				23841A262274E43100086ABB /* Channel.swift in Sources */,
 				2386E66D226338890090AA32 /* Question.swift in Sources */,
 				234993F2227326BC00954CDD /* Model.xcdatamodeld in Sources */,
 				2386E667226234E80090AA32 /* RoundedButton.swift in Sources */,
@@ -414,7 +436,7 @@
 				2386E6462260E9320090AA32 /* AppDelegate.swift in Sources */,
 				23E42E32226A661A00B05EC7 /* QuizzCell.swift in Sources */,
 				2386E6692263378E0090AA32 /* constants.swift in Sources */,
-				23E42E272269C72E00B05EC7 /* RegisterVC.swift in Sources */,
+				233EA1A922752B6900812AA7 /* Message.swift in Sources */,
 				2386E6482260E9320090AA32 /* FirstViewController.swift in Sources */,
 				23BB3C9B2270B81B00373743 /* ImageRecognitionVC.swift in Sources */,
 				23E42E5A226B3F2000B05EC7 /* PredictionsCell.swift in Sources */,
@@ -484,6 +506,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -544,6 +567,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -568,6 +592,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SL53WS7H35;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.framework/Headers\"",
@@ -579,7 +604,6 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework/Headers\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftyJSON/SwiftyJSON.framework/Headers\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/lottie-ios/Lottie.framework/Headers\"",
-					"$(SRCROOT)/Pods/**",
 				);
 				INFOPLIST_FILE = SelfTherapy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -659,6 +683,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SL53WS7H35;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.framework/Headers\"",
@@ -670,7 +695,6 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework/Headers\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/SwiftyJSON/SwiftyJSON.framework/Headers\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/lottie-ios/Lottie.framework/Headers\"",
-					"$(SRCROOT)/Pods/**",
 				);
 				INFOPLIST_FILE = SelfTherapy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

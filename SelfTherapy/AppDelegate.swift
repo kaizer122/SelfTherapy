@@ -10,6 +10,7 @@ import UIKit
 import FBSDKCoreKit
 import GoogleSignIn
 import CoreData
+import Firebase
 
 
 @UIApplicationMain
@@ -21,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GIDSignInDelegate {
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        //firebase
+           FirebaseApp.configure()
         // facebook
         FBSDKApplicationDelegate.sharedInstance()?.application(application, didFinishLaunchingWithOptions: launchOptions)
         // google
@@ -52,24 +56,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GIDSignInDelegate {
             debugPrint("could not login with google :\(error.localizedDescription)")
         } else {
             print ("logged in with google")
-            //   let userId = user.userID                  // For client-side use only!
-            //   let idToken = user.authentication.idToken // Safe to send to the server
-            //   let givenName = user.profile.givenName
-            let familyName = user.profile.familyName
-            let fullName = user.profile.name
-            let email = user.profile.email
-          //  let imageUrl = user.profile.imageURL(withDimension: 100)?.absoluteString
+        
+            guard let authentication = user.authentication else { return }
+            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                           accessToken: authentication.accessToken)
             
-            if ((GIDSignIn.sharedInstance()?.uiDelegate as? LoginVC) != nil ) {
-                guard let loginC = GIDSignIn.sharedInstance()?.uiDelegate as? LoginVC else {return}
-                loginC.Signin(email: email!, password: "generatedPassword" )
-                print ("im in loginVC")
+            Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+                if let error = error {
+                    debugPrint(error.localizedDescription)
+                    return
+                }
+                AuthService.instance.userEmail = Auth.auth().currentUser!.email!
+                AuthService.instance.username = Auth.auth().currentUser!.displayName!
+                AuthService.instance.isLoggedIn = true
+                debugPrint(AuthService.instance.userEmail)
+                debugPrint(AuthService.instance.username)
+                if ((GIDSignIn.sharedInstance()?.uiDelegate as? LoginVC) != nil ) {
+                                    guard let loginC = GIDSignIn.sharedInstance()?.uiDelegate as? LoginVC else {return}
+                                   loginC.performSegue(withIdentifier: LOGIN_TO_MENU , sender: self)
+                    
+                                }
+                
             }
-            if ((GIDSignIn.sharedInstance()?.uiDelegate as? RegisterVC) != nil ) {
-                guard let registerC = GIDSignIn.sharedInstance()?.uiDelegate as? RegisterVC else {return}
-                print ("im in registerVC")
-                registerC.registerUser(email: email!, password: "generatedPassword", username: "\(familyName!)_\(fullName!)")
-            }
+            
         }
     }
     

@@ -14,7 +14,7 @@ class statController: UIViewController {
     
     
     @IBOutlet weak var LineChart: LineChartView!
-    
+    	
     
     @IBOutlet weak var seg: UISegmentedControl!
     

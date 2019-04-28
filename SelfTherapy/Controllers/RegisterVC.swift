@@ -9,6 +9,7 @@ import UIKit
 import FBSDKLoginKit
 import FBSDKCoreKit
 import GoogleSignIn
+import Firebase
 
 class RegisterVC: UIViewController ,GIDSignInUIDelegate {
 
@@ -44,48 +45,12 @@ class RegisterVC: UIViewController ,GIDSignInUIDelegate {
                 print("cancelled facebook login")
             } else {
                 print("login success")
-                print (result?.token.tokenString!)
-                self.fetchProfile()
+         
             }
             
         }
     }
-    func fetchProfile () {
-        let parameters = ["fields": "email,first_name,last_name,picture.type(large),id"]
-        FBSDKGraphRequest(graphPath: "me", parameters: parameters).start(completionHandler:  {
-            (connection, result, error) in
-            print("d5al 1")
-            if error != nil {
-                print ("erreur : ")
-                print (error!)
-                return
-            }
-            print("t3ada")
-            guard
-                let result = result as? NSDictionary,
-                let email = result["email"] as? String,
-                let first_name = result["first_name"] as? String,
-                let last_name = result["last_name"] as? String
-                else {
-                    print ("error fetching data")
-                    return
-            }
-            print (first_name)
-            print( last_name)
-            print (email)
-            guard
-                let picture = result["picture"] as? NSDictionary,
-                let data = picture["data"] as? NSDictionary,
-                let url = data["url"] as? String
-                else {
-                    print("error image")
-                    return
-            }
-            print (url)
-            self.registerUser(email: email, password: "generatedPass", username: "\(last_name)_\(first_name)")
-            
-        })
-    }
+   
     @IBAction func registerOnClick(_ sender: Any) {
         
            spinner.isHidden = false
@@ -126,48 +91,23 @@ class RegisterVC: UIViewController ,GIDSignInUIDelegate {
     
     func registerUser (email: String , password : String  , username : String ) {
            print ("sign in entered")
-        AuthService.instance.registerUser(email: email, password: password, username: username) { (success) in
-            if success {
-                print("REGISTERED")
-                AuthService.instance.loginUser(email: email, password: password, completion: {
-                    (success) in
-                    if success {
-                        print ("logged in new user!")
-                        self.spinner.isHidden = true
-                        self.spinner.stopAnimating()
-                        self.performSegue(withIdentifier: REGISTER_TO_MENU, sender: nil)
-                    }else {
-                        self.spinner.isHidden = true
-                        self.spinner.stopAnimating()
-                        self.makeAlert(message: "something went wrong , please try again later 1")
-                        
-                    }
-                })
-            }else {
-                // already registred
-                AuthService.instance.loginUser(email: email, password: password, completion: {
-                    (success) in
-                    if success {
-                        print ("logged in new user!")
-                        self.spinner.isHidden = true
-                        self.spinner.stopAnimating()
-                        self.performSegue(withIdentifier: REGISTER_TO_MENU, sender: nil)
-                    }else {
-                        self.spinner.isHidden = true
-                        self.spinner.stopAnimating()
-                        self.makeAlert(message: "something went wrong , please try again later 2")
-                        
-                    }
-                })
+
+        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+            
+            if error != nil {
+                print(error!)
+            } else {
+                print("Registration Successful!")
+  
+                
+                //self.performSegue(withIdentifier: REGISTER_TO_MENU, sender: self)
             }
-            
-            
         }
     }
     @IBAction func googleBtnClicked(_ sender: Any) {
         print("clicked google")
-        spinner.isHidden = false
-        spinner.startAnimating()
+       // spinner.isHidden = false
+      //  spinner.startAnimating()
         GIDSignIn.sharedInstance()?.signIn()
     }
 

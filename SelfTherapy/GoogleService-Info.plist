@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>85103153019-7qe42kd70v0lg45su7jl7o3g6lm9s927.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.85103153019-7qe42kd70v0lg45su7jl7o3g6lm9s927</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAopCcyRj7Dnz37wL2K67jALpUfpmZA7DY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>85103153019</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>sim1.SelfTherapy</string>
+	<key>PROJECT_ID</key>
+	<string>selftherapy-1555679067767</string>
+	<key>STORAGE_BUCKET</key>
+	<string>selftherapy-1555679067767.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:85103153019:ios:6e46a75cb02e1e99</string>
+	<key>DATABASE_URL</key>
+	<string>https://selftherapy-1555679067767.firebaseio.com</string>
+</dict>
+</plist>
