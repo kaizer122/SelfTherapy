@@ -93,10 +93,12 @@ class LoginVC: UIViewController , GIDSignInUIDelegate {
                         print(error.localizedDescription)
                         Auth.auth().currentUser?.linkAndRetrieveData(with: credential, completion: { (data, error) in
                             if let error = error  {
-                             
+                             debugPrint(error.localizedDescription)
                                 return
                             }
+                    
                                 self.updateLoginService()
+                            
                         })
                         return
                     }
@@ -111,13 +113,11 @@ class LoginVC: UIViewController , GIDSignInUIDelegate {
         }
     }
     func updateLoginService(){
-        
         AuthService.instance.userEmail = Auth.auth().currentUser!.email!
         AuthService.instance.username = Auth.auth().currentUser!.displayName!
        AuthService.instance.isLoggedIn = true
          performSegue(withIdentifier: LOGIN_TO_MENU , sender: self)
-        debugPrint(AuthService.instance.userEmail)
-        debugPrint(AuthService.instance.username)
+   
     }
 
     

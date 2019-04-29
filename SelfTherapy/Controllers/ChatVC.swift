@@ -11,6 +11,7 @@ import MessageKit
 import Firebase
 import MessageUI
 import MessageInputBar
+import Kingfisher
 
 class ChatVC: MessagesViewController,MessagesDataSource {
     
@@ -80,7 +81,7 @@ class ChatVC: MessagesViewController,MessagesDataSource {
     }
     
     func currentSender() -> Sender {
-        return Sender(id: Auth.auth().currentUser!.uid, displayName: Auth.auth().currentUser!.displayName!)
+        return Sender(id: user.uid, displayName: user.displayName!)
     }
     
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
@@ -125,18 +126,22 @@ extension ChatVC: MessagesDisplayDelegate, MessagesLayoutDelegate {
         return .bubbleTail(corner, .curved)
     }
     func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
-        avatarView.image = UIImage(named: "logoself")
+        if (messages[indexPath.section].avatar != nil){
+            setAvatarWithUrl(url: messages[indexPath.section].avatar!, avatar: avatarView)
+        } else {
+            avatarView.image = UIImage(named: "profilePlaceholder")
+        }
+        
         avatarView.isHidden = isSameUser(indexPath: indexPath) ? true : false
      
     }
-    func avatarSize(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGSize {
-        return  CGSize(width: 50, height: 50)
-    }
+
     func heightForLocation(message: MessageType, at indexPath: IndexPath,
                            with maxWidth: CGFloat, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
         return 0
     }
     func cellTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+  
         return isSameUser(indexPath: indexPath) ? 0  : 18
 
     }
@@ -144,6 +149,29 @@ extension ChatVC: MessagesDisplayDelegate, MessagesLayoutDelegate {
     func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
         return isSameUser(indexPath: indexPath) ? 0  : 20
        
+    }
+    func setAvatarWithUrl (url: String , avatar: AvatarView) {
+        let url = URL(string: url)
+        let processor = DownsamplingImageProcessor(size: CGSize(width: 30, height: 30))
+       avatar.kf.indicatorType = .activity
+        avatar.kf.setImage(
+            with: url,
+            placeholder: UIImage(named: "profilePlaceholder"),
+            options: [
+                .processor(processor),
+                .scaleFactor(UIScreen.main.scale),
+                .transition(.fade(1)),
+                .cacheOriginalImage
+            ])
+        {
+            result in
+            switch result {
+            case .success(let value):
+                print("Task done for: \(value.source.url?.absoluteString ?? "")")
+            case .failure(let error):
+                print("Job failed: \(error.localizedDescription)")
+            }
+        }
     }
     
 
@@ -153,8 +181,8 @@ extension ChatVC: MessageInputBarDelegate {
     func messageInputBar(_ inputBar: MessageInputBar, didPressSendButtonWith text: String) {
         
         if (text != ""){
-            
-            messagesRef.addDocument(data: Message(uid: Auth.auth().currentUser!.uid, name: Auth.auth().currentUser!.displayName!, content: text, sentDate: Date() ).makeRdy()) { (error) in
+         
+            messagesRef.addDocument(data: Message(uid: user.uid, name: user.displayName!, content: text, sentDate: Date() , avatar: user.photoURL?.absoluteString).makeRdy()) { (error) in
                 if let error = error {
                     print(error.localizedDescription)
          
@@ -164,6 +192,7 @@ extension ChatVC: MessageInputBarDelegate {
                      self.messagesCollectionView.reloadData()
              
             }
+            
        
         }
     }

@@ -31,8 +31,8 @@ class ChannelsVC: UIViewController , UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell", for: indexPath)
-        cell.textLabel!.text = channels[indexPath.row].name
-        cell.detailTextLabel!.text = channels[indexPath.row].author
+        cell.textLabel!.text = channels[indexPath.row].hashtaggedName()
+        cell.detailTextLabel!.text = "By: " + channels[indexPath.row].author
         return cell
     }
 

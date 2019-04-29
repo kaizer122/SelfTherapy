@@ -122,6 +122,7 @@ PODS:
     - nanopb (~> 0.3)
   - gRPC-Core/Interface (1.17.0)
   - GTMSessionFetcher/Core (1.2.1)
+  - Kingfisher (5.3.1)
   - leveldb-library (1.20)
   - lottie-ios (2.5.3)
   - MessageInputBar/Core (0.4.1)
@@ -146,6 +147,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Firestore
   - GoogleSignIn
+  - Kingfisher
   - lottie-ios (~> 2.5.2)
   - MessageKit
   - SwiftyJSON (~> 4.2.0)
@@ -174,6 +176,7 @@ SPEC REPOS:
     - "gRPC-C++"
     - gRPC-Core
     - GTMSessionFetcher
+    - Kingfisher
     - leveldb-library
     - lottie-ios
     - MessageInputBar
@@ -205,6 +208,7 @@ SPEC CHECKSUMS:
   "gRPC-C++": e76441995900ac90e9bd98644ab4733f12521edf
   gRPC-Core: 4028031ed2c5267cca0d846c876d8046b1ecb9b6
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
+  Kingfisher: d9e7e0b209b59b8f9873aa2f37654e81a7beea51
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   lottie-ios: a50d5c0160425cd4b01b852bb9578963e6d92d31
   MessageInputBar: e81c7535347f1f7b923de7080409a535a004b6e4
@@ -214,6 +218,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   UICircularProgressRing: 2ef1293241b83d8020ede21a8fe3b3d859525730
 
-PODFILE CHECKSUM: 9b821261540a6e28b648257f9f8407724a85ea77
+PODFILE CHECKSUM: 9cf9bedc2f4f2c2815c546c4b18b3567d8ab4447
 
 COCOAPODS: 1.6.0
