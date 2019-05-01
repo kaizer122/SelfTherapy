@@ -159,7 +159,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="u2x-f0-0qZ">
-                                <rect key="frame" x="0.0" y="64" width="375" height="510"/>
+                                <rect key="frame" x="0.0" y="116" width="375" height="458"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="channelCell" textLabel="fwY-kt-6aM" detailTextLabel="Yle-z1-gPO" rowHeight="78" style="IBUITableViewCellStyleSubtitle" id="3tt-Md-JTe">
@@ -229,11 +229,20 @@
                     <navigationItem key="navigationItem" title="Channels" id="Rlj-kd-Mce"/>
                     <connections>
                         <outlet property="newChannel" destination="idv-ax-Byd" id="XoG-9P-Gmu"/>
+                        <outlet property="searchDisplayController" destination="xLt-bv-FJI" id="9gZ-hN-5Bd"/>
                         <outlet property="tableview" destination="u2x-f0-0qZ" id="CZH-ja-mP9"/>
                         <segue destination="Zhw-gE-iyc" kind="show" identifier="channelToChat" id="wdS-7i-s1T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Bh-Vi-7wM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="xLt-bv-FJI">
+                    <connections>
+                        <outlet property="delegate" destination="03J-cl-j5W" id="YHl-87-e4m"/>
+                        <outlet property="searchContentsController" destination="03J-cl-j5W" id="Kip-e0-qFX"/>
+                        <outlet property="searchResultsDataSource" destination="03J-cl-j5W" id="0lN-ik-3kV"/>
+                        <outlet property="searchResultsDelegate" destination="03J-cl-j5W" id="eb7-Zv-t8V"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="2064.8000000000002" y="1736.5817091454273"/>
         </scene>
@@ -298,10 +307,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eq1-60-SJb" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="16" y="67" width="330" height="371"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cUL-gM-9eq">
                                 <rect key="frame" x="29" y="517" width="305" height="29"/>
                                 <segments>
@@ -314,6 +319,10 @@
                                     <action selector="change:" destination="U3w-8R-YQE" eventType="valueChanged" id="t36-QE-ho0"/>
                                 </connections>
                             </segmentedControl>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eq1-60-SJb" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="16" y="66" width="330" height="371"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1034,11 +1043,22 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Me9-NV-1p6" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Chat" image="chatIcon" id="EeA-XZ-mkc"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ho4-XD-DIr">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" largeTitles="YES" id="Ho4-XD-DIr">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.79607843140000001" green="0.18823529410000001" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XWI-4Y-bnl">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="03J-cl-j5W" kind="relationship" relationship="rootViewController" id="mcQ-6N-ynw"/>
                     </connections>

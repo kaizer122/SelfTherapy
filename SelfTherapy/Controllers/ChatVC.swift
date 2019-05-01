@@ -31,10 +31,10 @@ class ChatVC: MessagesViewController,MessagesDataSource {
     deinit {
         listener?.remove()
     }
-   
 
     override func viewDidLoad() {
         super.viewDidLoad()
+   
         title = channel.name
         messagesRef = messagesRef.document(channel.name).collection("messages")
     
@@ -111,7 +111,7 @@ class ChatVC: MessagesViewController,MessagesDataSource {
 extension ChatVC: MessagesDisplayDelegate, MessagesLayoutDelegate {
     func backgroundColor(for message: MessageType, at indexPath: IndexPath,
                          in messagesCollectionView: MessagesCollectionView) -> UIColor {
-        return isFromCurrentSender(message: message) ? UIColor.orange :  UIColor.lightGray
+        return isFromCurrentSender(message: message) ? .orange : UIColor.lightGray
     }
     
     func shouldDisplayHeader(for message: MessageType, at indexPath: IndexPath,

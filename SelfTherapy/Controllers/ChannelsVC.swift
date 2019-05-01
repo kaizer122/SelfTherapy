@@ -10,29 +10,59 @@ import UIKit
 import Firebase
 
 
-class ChannelsVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
+class ChannelsVC: UIViewController , UITableViewDelegate, UITableViewDataSource  {
+  
+    
     
     @IBOutlet weak var newChannel: UITextField!
     @IBOutlet weak var tableview: UITableView!
     //vars
     var channels : [Channel] = []
+    var filteredChannels = [Channel]()
     let channelsRef = Firestore.firestore().collection("channels")
-  
+    //Variables
+    
+    var searchBar: UISearchBar!
+    
+   var shouldShowSearchResults = false
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
          listenToChannels()
+         setupSearchBar()
+
     }
+    func setupSearchBar() {
+        searchBar = UISearchBar()
+        searchBar.placeholder = "Search"
+        searchBar.delegate = self
+        var frame = searchBar.frame
+        frame.size.width -= 180
+        searchBar.frame = frame
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView:searchBar)
+    }
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return channels.count
+        if shouldShowSearchResults {
+            return filteredChannels.count
+        }
+        else {
+            return channels.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell", for: indexPath)
+        if shouldShowSearchResults {
+            cell.textLabel!.text = filteredChannels[indexPath.row].hashtaggedName()
+            cell.detailTextLabel!.text = "By: " + filteredChannels[indexPath.row].author
+        } else {
         cell.textLabel!.text = channels[indexPath.row].hashtaggedName()
         cell.detailTextLabel!.text = "By: " + channels[indexPath.row].author
+        }
         return cell
     }
 
@@ -71,6 +101,7 @@ class ChannelsVC: UIViewController , UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "channelToChat", sender: indexPath)
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "channelToChat" {
             let indexPath = sender as! IndexPath
@@ -79,7 +110,7 @@ class ChannelsVC: UIViewController , UITableViewDelegate, UITableViewDataSource 
             chatvc.channel = channels[indexPath.row]
         }
     }
- 
+  
     
     func makeAlert( message: String ) {
         let alert = UIAlertController(title: "Sorry !", message: message, preferredStyle: .alert)
@@ -88,4 +119,28 @@ class ChannelsVC: UIViewController , UITableViewDelegate, UITableViewDataSource 
         self.present(alert,animated: true, completion: nil)
     }
 
+}
+
+extension ChannelsVC: UISearchBarDelegate
+{
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        shouldShowSearchResults = false
+        searchBar.text = ""
+        tableview.reloadData()
+    }
+ 
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText != "" {
+     shouldShowSearchResults = true
+        filteredChannels = channels.filter{$0.name.contains(searchText)  ||  $0.author.contains(searchText) }
+            self.tableview.reloadData() }
+        else {
+             shouldShowSearchResults = false
+              self.tableview.reloadData()
+        }
+    }
+
+    
+ 
 }
