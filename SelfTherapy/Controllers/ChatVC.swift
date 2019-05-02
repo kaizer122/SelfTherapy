@@ -71,13 +71,19 @@ class ChatVC: MessagesViewController,MessagesDataSource {
                     self.messages.append(newMsg)
                 }
             }
+            
             self.messagesCollectionView.reloadData()
+              self.messagesCollectionView.scrollToBottom()
         }
     }
     func isSameUser(indexPath: IndexPath) -> Bool {
-        if indexPath.section == 0 { return false }
+          guard indexPath.section - 1 >= 0 else { return false }
         return messages[indexPath.section-1].sender.id == messages[indexPath.section].sender.id ? true : false
         
+    }
+    func isNextSameUser(indexPath: IndexPath)-> Bool {
+          guard indexPath.section + 1 < messages.count else { return false }
+         return messages[indexPath.section].sender.id == messages[indexPath.section + 1].sender.id
     }
     
     func currentSender() -> Sender {
@@ -121,8 +127,13 @@ extension ChatVC: MessagesDisplayDelegate, MessagesLayoutDelegate {
     
     func messageStyle(for message: MessageType, at indexPath: IndexPath,
                       in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
+        let corner: MessageStyle.TailCorner
+        if isFromCurrentSender(message: message) {
+            corner  = isSameUser(indexPath: indexPath) ? .topRight : .bottomRight
+        } else {
+              corner  = isSameUser(indexPath: indexPath) ? .topLeft : .bottomLeft
+        }
         
-        let corner: MessageStyle.TailCorner = isFromCurrentSender(message: message) ? .bottomRight : .bottomLeft
         return .bubbleTail(corner, .curved)
     }
     func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
@@ -189,8 +200,9 @@ extension ChatVC: MessageInputBarDelegate {
                     return
                 }
                     inputBar.inputTextView.text = ""
+                
                      self.messagesCollectionView.reloadData()
-             
+                     self.messagesCollectionView.scrollToBottom()
             }
             
        
@@ -202,12 +214,11 @@ extension ChatVC {
   
     func configureMessageInputBar() {
         messageInputBar.delegate = self
-        messageInputBar.inputTextView.tintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
-        messageInputBar.sendButton.tintColor =  #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        messageInputBar.backgroundColor = .white
         messageInputBar.isTranslucent = true
         messageInputBar.separatorLine.isHidden = true
-        messageInputBar.inputTextView.backgroundColor = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
-        messageInputBar.inputTextView.placeholderTextColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
+        messageInputBar.inputTextView.backgroundColor = .white
+        messageInputBar.inputTextView.placeholderTextColor = .gray
         messageInputBar.inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 36)
         messageInputBar.inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 8, left: 20, bottom: 8, right: 36)
         messageInputBar.inputTextView.layer.borderColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1).cgColor
@@ -219,10 +230,10 @@ extension ChatVC {
     }
     func configureInputBarItems() {
         messageInputBar.setRightStackViewWidthConstant(to: 36, animated: false)
-        messageInputBar.sendButton.imageView?.backgroundColor = UIColor(white: 0.85, alpha: 1)
+   
         messageInputBar.sendButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
         messageInputBar.sendButton.setSize(CGSize(width: 36, height: 36), animated: false)
-        messageInputBar.sendButton.image = #imageLiteral(resourceName: "smackBack")
+        messageInputBar.sendButton.image = #imageLiteral(resourceName: "sendmsg")
         messageInputBar.sendButton.title = nil
         messageInputBar.sendButton.imageView?.layer.cornerRadius = 16
         messageInputBar.textViewPadding.right = -38

@@ -39,7 +39,7 @@ class ChannelsVC: UIViewController , UITableViewDelegate, UITableViewDataSource 
         searchBar.placeholder = "Search"
         searchBar.delegate = self
         var frame = searchBar.frame
-        frame.size.width -= 180
+        frame.size.width -= 150
         searchBar.frame = frame
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView:searchBar)
     }
