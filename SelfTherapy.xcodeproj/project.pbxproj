@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2304A8F32284067F00606334 /* DayAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304A8F22284067F00606334 /* DayAxisValueFormatter.swift */; };
+		2304A8F722840C4C00606334 /* XYMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304A8F622840C4C00606334 /* XYMarkerView.swift */; };
+		2304A8F922840CD100606334 /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304A8F822840CD100606334 /* BalloonMarker.swift */; };
+		2304A8FB22841E5B00606334 /* RadarMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304A8FA22841E5B00606334 /* RadarMarkerView.swift */; };
+		2304A8FD22841E7100606334 /* RadarMarkerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2304A8FC22841E7100606334 /* RadarMarkerView.xib */; };
+		2304A90022841EC300606334 /* radar_marker@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2304A8FF22841EC300606334 /* radar_marker@3x.png */; };
 		233EA1A72275260200812AA7 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233EA1A62275260200812AA7 /* ChatVC.swift */; };
 		233EA1A922752B6900812AA7 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233EA1A822752B6900812AA7 /* Message.swift */; };
 		2342B5A2226C9DA3003B0EAB /* alert.json in Resources */ = {isa = PBXBuildFile; fileRef = 2342B5A1226C9DA3003B0EAB /* alert.json */; };
@@ -46,6 +52,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2304A8F22284067F00606334 /* DayAxisValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayAxisValueFormatter.swift; sourceTree = "<group>"; };
+		2304A8F622840C4C00606334 /* XYMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYMarkerView.swift; sourceTree = "<group>"; };
+		2304A8F822840CD100606334 /* BalloonMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
+		2304A8FA22841E5B00606334 /* RadarMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarMarkerView.swift; sourceTree = "<group>"; };
+		2304A8FC22841E7100606334 /* RadarMarkerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadarMarkerView.xib; sourceTree = "<group>"; };
+		2304A8FF22841EC300606334 /* radar_marker@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radar_marker@3x.png"; sourceTree = "<group>"; };
 		233EA1A62275260200812AA7 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		233EA1A822752B6900812AA7 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		2342B5A1226C9DA3003B0EAB /* alert.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = alert.json; sourceTree = "<group>"; };
@@ -101,6 +113,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2304A8FE22841EC300606334 /* markers */ = {
+			isa = PBXGroup;
+			children = (
+				2304A8FC22841E7100606334 /* RadarMarkerView.xib */,
+				2304A8FA22841E5B00606334 /* RadarMarkerView.swift */,
+				2304A8FF22841EC300606334 /* radar_marker@3x.png */,
+			);
+			path = markers;
+			sourceTree = "<group>";
+		};
 		2386E6392260E9320090AA32 = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +205,10 @@
 			children = (
 				23BB3C9C2270BA0300373743 /* Food101.mlmodel */,
 				2386E6682263378E0090AA32 /* constants.swift */,
+				2304A8F22284067F00606334 /* DayAxisValueFormatter.swift */,
+				2304A8F622840C4C00606334 /* XYMarkerView.swift */,
+				2304A8F822840CD100606334 /* BalloonMarker.swift */,
+				2304A8FE22841EC300606334 /* markers */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -303,8 +329,10 @@
 				23BB3C97226CA1BC00373743 /* alert2.json in Resources */,
 				2386E64D2260E9320090AA32 /* Main.storyboard in Resources */,
 				2386E6752263F2500090AA32 /* warning.json in Resources */,
+				2304A90022841EC300606334 /* radar_marker@3x.png in Resources */,
 				23841A2222748BBD00086ABB /* GoogleService-Info.plist in Resources */,
 				2386E6742263F2500090AA32 /* welcome.json in Resources */,
+				2304A8FD22841E7100606334 /* RadarMarkerView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +459,8 @@
 				23841A242274E05D00086ABB /* ChannelsVC.swift in Sources */,
 				23E42E262269C72E00B05EC7 /* LoginVC.swift in Sources */,
 				23BB3C9D2270BA0300373743 /* Food101.mlmodel in Sources */,
+				2304A8F922840CD100606334 /* BalloonMarker.swift in Sources */,
+				2304A8F722840C4C00606334 /* XYMarkerView.swift in Sources */,
 				234993EF2273239F00954CDD /* statController.swift in Sources */,
 				2386E6712263B13B0090AA32 /* RapportController.swift in Sources */,
 				238F30D4227C606800DF1222 /* channelCell.swift in Sources */,
@@ -439,7 +469,9 @@
 				2386E64A2260E9320090AA32 /* SecondViewController.swift in Sources */,
 				23841A262274E43100086ABB /* Channel.swift in Sources */,
 				2386E66D226338890090AA32 /* Question.swift in Sources */,
+				2304A8F32284067F00606334 /* DayAxisValueFormatter.swift in Sources */,
 				234993F2227326BC00954CDD /* Model.xcdatamodeld in Sources */,
+				2304A8FB22841E5B00606334 /* RadarMarkerView.swift in Sources */,
 				2386E667226234E80090AA32 /* RoundedButton.swift in Sources */,
 				23E42E2C2269CEF500B05EC7 /* RoundedButton2.swift in Sources */,
 				23E42E292269C84F00B05EC7 /* AuthService.swift in Sources */,

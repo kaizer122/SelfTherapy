@@ -328,7 +328,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cUL-gM-9eq">
-                                <rect key="frame" x="29" y="517" width="305" height="29"/>
+                                <rect key="frame" x="35" y="35" width="305" height="29"/>
                                 <segments>
                                     <segment title="All"/>
                                     <segment title="Stress"/>
@@ -339,27 +339,32 @@
                                     <action selector="change:" destination="U3w-8R-YQE" eventType="valueChanged" id="t36-QE-ho0"/>
                                 </connections>
                             </segmentedControl>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eq1-60-SJb" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="16" y="66" width="330" height="371"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eq1-60-SJb" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="5" y="78" width="370" height="540"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4cb-VR-xcH" customClass="RadarChartView" customModule="Charts">
+                                <rect key="frame" x="2" y="71" width="370" height="525"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Eq1-60-SJb" firstAttribute="leading" secondItem="XI6-VG-FmU" secondAttribute="leading" constant="16" id="4XF-pQ-i3o"/>
-                            <constraint firstItem="cUL-gM-9eq" firstAttribute="top" secondItem="Eq1-60-SJb" secondAttribute="bottom" constant="79" id="9YK-4G-Xpe"/>
-                            <constraint firstItem="cUL-gM-9eq" firstAttribute="leading" secondItem="XI6-VG-FmU" secondAttribute="leading" constant="29" id="GfZ-se-pCE"/>
-                            <constraint firstItem="Eq1-60-SJb" firstAttribute="top" secondItem="XI6-VG-FmU" secondAttribute="top" constant="47" id="MNI-SV-7br"/>
-                            <constraint firstItem="XI6-VG-FmU" firstAttribute="trailing" secondItem="cUL-gM-9eq" secondAttribute="trailing" constant="41" id="MdI-y2-4LH"/>
-                            <constraint firstItem="XI6-VG-FmU" firstAttribute="bottom" secondItem="cUL-gM-9eq" secondAttribute="bottom" constant="73" id="RTX-Kb-Jsw"/>
-                            <constraint firstItem="XI6-VG-FmU" firstAttribute="trailing" secondItem="Eq1-60-SJb" secondAttribute="trailing" constant="29" id="Xev-0F-GaS"/>
-                            <constraint firstItem="cUL-gM-9eq" firstAttribute="top" secondItem="Eq1-60-SJb" secondAttribute="bottom" constant="79" id="qkr-pE-Uqj"/>
+                            <constraint firstItem="cUL-gM-9eq" firstAttribute="top" secondItem="XI6-VG-FmU" secondAttribute="top" constant="15" id="0vB-AY-oY3"/>
+                            <constraint firstItem="Eq1-60-SJb" firstAttribute="trailing" secondItem="XI6-VG-FmU" secondAttribute="trailing" id="6xa-Vv-Mz2"/>
+                            <constraint firstItem="Eq1-60-SJb" firstAttribute="bottom" secondItem="XI6-VG-FmU" secondAttribute="bottom" id="ALk-zy-LSc"/>
+                            <constraint firstItem="Eq1-60-SJb" firstAttribute="top" secondItem="cUL-gM-9eq" secondAttribute="bottom" constant="15" id="NFC-JB-Urh"/>
+                            <constraint firstItem="XI6-VG-FmU" firstAttribute="trailing" secondItem="cUL-gM-9eq" secondAttribute="trailing" constant="35" id="RF7-2h-CYH"/>
+                            <constraint firstItem="Eq1-60-SJb" firstAttribute="leading" secondItem="XI6-VG-FmU" secondAttribute="leading" constant="5" id="fTl-CN-2H3"/>
+                            <constraint firstItem="cUL-gM-9eq" firstAttribute="leading" secondItem="XI6-VG-FmU" secondAttribute="leading" constant="35" id="xkc-Wi-8t8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XI6-VG-FmU"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Stats" image="statsIcon" id="pnj-sD-R5l"/>
                     <connections>
                         <outlet property="LineChart" destination="Eq1-60-SJb" id="vin-uO-ZWa"/>
+                        <outlet property="RadarChart" destination="4cb-VR-xcH" id="YNT-1b-Qxq"/>
                         <outlet property="seg" destination="cUL-gM-9eq" id="Rn2-5i-Xk7"/>
                     </connections>
                 </viewController>
