@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Kingfisher
 
 
 class ChannelsVC: UIViewController , UITableViewDelegate, UITableViewDataSource  {
@@ -55,15 +56,43 @@ class ChannelsVC: UIViewController , UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "channelCell", for: indexPath) as! channelCell
         if shouldShowSearchResults {
-            cell.textLabel!.text = filteredChannels[indexPath.row].hashtaggedName()
-            cell.detailTextLabel!.text = "By: " + filteredChannels[indexPath.row].author
+            cell.name!.text = filteredChannels[indexPath.row].hashtaggedName()
+            cell.author!.text = "By: " + filteredChannels[indexPath.row].author
+            setAvatarWithUrl(url: filteredChannels[indexPath.row].avatar,avatar: cell.avatar)
+      
         } else {
-        cell.textLabel!.text = channels[indexPath.row].hashtaggedName()
-        cell.detailTextLabel!.text = "By: " + channels[indexPath.row].author
+        cell.name!.text = channels[indexPath.row].hashtaggedName()
+        cell.author!.text = "By: " + channels[indexPath.row].author
+            setAvatarWithUrl(url: channels[indexPath.row].avatar,avatar: cell.avatar)
+ 
         }
         return cell
+    }
+    func setAvatarWithUrl (url: String , avatar: UIImageView) {
+        let url = URL(string: url)
+        let processor = DownsamplingImageProcessor(size: CGSize(width: 60, height: 60))
+         >> RoundCornerImageProcessor(cornerRadius: 30)
+        avatar.kf.indicatorType = .activity
+        avatar.kf.setImage(
+            with: url,
+            placeholder: UIImage(named: "profilePlaceholder"),
+            options: [
+                .processor(processor),
+                .scaleFactor(UIScreen.main.scale),
+                .transition(.fade(1)),
+                .cacheOriginalImage
+            ])
+        {
+            result in
+            switch result {
+            case .success(let value):
+                print("Task done for: \(value.source.url?.absoluteString ?? "")")
+            case .failure(let error):
+                print("Job failed: \(error.localizedDescription)")
+            }
+        }
     }
 
     @IBAction func addChannelClicked(_ sender: Any) {
@@ -76,15 +105,14 @@ class ChannelsVC: UIViewController , UITableViewDelegate, UITableViewDataSource 
             if let document = document, document.exists {
              self.makeAlert(message: "This channel name is taken, please choose another name.")
             } else {
-                let c = Channel(name: self.newChannel.text!, author: AuthService.instance.username)
+                let c = Channel(name: self.newChannel.text!, author: AuthService.instance.username, avatar: Auth.auth().currentUser!.photoURL!.absoluteString)
                 self.channelsRef.document(channelName).setData(c.makeRdy())
             }
         }
    
         }
   
-    func listenToChannels() {
-    channelsRef.addSnapshotListener { data, error in
+    func listenToChannels() {	    channelsRef.addSnapshotListener { data, error in
                 guard let channelsCol = data else {
                     print("Error fetching document: \(error!)")
                     return
@@ -92,7 +120,20 @@ class ChannelsVC: UIViewController , UITableViewDelegate, UITableViewDataSource 
         print("entered listen")
                let channelsDocs = channelsCol.documentChanges
         for docChange in channelsDocs {
-           self.channels.append(Channel.getData(data: docChange.document.data()))
+            if (Channel.getData(data: docChange.document.data()) != nil){
+                switch docChange.type {
+                case .added:
+                    self.channels.append(Channel.getData(data: docChange.document.data())!)
+                case .modified:
+                    let data = docChange.document.data()
+                    let channel = self.channels.indices.filter{self.channels[$0].name == (data["name"] as! String)}
+                    if channel.count > 0 {
+                        self.channels[channel[0]] = Channel.getData(data: docChange.document.data())!
+                    }
+                case .removed:
+                    return
+                }
+            }
         }
        self.tableview.reloadData()
         }
@@ -108,6 +149,7 @@ class ChannelsVC: UIViewController , UITableViewDelegate, UITableViewDataSource 
             let chatvc :ChatVC = segue.destination as! ChatVC
             chatvc.user = Auth.auth().currentUser!
             chatvc.channel = channels[indexPath.row]
+            
         }
     }
   

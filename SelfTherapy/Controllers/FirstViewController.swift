@@ -9,8 +9,9 @@
 import UIKit
 import Lottie
 import Firebase
+import TransitionButton
 
-class FirstViewController: UIViewController {
+class FirstViewController: CustomTransitionViewController  {
 
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var welcomeAnim: LOTAnimationView!

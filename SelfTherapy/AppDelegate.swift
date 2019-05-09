@@ -60,20 +60,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GIDSignInDelegate {
             guard let authentication = user.authentication else { return }
             let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                            accessToken: authentication.accessToken)
-            
+            if ((GIDSignIn.sharedInstance()?.uiDelegate as? LoginVC) != nil ) {
+                guard let loginC = GIDSignIn.sharedInstance()?.uiDelegate as? LoginVC else {return}
+                 loginC.signinBtn.startAnimation()
             Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
                 if let error = error {
                     debugPrint(error.localizedDescription)
+                      loginC.signinBtn.stopAnimation()
                     return
                 }
-                AuthService.instance.userEmail = Auth.auth().currentUser!.email!
-                AuthService.instance.username = Auth.auth().currentUser!.displayName!
-                AuthService.instance.isLoggedIn = true
-                debugPrint(AuthService.instance.userEmail)
-                debugPrint(AuthService.instance.username)
-                if ((GIDSignIn.sharedInstance()?.uiDelegate as? LoginVC) != nil ) {
-                                    guard let loginC = GIDSignIn.sharedInstance()?.uiDelegate as? LoginVC else {return}
-                                   loginC.performSegue(withIdentifier: LOGIN_TO_MENU , sender: self)
+                
+                    loginC.signinBtn.stopAnimation(animationStyle: .expand, completion: {
+                        AuthService.instance.userEmail = Auth.auth().currentUser!.email!
+                        AuthService.instance.username = Auth.auth().currentUser!.displayName!
+                        AuthService.instance.isLoggedIn = true
+                        loginC.performSegue(withIdentifier: LOGIN_TO_MENU , sender: self)
+                    })
+                    
                     
                                 }
                 

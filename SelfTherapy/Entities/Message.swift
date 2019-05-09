@@ -29,6 +29,7 @@
 import Firebase
 import MessageKit
 
+
 struct Message: MessageType {
     var kind: MessageKind
     

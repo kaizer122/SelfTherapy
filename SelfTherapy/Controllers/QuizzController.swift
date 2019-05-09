@@ -36,6 +36,8 @@ class QuizzController: UIViewController {
     var depression = 0
     var currentQuestion : Question?
     var mode:String = "all"
+    let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -145,175 +147,40 @@ class QuizzController: UIViewController {
         } )
     }
     fileprivate func saveData() {
-        if (mode  == "all")
-        {
-            
-            
-            guard let appDelegate =
-                UIApplication.shared.delegate as? AppDelegate else {
-                    return
-            }
-            
-            // 1
-            let managedContext =
-                appDelegate.persistentContainer.viewContext
-            
-            // 2
-            let entity =
-                NSEntityDescription.entity(forEntityName: "All",
-                                           in: managedContext)!
-            
-            let person = NSManagedObject(entity: entity,
-                                         insertInto: managedContext)
-            
-            // 3
-            
-            
-            
-            let a : Double = Double((stress*10)/6)
-            let b : Double = Double((anxiety*10)/6)
-            let c : Double = Double((depression*10)/6)
-            
-            let str2 = String(a)
-            let str3 = String(b)
-            let str4 = String(c)
-            
-            person.setValue(str2, forKeyPath: "stress")
-            person.setValue(str3, forKeyPath: "ax")
-            person.setValue(str4, forKeyPath: "dep")
-            
-            // 4
-            do {
-                try managedContext.save()
-                
-                print("save for all")
-            } catch let error as NSError {
-                print("Could not save. \(error), \(error.userInfo)")
-            }
-            
-            
-            
-            
-            
+        switch mode {
+        case "all":
+            updateCoreData(entityName: "Dep", firstArg: "dep", value : depression)
+            updateCoreData(entityName: "Ax", firstArg: "ax" , value: anxiety)
+            updateCoreData(entityName: "Stress", firstArg: "stress", value: stress)
+        case "Depression":
+            updateCoreData(entityName: "Dep", firstArg: "dep", value: depression)
+        case "anxiete":
+            updateCoreData(entityName: "Ax", firstArg: "ax", value: anxiety)
+        case "stress":
+            updateCoreData(entityName: "Stress", firstArg: "stress", value: stress)
+       default:
+        return
         }
+    }
+    func updateCoreData(entityName: String , firstArg: String , value: Int) {
+     
+        // 2
+        let entity = NSEntityDescription.entity(forEntityName: entityName,in: managedContext)!
+        
+        let person = NSManagedObject(entity: entity,insertInto: managedContext)
+        let a2 : Double = Double((value*10)/6)
+        // 3
+        let str2 = String(a2)
+        person.setValue(str2, forKeyPath: firstArg)
+        person.setValue(Date(), forKeyPath: "date")
+        
+        // 4
+        do {
+            try managedContext.save()
             
-            
-        else if (mode == "Depression" )
-        {
-            guard let appDelegate =
-                UIApplication.shared.delegate as? AppDelegate else {
-                    return
-            }
-            
-            // 1
-            let managedContext =
-                appDelegate.persistentContainer.viewContext
-            
-            // 2
-            let entity =
-                NSEntityDescription.entity(forEntityName: "Dep",
-                                           in: managedContext)!
-            
-            let person = NSManagedObject(entity: entity,
-                                         insertInto: managedContext)
-            
-            
-            let a2 : Double = Double((depression*10)/6)
-            // 3
-            let str2 = String(a2)
-            person.setValue(str2, forKeyPath: "dep")
-            
-            // 4
-            do {
-                try managedContext.save()
-                
-                print("save for dep")
-            } catch let error as NSError {
-                print("Could not save. \(error), \(error.userInfo)")
-            }
-            
-            
-            
-        }
-        else if ( mode == "anxiete")
-        {
-            
-            
-            guard let appDelegate =
-                UIApplication.shared.delegate as? AppDelegate else {
-                    return
-            }
-            
-            // 1
-            let managedContext =
-                appDelegate.persistentContainer.viewContext
-            
-            // 2
-            let entity =
-                NSEntityDescription.entity(forEntityName: "Ax",
-                                           in: managedContext)!
-            
-            let person = NSManagedObject(entity: entity,
-                                         insertInto: managedContext)
-            
-            let a1 : Double = Double((anxiety*10)/6)
-            
-            let str2 = String(a1)
-            
-            person.setValue(str2, forKeyPath: "ax")
-            
-            // 4
-            do {
-                try managedContext.save()
-                
-                print("save for ax")
-            } catch let error as NSError {
-                print("Could not save. \(error), \(error.userInfo)")
-            }
-            
-        }
-            
-        else if (mode == "stress")
-        {
-            
-            
-            guard let appDelegate =
-                UIApplication.shared.delegate as? AppDelegate else {
-                    return
-            }
-            
-            // 1
-            let managedContext =
-                appDelegate.persistentContainer.viewContext
-            
-            // 2
-            let entity =
-                NSEntityDescription.entity(forEntityName: "Stress",
-                                           in: managedContext)!
-            
-            let person = NSManagedObject(entity: entity,
-                                         insertInto: managedContext)
-            
-            
-            let a3 : Double = Double((stress*10)/6)
-            
-            
-            // 3
-            let str2 = String(a3)
-            
-            
-            person.setValue(str2, forKeyPath: "stress")
-            
-            // 4
-            do {
-                try managedContext.save()
-                
-                print("save for stress")
-            } catch let error as NSError {
-                print("Could not save. \(error), \(error.userInfo)")
-            }
-            
-            
+            print("save for dep")
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
         }
     }
     
@@ -398,6 +265,25 @@ class QuizzController: UIViewController {
         
         performSegue(withIdentifier: "rapport", sender: nil)
 
+    }
+}
+extension Date {
+    static var yesterday: Date { return Date().dayBefore }
+    static var tomorrow:  Date { return Date().dayAfter }
+    var dayBefore: Date {
+        return Calendar.current.date(byAdding: .day, value: -1, to: noon)!
+    }
+    var dayAfter: Date {
+        return Calendar.current.date(byAdding: .day, value: 1, to: noon)!
+    }
+    var noon: Date {
+        return Calendar.current.date(bySettingHour: 12, minute: 0, second: 0, of: self)!
+    }
+    var month: Int {
+        return Calendar.current.component(.month,  from: self)
+    }
+    var isLastDayOfMonth: Bool {
+        return dayAfter.month != month
     }
 }
 

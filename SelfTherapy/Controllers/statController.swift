@@ -14,7 +14,7 @@ class statController: UIViewController {
     
     
     @IBOutlet weak var LineChart: LineChartView!
-    	
+    
     
     @IBOutlet weak var seg: UISegmentedControl!
     
@@ -23,243 +23,206 @@ class statController: UIViewController {
     var ax1 = [0.0]
     var dep1 = [0.0]
     var stress1 = [0.0]
-    
     var ax2 = [0.0]
     var dep2 = [0.0]
     var stress2 = [0.0]
-    
+    var datesAnxiete = [NSTimeIntervalSince1970]
+    var datesDep = [NSTimeIntervalSince1970]
+    var datesStress = [NSTimeIntervalSince1970]
     var month = ["0"]
-    
-    
     var nb : Int = 0
-    
+    var scores: [NSManagedObject] = []
+    var scores1: [Ax] = []
+    var scores2: [Dep] = []
+    var scores3: [Stress] = []
+    var referenceTimeInterval: TimeInterval = 0
+ 
+    let formatter = DateFormatter()
 
+    
     override func viewDidLoad() {
+    
+        formatter.dateStyle = .short
+        formatter.timeStyle = .none
+        formatter.locale = Locale.current
+        formatter.dateFormat = "MMM d"
         let a = seg.selectedSegmentIndex
         
-       if (a == 1)
-       {
-        
-        setChart(ax: ax2)
-        }
-        else  if (a == 2 )
-       {
-        
-        setChart(ax: stress2)
-        }
-       else  if (a == 3 )
-       {
-        
-        setChart(ax: dep2)
-        }
-       else if (a == 0) {
-        
-        setChartData()
-        }
+   
         
         fetchScore()
         remplir()
         
         
-        fetchScore1()
-        remplir1()
+        scores1 = fetchScore (entity: "Ax").map{ $0 as! Ax}
+        scores2 = fetchScore (entity: "Dep").map{ $0 as! Dep}
+        scores3 = fetchScore (entity: "Stress").map{ $0 as! Stress}
+        scores1 = scores1.sorted(by: {$0.date! < $1.date!})
+        scores2 = scores2.sorted(by: {$0.date! < $1.date!})
+        scores3 = scores3.sorted(by: {$0.date! < $1.date!})
+        ax2 = remplir(entity: "ax", scores: scores1)
+        dep2 = remplir(entity: "dep", scores: scores2)
+        stress2 = remplir(entity: "stress", scores: scores3)
+        datesAnxiete = scores1.map{$0.date!.timeIntervalSince1970}
+        datesDep = scores2.map{$0.date!.timeIntervalSince1970}
+        datesStress = scores3.map{$0.date!.timeIntervalSince1970}
+//        datesAnxiete.insert((scores1[0].date?.dayBefore.timeIntervalSince1970)!, at: 0)
+//        datesDep.insert((scores2[0].date?.dayBefore.timeIntervalSince1970)!, at: 0)
+//        datesStress.insert((scores3[0].date?.dayBefore.timeIntervalSince1970)!, at: 0)
         
-        fetchScore2()
-        remplir2()
-        
-        fetchScore3()
-        remplir3()
-        setChartData()
-        
+        if (a == 1)
+        {
+            
+            setChart(ax: ax2 , dates: datesAnxiete)
+        }
+        else  if (a == 2 )
+        {
+            
+            setChart(ax: stress2 , dates: datesStress)
+        }
+        else  if (a == 3 )
+        {
+            
+            setChart(ax: dep2 , dates:datesDep)
+        }
+        else if (a == 0) {
+            
+            // setChartData()
+        }
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+    }
+ 
+    func fetchScore(){
+     
     }
     
+    func remplir ()
+    {
+       
+    }
+
+    func setChartData() {
+        
+    }
     
+    func setChart(ax : [Double] , dates: [TimeInterval] ) {
+        
+        if let minTimeInterval = dates.min() {
+            referenceTimeInterval = minTimeInterval
+        }
+        var yVals1 : [ChartDataEntry] = [ChartDataEntry]()
+        for i in 0 ..< ax.count {
+            var xValue = Double(i)
+           
+              if (i < dates.count){
+            
+                 let timeInterval = dates[i]
+            xValue = (timeInterval - referenceTimeInterval) / (3600 * 24)
+                }
+           
+            
+            let dataEntry = ChartDataEntry(x: xValue , y:ax[i])
+            yVals1.append(dataEntry)
+        }
+        
+        let set1: LineChartDataSet = LineChartDataSet(values: yVals1, label: "Anxiety")
+        configDataSet(dataset: set1)
+        var dataSets : [LineChartDataSet] = [LineChartDataSet]()
+        dataSets.append(set1)
+        configLineChart(datasets: dataSets)
+    }
     
-    
-    
-    
-    
-    
-    
-    
-    var scores: [NSManagedObject] = []
-    var scores1: [NSManagedObject] = []
-    var scores2: [NSManagedObject] = []
-    
-    var scores3: [NSManagedObject] = []
-    
-    func fetchScore(){
+    func fetchScore (entity:String) -> [NSManagedObject] {
+        var temp: [NSManagedObject] = []
         let appdelegate = UIApplication.shared.delegate as! AppDelegate
         let persistentContainer = appdelegate.persistentContainer
         let managedContext = persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "All")
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entity)
         do{
-            try scores = managedContext.fetch(fetchRequest)
+           try temp = managedContext.fetch(fetchRequest)
         }catch{
             let nserror = error as NSError
             print(nserror.userInfo)
         }
+        return temp
     }
-
-    func remplir ()
+    
+    
+    
+    func remplir (entity:String ,scores: [NSManagedObject]) -> [Double]
     {
+        var temp : [Double] = [0.0]
         for score in scores
         {
-let   ax = score.value(forKey: "ax") as! String;
-            let   stress = score.value(forKey: "stress") as! String;
-            let   dep = score.value(forKey: "dep") as! String;
+            let   ax = score.value(forKey: entity) as! String;
+            temp.append(Double(ax)!)
+        }
+       return temp
+        
+    }
+    
+    
+    
+    
+    @IBAction func change(_ sender: Any) {
+        
+        switch seg.selectedSegmentIndex
+        {
+        case 0:
+            setChartData()
+        case 1:
             
-           
-
-            let a1 : Double?  = Double(ax)
-            let b1 :Double?  = Double(stress)
-            let c1 : Double? = Double(dep)
-
-            ax1.append(a1!)
-            stress1.append(b1!)
-            dep1.append(c1!)
+            setChart(ax: stress2, dates: datesStress)
+        case 2:
             
+            setChart(ax: ax2, dates: datesAnxiete)
+        case 3:
             
+            setChart(ax: dep2, dates: datesDep)
             
+        default:
+            break
         }
         
-        
-        
     }
-    /*
-    // MARK: - Navigation
+    
+    private func getGradientFilling() -> CGGradient {
+        // Setting fill gradient color
+        let coloTop = UIColor(red: 192/255, green: 36/255, blue: 37/255, alpha: 1).cgColor
+        let colorBottom = UIColor(red: 240/255, green: 203/255, blue: 53/255, alpha: 1).cgColor
+        // Colors of the gradient
+        let gradientColors = [coloTop, colorBottom] as CFArray
+        // Positioning of the gradient
+        let colorLocations: [CGFloat] = [0.7, 0.0]
+        // Gradient Object
+        return CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColors, locations: colorLocations)!
+    }
+    func configDataSet(dataset: LineChartDataSet) {
+        dataset.colors = [NSUIColor.red]
+        dataset.mode = .cubicBezier
+        dataset.cubicIntensity = 0.2
+        let gradient = getGradientFilling()
+        dataset.fill = Fill.fillWithLinearGradient(gradient, angle: 90.0)
+        dataset.drawFilledEnabled = true
+    }
+    func configLineChart( datasets : [LineChartDataSet])  {
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    func setChartData() {
-    
-    var yVals1 : [ChartDataEntry] = [ChartDataEntry]()
-    for i in 0 ..< scores.count + 1 {
-    yVals1.append(ChartDataEntry(x:Double(i) , y:ax1[i]))
-    }
-        
-    let set1: LineChartDataSet = LineChartDataSet(values: yVals1, label: "Anxiety")
-    set1.axisDependency = .left // Line will correlate with left axis values
-    set1.setColor(UIColor.red.withAlphaComponent(0.5))
-    set1.setCircleColor(UIColor.red)
-    set1.circleRadius = 3.0
-    set1.fillAlpha = 65 / 255.0
-    set1.fillColor = UIColor.red
-    set1.highlightColor = UIColor.white
-    set1.drawCircleHoleEnabled = false
-    
-    var yVals2 : [ChartDataEntry] = [ChartDataEntry]()
-    for i in 0 ..< scores.count + 1 {
-    yVals2.append(ChartDataEntry(x:Double(i) , y: dep1[i]))
-    }
-    
-    let set2: LineChartDataSet = LineChartDataSet(values: yVals2, label: "Depression")
-    set2.axisDependency = .left // Line will correlate with left axis values
-    set2.setColor(UIColor.green.withAlphaComponent(0.5))
-    set2.setCircleColor(UIColor.green)
-    set2.circleRadius = 3.0
-    set2.fillAlpha = 65 / 255.0
-    set2.fillColor = UIColor.green
-    set2.highlightColor = UIColor.white
-    set2.drawCircleHoleEnabled = false
-    set2.circleHoleRadius = 0.5
-    
-    var yVals3 : [ChartDataEntry] = [ChartDataEntry]()
-    for i in 0 ..< scores.count  + 1{
-    yVals3.append(ChartDataEntry(x:Double(i) , y: stress1[i]))
-    }
-    
-    let set3: LineChartDataSet = LineChartDataSet(values: yVals3, label: "Stress")
-    set3.axisDependency = .left // Line will correlate with left axis values
-    set3.setColor(UIColor.blue.withAlphaComponent(0.5))
-    set3.setCircleColor(UIColor.blue)
-    set3.circleRadius = 3.0
-    set3.fillAlpha = 65 / 255.0
-    set3.fillColor = UIColor.blue
-    set3.highlightColor = UIColor.white
-    set3.drawCircleHoleEnabled = false
-    
-    //3 - create an array to store our LineChartDataSets
-    var dataSets : [LineChartDataSet] = [LineChartDataSet]()
-    dataSets.append(set1)
-    dataSets.append(set2)
-    dataSets.append(set3)
-    
-    //4 - pass our months in for our x-axis label value along with our dataSets
-    let data : LineChartData = LineChartData(dataSets: dataSets)
-    
-    // data.setValueTextColor(UIColor.white)
-    
-    //5 - finally set our data
-    self.LineChart.data = data
-    
-    LineChart.xAxis.granularity = 1 //  to show intervals
-    LineChart.xAxis.wordWrapEnabled = true
-    
-    LineChart.xAxis.labelFont = UIFont.boldSystemFont(ofSize: 8.0)
-    
-    LineChart.xAxis.labelPosition = .bottom // lebel position on graph
-    
-    LineChart.legend.form = .line // indexing shape
-    LineChart.xAxis.drawGridLinesEnabled = false // show gird on graph
-    LineChart.rightAxis.drawLabelsEnabled = false// to show right side value on graph
-    LineChart.data?.setDrawValues(false) //
-    LineChart.chartDescription?.text = ""
-    LineChart.doubleTapToZoomEnabled = false
-    LineChart.pinchZoomEnabled = false
-    LineChart.scaleXEnabled = false
-    LineChart.scaleYEnabled = false
-    
-    LineChart.animate(yAxisDuration: 1.5, easingOption: .easeInOutQuart)
-    }
-    
-    
-    
-    func setChart(ax : [Double]) {
-        
-        var yVals1 : [ChartDataEntry] = [ChartDataEntry]()
-        for i in 0 ..< ax.count {
-            yVals1.append(ChartDataEntry(x:Double(i) , y:ax[i]))
-        }
-        
-        let set1: LineChartDataSet = LineChartDataSet(values: yVals1, label: "Anxiety")
-        set1.axisDependency = .left // Line will correlate with left axis values
-        set1.setColor(UIColor.red.withAlphaComponent(0.5))
-        set1.setCircleColor(UIColor.red)
-        set1.circleRadius = 3.0
-        set1.fillAlpha = 65 / 255.0
-        set1.fillColor = UIColor.red
-        set1.highlightColor = UIColor.white
-        set1.drawCircleHoleEnabled = false
-        
-        //3 - create an array to store our LineChartDataSets
-        var dataSets : [LineChartDataSet] = [LineChartDataSet]()
-        dataSets.append(set1)
-     
-        
-        //4 - pass our months in for our x-axis label value along with our dataSets
-        let data : LineChartData = LineChartData(dataSets: dataSets)
-        
-        // data.setValueTextColor(UIColor.white)
-        
-        //5 - finally set our data
+        let xValuesNumberFormatter = ChartXAxisFormatter(referenceTimeInterval: referenceTimeInterval, dateFormatter: formatter)
+      
+        let data : LineChartData = LineChartData(dataSets: datasets)
         self.LineChart.data = data
-        
         LineChart.xAxis.granularity = 1 //  to show intervals
         LineChart.xAxis.wordWrapEnabled = true
-        
-        LineChart.xAxis.labelFont = UIFont.boldSystemFont(ofSize: 8.0)
-        
+        LineChart.xAxis.labelFont = UIFont.boldSystemFont(ofSize: 12.0)
         LineChart.xAxis.labelPosition = .bottom // lebel position on graph
-        
+        LineChart.leftAxis.axisMaximum = 100
+        LineChart.leftAxis.axisMinimum = 0
+        LineChart.leftAxis.valueFormatter = ChartYAxisFormatter()
+        LineChart.xAxis.centerAxisLabelsEnabled = true
+        LineChart.leftAxis.drawAxisLineEnabled = true
+        LineChart.xAxis.valueFormatter = xValuesNumberFormatter
+        LineChart.xAxis.drawLabelsEnabled = true
         LineChart.legend.form = .line // indexing shape
         LineChart.xAxis.drawGridLinesEnabled = false // show gird on graph
         LineChart.rightAxis.drawLabelsEnabled = false// to show right side value on graph
@@ -274,141 +237,42 @@ let   ax = score.value(forKey: "ax") as! String;
     }
     
     
-    func fetchScore1(){
-        let appdelegate = UIApplication.shared.delegate as! AppDelegate
-        let persistentContainer = appdelegate.persistentContainer
-        let managedContext = persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Ax")
-        do{
-            try scores1 = managedContext.fetch(fetchRequest)
-        }catch{
-            let nserror = error as NSError
-            print(nserror.userInfo)
-        }
-    }
-    
-    func fetchScore2(){
-        let appdelegate = UIApplication.shared.delegate as! AppDelegate
-        let persistentContainer = appdelegate.persistentContainer
-        let managedContext = persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Dep")
-        do{
-            try scores2 = managedContext.fetch(fetchRequest)
-        }catch{
-            let nserror = error as NSError
-            print(nserror.userInfo)
-        }
-    }
-    
-    func fetchScore3(){
-        let appdelegate = UIApplication.shared.delegate as! AppDelegate
-        let persistentContainer = appdelegate.persistentContainer
-        let managedContext = persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Stress")
-        do{
-            try scores3 = managedContext.fetch(fetchRequest)
-        }catch{
-            let nserror = error as NSError
-            print(nserror.userInfo)
-        }
-    }
-    
-    
-    func remplir1 ()
-    {
-        for score in scores1
-        {
-            let   ax = score.value(forKey: "ax") as! String;
-            
-            
-            
-            let a1 : Double?  = Double(ax)
-            
-            
-            ax2.append(a1!)
-            
-            
-            
-        }
-        
-        
-        
-    }
-    
-    
-    func remplir2 ()
-    {
-        for score in scores2
-        {
-   
-            let   dep = score.value(forKey: "dep") as! String;
-            
-            
-            
-            let c1 : Double? = Double(dep)
-            
-          
-            dep2.append(c1!)
-            
-            
-            
-        }
-        
-        
-        
-    }
-    
-    
-    func remplir3 ()
-    {
-        for score in scores3
-        {
-            let   stress = score.value(forKey: "stress") as! String;
-            
-            
-            
-            let b1 :Double?  = Double(stress)
-            
-            stress2.append(b1!)
-            
-            
-            
-        }
-        
-        
-        
-    }
-    
-    
+}
 
+class ChartXAxisFormatter: NSObject {
+    fileprivate var dateFormatter: DateFormatter?
+    fileprivate var referenceTimeInterval: TimeInterval?
     
-    @IBAction func change(_ sender: Any) {
-        
-        switch seg.selectedSegmentIndex
-        {
-        case 0:
-            setChartData()
-        case 1:
-            
-            setChart(ax: stress2)
-        case 2:
-            
-            setChart(ax: ax2)
-        case 3:
-            
-            setChart(ax: dep2)
-            
-        default:
-            break
+    convenience init(referenceTimeInterval: TimeInterval, dateFormatter: DateFormatter) {
+        self.init()
+        self.referenceTimeInterval = referenceTimeInterval
+        self.dateFormatter = dateFormatter
+    }
+}
+
+
+extension ChartXAxisFormatter: IAxisValueFormatter {
+    
+    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        guard let dateFormatter = dateFormatter,
+            let referenceTimeInterval = referenceTimeInterval
+            else {
+                return ""
         }
         
+        let date = Date(timeIntervalSince1970: value * 3600 * 24 + referenceTimeInterval)
+        return dateFormatter.string(from: date)
+    }
+    
+}
+
+class ChartYAxisFormatter: NSObject {
+    
+}
+extension ChartYAxisFormatter: IAxisValueFormatter {
+    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        return String(Int(value))+"%"
     }
     
     
-    
-    
-
 }

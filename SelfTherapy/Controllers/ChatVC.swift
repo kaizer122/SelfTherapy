@@ -30,6 +30,7 @@ class ChatVC: MessagesViewController,MessagesDataSource {
     
     deinit {
         listener?.remove()
+
     }
 
     override func viewDidLoad() {

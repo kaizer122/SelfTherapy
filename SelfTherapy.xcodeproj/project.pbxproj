@@ -30,6 +30,7 @@
 		2386E6712263B13B0090AA32 /* RapportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2386E6702263B13B0090AA32 /* RapportController.swift */; };
 		2386E6742263F2500090AA32 /* welcome.json in Resources */ = {isa = PBXBuildFile; fileRef = 2386E6722263F24F0090AA32 /* welcome.json */; };
 		2386E6752263F2500090AA32 /* warning.json in Resources */ = {isa = PBXBuildFile; fileRef = 2386E6732263F2500090AA32 /* warning.json */; };
+		238F30D4227C606800DF1222 /* channelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238F30D3227C606800DF1222 /* channelCell.swift */; };
 		23BB3C97226CA1BC00373743 /* alert2.json in Resources */ = {isa = PBXBuildFile; fileRef = 23BB3C96226CA1BB00373743 /* alert2.json */; };
 		23BB3C99226CA3DA00373743 /* nuage.json in Resources */ = {isa = PBXBuildFile; fileRef = 23BB3C98226CA3DA00373743 /* nuage.json */; };
 		23BB3C9B2270B81B00373743 /* ImageRecognitionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BB3C9A2270B81B00373743 /* ImageRecognitionVC.swift */; };
@@ -70,6 +71,7 @@
 		2386E6702263B13B0090AA32 /* RapportController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RapportController.swift; sourceTree = "<group>"; };
 		2386E6722263F24F0090AA32 /* welcome.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = welcome.json; sourceTree = "<group>"; };
 		2386E6732263F2500090AA32 /* warning.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = warning.json; sourceTree = "<group>"; };
+		238F30D3227C606800DF1222 /* channelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = channelCell.swift; sourceTree = "<group>"; };
 		23BB3C96226CA1BB00373743 /* alert2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = alert2.json; sourceTree = "<group>"; };
 		23BB3C98226CA3DA00373743 /* nuage.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nuage.json; sourceTree = "<group>"; };
 		23BB3C9A2270B81B00373743 /* ImageRecognitionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRecognitionVC.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				23E42E2B2269CEF500B05EC7 /* RoundedButton2.swift */,
 				2386E666226234E80090AA32 /* RoundedButton.swift */,
 				23E42E31226A661A00B05EC7 /* QuizzCell.swift */,
+				238F30D3227C606800DF1222 /* channelCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -376,6 +379,8 @@
 				"${BUILT_PRODUCTS_DIR}/MessageKit/MessageKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/TransitionButton/TransitionButton.framework",
+				"${BUILT_PRODUCTS_DIR}/TransitionableTab/TransitionableTab.framework",
 				"${BUILT_PRODUCTS_DIR}/UICircularProgressRing/UICircularProgressRing.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
@@ -402,6 +407,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionButton.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionableTab.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICircularProgressRing.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
@@ -426,6 +433,7 @@
 				23BB3C9D2270BA0300373743 /* Food101.mlmodel in Sources */,
 				234993EF2273239F00954CDD /* statController.swift in Sources */,
 				2386E6712263B13B0090AA32 /* RapportController.swift in Sources */,
+				238F30D4227C606800DF1222 /* channelCell.swift in Sources */,
 				2386E66F226339810090AA32 /* QuestionsService.swift in Sources */,
 				233EA1A72275260200812AA7 /* ChatVC.swift in Sources */,
 				2386E64A2260E9320090AA32 /* SecondViewController.swift in Sources */,

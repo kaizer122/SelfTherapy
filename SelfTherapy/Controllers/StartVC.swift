@@ -7,13 +7,19 @@
 //
 
 import UIKit
+import TransitionableTab
 
 class StartVC: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-  
-
+        self.delegate = self
 }
+    
+}
+extension UITabBarController: TransitionableTab {
+    
+    public func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+         return animateTransition(tabBarController, shouldSelect: viewController)
+    }
 }

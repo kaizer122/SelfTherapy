@@ -80,9 +80,9 @@ class RapportController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         
-        depCircle.startProgress(to: CGFloat((depression*100) / 60) , duration: 5)
-        stressCircle.startProgress(to: CGFloat((stress*100) / 60), duration: 5)
-        anxCircle.startProgress(to: CGFloat((anxiety*100) / 60), duration: 5)
+        depCircle.startProgress(to: CGFloat((depression*10) / 6) , duration: 2)
+        stressCircle.startProgress(to: CGFloat((stress*10) / 6), duration: 2)
+        anxCircle.startProgress(to: CGFloat((anxiety*10) / 6), duration: 2)
     }
 
 

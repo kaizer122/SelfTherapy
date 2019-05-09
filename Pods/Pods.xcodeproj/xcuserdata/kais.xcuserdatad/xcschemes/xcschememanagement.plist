@@ -186,12 +186,26 @@
 			<key>orderHint</key>
 			<integer>31</integer>
 		</dict>
-		<key>UICircularProgressRing.xcscheme</key>
+		<key>TransitionButton.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>33</integer>
+		</dict>
+		<key>TransitionableTab.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>32</integer>
+		</dict>
+		<key>UICircularProgressRing.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>34</integer>
 		</dict>
 		<key>gRPC-C++-gRPCCertificates.xcscheme</key>
 		<dict>

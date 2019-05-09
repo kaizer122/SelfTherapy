@@ -22,6 +22,8 @@ pod 'Firebase/Auth'
 pod 'Firebase/Firestore'
 pod 'MessageKit'
 pod 'Kingfisher'
+pod 'TransitionableTab', '~> 0.2.0'
+pod 'TransitionButton'
 
      post_install do |installer|
         installer.pods_project.targets.each do |target|
