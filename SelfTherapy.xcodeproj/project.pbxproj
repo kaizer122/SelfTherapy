@@ -116,6 +116,9 @@
 		2304A8FE22841EC300606334 /* markers */ = {
 			isa = PBXGroup;
 			children = (
+				2304A8F22284067F00606334 /* DayAxisValueFormatter.swift */,
+				2304A8F622840C4C00606334 /* XYMarkerView.swift */,
+				2304A8F822840CD100606334 /* BalloonMarker.swift */,
 				2304A8FC22841E7100606334 /* RadarMarkerView.xib */,
 				2304A8FA22841E5B00606334 /* RadarMarkerView.swift */,
 				2304A8FF22841EC300606334 /* radar_marker@3x.png */,
@@ -205,9 +208,6 @@
 			children = (
 				23BB3C9C2270BA0300373743 /* Food101.mlmodel */,
 				2386E6682263378E0090AA32 /* constants.swift */,
-				2304A8F22284067F00606334 /* DayAxisValueFormatter.swift */,
-				2304A8F622840C4C00606334 /* XYMarkerView.swift */,
-				2304A8F822840CD100606334 /* BalloonMarker.swift */,
 				2304A8FE22841EC300606334 /* markers */,
 			);
 			path = Helpers;
