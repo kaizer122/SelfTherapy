@@ -8,34 +8,77 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 class StatsService {
     static let instance = StatsService()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-   
+    var currentStep : Int? {
+        get {
+            return getCurrentStep()
+        }
+    }
 
      func getPeriods()-> [Periode] {
-        let request : NSFetchRequest<Periode> = Periode.fetchRequest()
+     
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Periode")
+        request.predicate = NSPredicate(format: "user.email == %@",Auth.auth().currentUser!.email!)
         do{
             let result = try context.fetch(request)
-            return result
+            return result as! [Periode]
         }catch{
             let nserror = error as NSError
             print(nserror.userInfo)
             return []
         }
     }
+    func getCurrentStep()-> Int? {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "UserData")
+        fetchRequest.predicate = NSPredicate(format: "email == %@",Auth.auth().currentUser!.email!)
+        do{
+            let Result = try context.fetch(fetchRequest)
+            if Result.count > 0 {
+                
+              let user = Result.first as! UserData
+                return Int(user.lastStepIndex)
+            }
+        } catch {
+            print("error saving")
+        }
+          return nil
+    }
+    func setCurrentStep(stepIndex: Int) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "UserData")
+        fetchRequest.predicate = NSPredicate(format: "email == %@",Auth.auth().currentUser!.email!)
+        do{
+            let Result = try context.fetch(fetchRequest)
+            if Result.count > 0 {
+                let user = Result.first as! UserData
+               user.lastStepIndex = Int16(stepIndex)
+                do {
+                    try context.save()
+                } catch {
+                    print("error saving")
+                }
+            }
+        } catch {
+            print("error saving")
+        }
+    }
     
     func updatePeriod(depression: Int , stress: Int , anxiety: Int , mode: String) {
-        
+        if (Auth.auth().currentUser?.email == nil) {
+            return
+        }
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Periode")
+        fetchRequest.predicate = NSPredicate(format: "user.email == %@",Auth.auth().currentUser!.email!)
         do{
             let Result = try context.fetch(fetchRequest)
             if Result.count == 0 {
                 createFirstPeriode(depression: depression, stress: stress, anxiety: anxiety)
             }
             else {
-                upadePeriode(Result,depression: depression, stress: stress, anxiety: anxiety, mode: mode)
+                updateExistingPeriod(Result,depression: depression, stress: stress, anxiety: anxiety, mode: mode)
             }
         } catch {
             print("error saving")
@@ -44,7 +87,8 @@ class StatsService {
     
     
     func intoNewPeriod(depression: Int , stress: Int , anxiety: Int , mode: String) {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Periode") // cast it as NSManagedObject instead of NSFetchRequestResult if we want to access the object values
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Periode")
+          fetchRequest.predicate = NSPredicate(format: "user.email == %@",Auth.auth().currentUser!.email!)
         do{
             let Result = try context.fetch(fetchRequest)
             if Result.count == 0 {
@@ -59,7 +103,7 @@ class StatsService {
         }
     }
     
-    func newPeriod(_ Result: [Any] , depression: Int , stress: Int , anxiety: Int ) {
+   fileprivate func newPeriod(_ Result: [Any] , depression: Int , stress: Int , anxiety: Int  ) {
         do {
             let periodeAvant =  Result.last as! Periode
             let periode = Periode(context: self.context)
@@ -84,6 +128,7 @@ class StatsService {
             periode.addToAnxietes(anxietev)
             periode.addToDepressions(depressionv)
             periode.addToStresses(stressv)
+            periode.user = periodeAvant.user
             
             try context.save()
         } catch {
@@ -92,7 +137,7 @@ class StatsService {
     }
     
     
-    fileprivate func upadePeriode(_ Result: [Any], depression: Int , stress: Int , anxiety: Int, mode: String) {
+    fileprivate func updateExistingPeriod(_ Result: [Any], depression: Int , stress: Int , anxiety: Int, mode: String) {
         do {
             let periode =  Result.last as! Periode
             let depressionv = Dep(context: self.context)
@@ -132,7 +177,9 @@ class StatsService {
     }
     
     fileprivate func createFirstPeriode(depression: Int , stress: Int , anxiety: Int) {
+        
         do {
+            let user = UserData(context: self.context)
             let periode = Periode(context: self.context)
             let depressionv = Dep(context: self.context)
             let anxietev = Ax(context: self.context)
@@ -154,9 +201,41 @@ class StatsService {
             periode.addToAnxietes(anxietev)
             periode.addToDepressions(depressionv)
             periode.addToStresses(stressv)
+            user.email = Auth.auth().currentUser!.email!
+            user.lastStepIndex = Int16(0)
+            user.addToPeriods(periode)
             try context.save()
         } catch {
             print("error saving")
         }
     }
+    func createEmptyFirstPeriod() {
+        if (Auth.auth().currentUser?.email == nil) {
+            return
+        }
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Periode")
+        fetchRequest.predicate = NSPredicate(format: "user.email == %@",Auth.auth().currentUser!.email!)
+        do{
+            let Result = try context.fetch(fetchRequest)
+            if Result.count == 0 {
+        do {
+            let user = UserData(context: self.context)
+            let periode = Periode(context: self.context)
+          
+            periode.debut = Date()
+            periode.id = 1
+            user.email = Auth.auth().currentUser!.email!
+            user.lastStepIndex = Int16(0)
+            user.addToPeriods(periode)
+            try context.save()
+        } catch {
+            print("error saving")
+        }
+    }
+            
+        } catch {
+         print("error saving")
+}
+}
+    
 }

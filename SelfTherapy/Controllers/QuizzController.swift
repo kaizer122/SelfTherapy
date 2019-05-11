@@ -147,10 +147,6 @@ class QuizzController: UIViewController {
             self.view.layoutIfNeeded()
         } )
     }
-    fileprivate func saveData() {
-        newPeriodStarted ? StatsService.instance.intoNewPeriod(depression: depression, stress: stress, anxiety: anxiety, mode: mode) : StatsService.instance.updatePeriod(depression: depression, stress: stress, anxiety: anxiety, mode: mode)
-    }
-    
     
     
     
@@ -188,20 +184,14 @@ class QuizzController: UIViewController {
             })
             
         } else {
-            
-            
-            
             saveData()
-            
-            
             performSegue(withIdentifier: "rapport", sender: nil)
-            
-            
-            
         }
         
     }
-    
+    func saveData() {
+            newPeriodStarted ? StatsService.instance.intoNewPeriod(depression: depression, stress: stress, anxiety: anxiety, mode: mode) : StatsService.instance.updatePeriod(depression: depression, stress: stress, anxiety: anxiety, mode: mode)
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "rapport" {
             let viewController:RapportController = segue.destination as! RapportController
@@ -220,7 +210,6 @@ class QuizzController: UIViewController {
         anxiety =  Int.random(in: 0 ..< 61)
         stress = Int.random(in: 0 ..< 61)
         saveData()
-        
         performSegue(withIdentifier: "rapport", sender: nil)
         
     }

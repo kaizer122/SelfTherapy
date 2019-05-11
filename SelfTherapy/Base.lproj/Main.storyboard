@@ -559,7 +559,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="a0F-rT-DbV" kind="show" id="Adk-dQ-nfq"/>
+                                    <action selector="registerClicked:" destination="aaU-Pz-dlN" eventType="touchUpInside" id="KPQ-mq-fly"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="l5T-Qj-PBy" customClass="LOTAnimationView">
@@ -617,6 +617,7 @@
                         <outlet property="registerBtn" destination="rHo-GB-KyN" id="0dS-gG-2q8"/>
                         <outlet property="stressCircle" destination="5cB-QK-Ggh" id="eDY-jc-TAT"/>
                         <outlet property="warningAnim" destination="l5T-Qj-PBy" id="QHC-9Y-PeF"/>
+                        <segue destination="a0F-rT-DbV" kind="show" identifier="rapportToLogin" id="VV7-Q7-bKb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TVd-ZP-IUl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -843,7 +844,7 @@
         <!--Login-->
         <scene sceneID="y0Y-l6-Uk2">
             <objects>
-                <viewController id="a0F-rT-DbV" customClass="LoginVC" customModule="SelfTherapy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="a0F-rT-DbV" customClass="LoginVC" customModule="SelfTherapy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mfs-od-Ueb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1489,7 +1490,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="2Aa-fE-lto"/>
-        <segue reference="Gxa-DX-Dce"/>
+        <segue reference="VV7-Q7-bKb"/>
         <segue reference="dFn-lh-RTj"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -15,7 +15,7 @@ final class ContainerViewController: UIViewController {
     @IBOutlet private weak var nextButton: UIButton!
     private var count = 1
     private var pageViewController: UIPageViewController!
-    
+    var currentStep : Int = 0
     fileprivate lazy var pages: [UIViewController] = {
         return [
             self.getViewController(withIdentifier: String.init(describing: ImageRecognitionVC.self)),
@@ -38,10 +38,11 @@ final class ContainerViewController: UIViewController {
         pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         pageViewController.view.frame = containerView.bounds
         containerView.addSubview(pageViewController.view)
-        
-        if let firstController = pages.first {
-            pageViewController.setViewControllers([firstController], direction: .forward, animated: true, completion: nil)
-        }
+        currentStep = StatsService.instance.currentStep ?? 0
+       let firstController = pages[currentStep]
+        stepView.selectedStep = currentStep+1
+       pageViewController.setViewControllers([firstController], direction: .forward, animated: true, completion: nil)
+    
     }
     
     fileprivate func getViewController(withIdentifier identifier: String) -> UIViewController {
@@ -83,7 +84,7 @@ final class ContainerViewController: UIViewController {
             if (controllerToShow.restorationIdentifier == "EndVC") {
                 count = count+1
             }
-          
+            StatsService.instance.setCurrentStep(stepIndex: (StatsService.instance.currentStep ?? 0 )+1)
                 pageViewController.setViewControllers([controllerToShow], direction: .forward, animated: true, completion: nil)
             
 //        }

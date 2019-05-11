@@ -36,6 +36,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GIDSignInDelegate {
      let startVC = storyBoard.instantiateViewController(withIdentifier: "StartController") as! StartVC
         self.window?.rootViewController = startVC
             self.window?.makeKeyAndVisible()
+        } else {
+            let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+            if launchedBefore  {
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                let loginVC = storyBoard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+                self.window?.rootViewController = loginVC
+                self.window?.makeKeyAndVisible()
+            } else {
+                UserDefaults.standard.set(true, forKey: "launchedBefore")
+            }
         }
     
         return true

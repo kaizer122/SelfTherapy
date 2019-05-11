@@ -17,16 +17,23 @@
         <relationship name="anxietes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ax" inverseName="periode" inverseEntity="Ax" syncable="YES"/>
         <relationship name="depressions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Dep" inverseName="periode" inverseEntity="Dep" syncable="YES"/>
         <relationship name="stresses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Stress" inverseName="periode" inverseEntity="Stress" syncable="YES"/>
+        <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="UserData" inverseName="periods" inverseEntity="UserData" syncable="YES"/>
     </entity>
     <entity name="Stress" representedClassName="Stress" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="stress" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="periode" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Periode" inverseName="stresses" inverseEntity="Periode" syncable="YES"/>
     </entity>
+    <entity name="UserData" representedClassName="UserData" syncable="YES" codeGenerationType="class">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastStepIndex" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="periods" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Periode" inverseName="user" inverseEntity="Periode" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Ax" positionX="-54" positionY="18" width="128" height="90"/>
-        <element name="Dep" positionX="-36" positionY="27" width="128" height="90"/>
-        <element name="Stress" positionX="-18" positionY="36" width="128" height="90"/>
-        <element name="Periode" positionX="-36" positionY="45" width="128" height="135"/>
+        <element name="Ax" positionX="-482.9375" positionY="328.96484375" width="128" height="90"/>
+        <element name="Dep" positionX="-342.03125" positionY="312.96875" width="128" height="90"/>
+        <element name="Stress" positionX="-607.94140625" positionY="209.0390625" width="128" height="90"/>
+        <element name="Periode" positionX="-423.94140625" positionY="66.0078125" width="128" height="148"/>
+        <element name="UserData" positionX="-46.98046875" positionY="195.9921875" width="128" height="88"/>
     </elements>
 </model>

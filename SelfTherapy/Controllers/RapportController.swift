@@ -24,10 +24,11 @@ class RapportController: UIViewController {
     var depression = 0
     var mode : String = "all"
    public  var showBtn : Bool = false
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+       
         setupCirclesAnims()
         setupMode()
     }
@@ -87,5 +88,16 @@ class RapportController: UIViewController {
         anxCircle.startProgress(to: CGFloat((anxiety*10) / 6), duration: 2)
     }
 
-
+    @IBAction func registerClicked(_ sender: Any) {
+        
+        performSegue(withIdentifier: "rapportToLogin", sender: nil)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "rapportToLogin" {
+            let viewController:LoginVC = segue.destination as! LoginVC
+            viewController.stress = stress
+            viewController.depression = depression
+            viewController.anxiety = anxiety
+        }
+    }
 }

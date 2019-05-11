@@ -22,7 +22,9 @@ class LoginVC: UIViewController , GIDSignInUIDelegate {
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     @IBOutlet weak var signinBtn: TransitionButton!
-    
+    var stress:Int?
+    var depression:Int?
+    var anxiety:Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,6 +125,11 @@ class LoginVC: UIViewController , GIDSignInUIDelegate {
         }
     }
     func updateLoginService(){
+        if (depression != nil && stress != nil && anxiety != nil) {
+            StatsService.instance.updatePeriod(depression: depression!, stress: stress!, anxiety: anxiety!, mode: "all") }
+        else {
+             StatsService.instance.createEmptyFirstPeriod()
+        }
         AuthService.instance.userEmail = Auth.auth().currentUser!.email!
         AuthService.instance.username = Auth.auth().currentUser!.displayName!
        AuthService.instance.isLoggedIn = true
