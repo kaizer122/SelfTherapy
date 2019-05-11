@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , GIDSignInDelegate {
         // login control
         if (AuthService.instance.isLoggedIn) {
      let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-     let startVC = storyBoard.instantiateViewController(withIdentifier: "StartVC") as! StartVC
+     let startVC = storyBoard.instantiateViewController(withIdentifier: "StartController") as! StartVC
         self.window?.rootViewController = startVC
             self.window?.makeKeyAndVisible()
         }

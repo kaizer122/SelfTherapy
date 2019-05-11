@@ -74,3 +74,23 @@ extension Collection where Element: Numeric {
     var total: Element { return reduce(0, +) }
 }
 
+
+extension Double {
+    func squared() -> Double {
+        return self * self
+    }
+    func round(to precision: Int) -> Double {
+        let divisor = pow(10.0, Double(precision))
+        
+        return Darwin.round(self * divisor) / divisor
+    }
+    func lowPassFilter(using filterFactor: Double, with previousValue: Double) -> Double {
+        let firstSection = previousValue * filterFactor / 100
+        let secondSection = (self * (1 - filterFactor / 100))
+        
+        return (firstSection + secondSection).round(to: 3)
+    }
+}
+
+
+

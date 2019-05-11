@@ -24,6 +24,7 @@ pod 'MessageKit'
 pod 'Kingfisher'
 pod 'TransitionableTab', '~> 0.2.0'
 pod 'TransitionButton'
+pod 'StepView'
 
      post_install do |installer|
         installer.pods_project.targets.each do |target|

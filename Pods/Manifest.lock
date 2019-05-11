@@ -134,6 +134,7 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - Protobuf (3.7.0)
+  - StepView (1.0.5)
   - SwiftyJSON (4.2.0)
   - TransitionableTab (0.2.0)
   - TransitionButton (0.5.2)
@@ -152,6 +153,7 @@ DEPENDENCIES:
   - Kingfisher
   - lottie-ios (~> 2.5.2)
   - MessageKit
+  - StepView
   - SwiftyJSON (~> 4.2.0)
   - TransitionableTab (~> 0.2.0)
   - TransitionButton
@@ -187,6 +189,7 @@ SPEC REPOS:
     - MessageKit
     - nanopb
     - Protobuf
+    - StepView
     - SwiftyJSON
     - TransitionableTab
     - TransitionButton
@@ -221,11 +224,12 @@ SPEC CHECKSUMS:
   MessageKit: 29c1c87e5a396d2ca7a3f712e5171dc9aba42a1e
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
+  StepView: e69413ca377b42c5777d446854bb036ff8e988fd
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   TransitionableTab: 54a5d0af475033bdb83959fde4e5d6201af7e2ab
   TransitionButton: fb271583d9c9e4bb116b97103047e5157653f233
   UICircularProgressRing: 2ef1293241b83d8020ede21a8fe3b3d859525730
 
-PODFILE CHECKSUM: 6880007aa1cd10c2c4112838861379ca938141fc
+PODFILE CHECKSUM: f669460029ba57d668b026e196ed42d430f3fab3
 
 COCOAPODS: 1.6.0

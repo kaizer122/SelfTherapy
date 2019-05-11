@@ -3,18 +3,30 @@
     <entity name="Ax" representedClassName="Ax" syncable="YES" codeGenerationType="class">
         <attribute name="ax" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="periode" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Periode" inverseName="anxietes" inverseEntity="Periode" syncable="YES"/>
     </entity>
     <entity name="Dep" representedClassName="Dep" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="dep" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="periode" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Periode" inverseName="depressions" inverseEntity="Periode" syncable="YES"/>
+    </entity>
+    <entity name="Periode" representedClassName="Periode" syncable="YES" codeGenerationType="class">
+        <attribute name="debut" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="fin" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="anxietes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ax" inverseName="periode" inverseEntity="Ax" syncable="YES"/>
+        <relationship name="depressions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Dep" inverseName="periode" inverseEntity="Dep" syncable="YES"/>
+        <relationship name="stresses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Stress" inverseName="periode" inverseEntity="Stress" syncable="YES"/>
     </entity>
     <entity name="Stress" representedClassName="Stress" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="stress" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="periode" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Periode" inverseName="stresses" inverseEntity="Periode" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Ax" positionX="-54" positionY="18" width="128" height="75"/>
-        <element name="Dep" positionX="-36" positionY="27" width="128" height="75"/>
-        <element name="Stress" positionX="-18" positionY="36" width="128" height="75"/>
+        <element name="Ax" positionX="-54" positionY="18" width="128" height="90"/>
+        <element name="Dep" positionX="-36" positionY="27" width="128" height="90"/>
+        <element name="Stress" positionX="-18" positionY="36" width="128" height="90"/>
+        <element name="Periode" positionX="-36" positionY="45" width="128" height="135"/>
     </elements>
 </model>

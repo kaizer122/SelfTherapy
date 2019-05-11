@@ -24,9 +24,9 @@ class statController: UIViewController, ChartViewDelegate  {
     var ax1 = [0.0]
     var dep1 = [0.0]
     var stress1 = [0.0]
-    var ax2 = [0.0]
-    var dep2 = [0.0]
-    var stress2 = [0.0]
+    var anxietyValues = [0.0]
+    var depressionValues = [0.0]
+    var stressValues = [0.0]
     var datesAnxiete: [Date] = []
     var datesDep: [Date] = []
     var datesStress: [Date] = []
@@ -36,44 +36,27 @@ class statController: UIViewController, ChartViewDelegate  {
     var scores1: [Ax] = []
     var scores2: [Dep] = []
     var scores3: [Stress] = []
+    var periods: [Periode] = []
     let activities = ["Anxiety","Stress", "Depression",]
     
     override func viewDidLoad() {
     
-        let userCalendar = Calendar.current
-        startDateComponents.year = 2016
-        startDate = userCalendar.date(from: startDateComponents)!
-        print(startDate)
-        print(startDate)
-        print(startDate)
+        periods = StatsService.instance.getPeriods()
         
         let a = seg.selectedSegmentIndex
-     
-        fetchScore()
-        remplir()
         
-        scores1 = fetchScore (entity: "Ax").map{ $0 as! Ax}.sorted(by: {$0.date! < $1.date!})
-        scores2 = fetchScore (entity: "Dep").map{ $0 as! Dep}.sorted(by: {$0.date! < $1.date!})
-        scores3 = fetchScore (entity: "Stress").map{ $0 as! Stress}.sorted(by: {$0.date! < $1.date!})
-        ax2 = remplir(entity: "ax", scores: scores1)
-        dep2 = remplir(entity: "dep", scores: scores2)
-        stress2 = remplir(entity: "stress", scores: scores3)
-        datesAnxiete = scores1.map{$0.date!}
-        datesDep = scores2.map{$0.date!}
-        datesStress = scores3.map{$0.date!}
-        
+        fetchAll ()
         if (a == 1)
         {
-            
-            setChart(ax: ax2 , dates: datesAnxiete , label: "Anxiety")
+            setChart(ax: anxietyValues , dates: datesAnxiete , label: "Anxiety")
         }
         else  if (a == 2 )
         {
-            setChart(ax: stress2 , dates: datesStress , label: "Stress")
+            setChart(ax: stressValues , dates: datesStress , label: "Stress")
         }
         else  if (a == 3 )
         {
-            setChart(ax: dep2 , dates:datesDep, label: "Depression")
+            setChart(ax: depressionValues , dates:datesDep, label: "Depression")
         }
         else if (a == 0) {
             configureRadarView()
@@ -81,14 +64,24 @@ class statController: UIViewController, ChartViewDelegate  {
         super.viewDidLoad()
         
     }
- 
-    func fetchScore(){
-     
-    }
     
-    func remplir ()
-    {
-       
+    func fetchAll ()  {
+        let currentPeriod = periods.last
+        scores1 = currentPeriod?.anxietes?.allObjects as! [Ax]
+        scores2 = currentPeriod?.depressions?.allObjects as! [Dep]
+        scores3 = currentPeriod?.stresses?.allObjects as! [Stress]
+        scores1 = scores1.sorted(by: {$0.date! < $1.date!})
+        scores2 = scores2.sorted(by: {$0.date! < $1.date!})
+        scores3 = scores3.sorted(by: {$0.date! < $1.date!})
+        anxietyValues = scores1.map{ $0.ax }.map{ Double($0!)!}
+        depressionValues = scores2.map{ $0.dep }.map{ Double($0!)!}
+        stressValues = scores3.map{ $0.stress }.map{ Double($0!)!}
+        anxietyValues.insert(0.0, at: 0)
+        depressionValues.insert(0.0, at: 0)
+        stressValues.insert(0.0, at: 0)
+        datesAnxiete = scores1.map{$0.date!}
+        datesDep = scores2.map{$0.date!}
+        datesStress = scores3.map{$0.date!}
     }
 
     func configureRadarView() {
@@ -114,7 +107,7 @@ class statController: UIViewController, ChartViewDelegate  {
         xAxis.labelTextColor = .darkGray
         
         let yAxis = RadarChart.yAxis
-        yAxis.labelFont = .systemFont(ofSize: 9, weight: .light)
+        yAxis.labelFont = .systemFont(ofSize: 9, weight: .bold)
         yAxis.labelCount = 5
         yAxis.axisMinimum = 0
         yAxis.axisMaximum = 80
@@ -125,10 +118,10 @@ class statController: UIViewController, ChartViewDelegate  {
         l.verticalAlignment = .top
         l.orientation = .horizontal
         l.drawInside = false
-        l.font = .systemFont(ofSize: 10, weight: .light)
+        l.font = .systemFont(ofSize: 10, weight: .bold)
         l.xEntrySpace = 7
         l.yEntrySpace = 5
-        l.textColor = .white
+        l.textColor = .black
         //        chartView.legend = l
         
         self.setRadarChartData()
@@ -136,24 +129,52 @@ class statController: UIViewController, ChartViewDelegate  {
         RadarChart.animate(xAxisDuration: 1.4, yAxisDuration: 1.4, easingOption: .easeOutBack)
     }
     func setRadarChartData() {
-
-        let anxEntry1 = RadarChartDataEntry(value: ax2.total/Double(ax2.count-1))
-        let stressEntry1 = RadarChartDataEntry(value: stress2.total/Double(stress2.count-1))
-        let depEntry1 = RadarChartDataEntry(value: dep2.total/Double(dep2.count-1))
+        
+        let data : RadarChartData
+        
+        let anxEntry1 = RadarChartDataEntry(value: anxietyValues.total/Double(anxietyValues.count-1))
+        let stressEntry1 = RadarChartDataEntry(value: stressValues.total/Double(stressValues.count-1))
+        let depEntry1 = RadarChartDataEntry(value: depressionValues.total/Double(depressionValues.count-1))
         let entries1 = [anxEntry1,stressEntry1,depEntry1]
    
-        let set1 = RadarChartDataSet(values: entries1, label: "This Period")
-        set1.setColor(UIColor(red: 103/255, green: 110/255, blue: 129/255, alpha: 1))
-        set1.fillColor = UIColor(red: 103/255, green: 110/255, blue: 129/255, alpha: 1)
+        let set1 = RadarChartDataSet(values: entries1, label: "Current Period")
+        set1.setColor(UIColor(red: 121/255, green: 162/255, blue: 175/255, alpha: 1))
+        set1.fillColor = UIColor(red: 121/255, green: 162/255, blue: 175/255, alpha: 1)
         set1.drawFilledEnabled = true
         set1.fillAlpha = 0.7
         set1.lineWidth = 2
         set1.drawHighlightCircleEnabled = true
         set1.setDrawHighlightIndicators(false)
+        let numberOfPeriods = periods.count
+        let hasMoreThanTwoPeriods : Bool = numberOfPeriods > 1 ? true : false
+        if (hasMoreThanTwoPeriods) {
+            let lastPeriod = periods[numberOfPeriods-2]
+            let lastPeriodAnx = lastPeriod.anxietes?.allObjects as! [Ax]
+            let lastPeriodDep = lastPeriod.depressions?.allObjects as! [Dep]
+            let lastPeriodStress = lastPeriod.stresses?.allObjects as! [Stress]
+            let anxietyValues : [Double] = lastPeriodAnx.map{ $0.ax }.map{ Double($0!)!}
+            let depValues : [Double] = lastPeriodDep.map{ $0.dep }.map{ Double($0!)!}
+            let stressValues : [Double] = lastPeriodStress.map{ $0.stress }.map{ Double($0!)!}
+
+            let anxEntry2 = RadarChartDataEntry(value: anxietyValues.total/Double(anxietyValues.count))
+            let stressEntry2 = RadarChartDataEntry(value: stressValues.total/Double(stressValues.count))
+            let depEntry2 = RadarChartDataEntry(value: depValues.total/Double(depValues.count))
+            let entries2 = [anxEntry2,stressEntry2,depEntry2]
+
+            let set2 = RadarChartDataSet(values: entries2, label: "Last Period")
+            set2.setColor(UIColor(red: 103/255, green: 110/255, blue: 129/255, alpha: 1))
+            set2.fillColor = UIColor(red: 103/255, green: 110/255, blue: 129/255, alpha: 1)
+            set2.drawFilledEnabled = true
+            set2.fillAlpha = 0.7
+            set2.lineWidth = 2
+            set2.drawHighlightCircleEnabled = true
+            set2.setDrawHighlightIndicators(false)
+            data = RadarChartData(dataSets: [set2,set1])
+        }
+        else {
+        data = RadarChartData(dataSets: [set1])
+        }
         
-      
-        
-        let data = RadarChartData(dataSets: [set1])
         data.setValueFont(.systemFont(ofSize: 8, weight: .bold))
         data.setDrawValues(false)
         data.setValueTextColor(.black)
@@ -180,38 +201,6 @@ class statController: UIViewController, ChartViewDelegate  {
         configLineChart(datasets: dataSets , dates: dates)
     }
     
-    func fetchScore (entity:String) -> [NSManagedObject] {
-        var temp: [NSManagedObject] = []
-        let appdelegate = UIApplication.shared.delegate as! AppDelegate
-        let persistentContainer = appdelegate.persistentContainer
-        let managedContext = persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entity)
-        do{
-           try temp = managedContext.fetch(fetchRequest)
-        }catch{
-            let nserror = error as NSError
-            print(nserror.userInfo)
-        }
-        return temp
-    }
-    
-    
-    
-    func remplir (entity:String ,scores: [NSManagedObject]) -> [Double]
-    {
-        var temp : [Double] = [0.0]
-        for score in scores
-        {
-            let   ax = score.value(forKey: entity) as! String;
-            temp.append(Double(ax)!)
-        }
-       return temp
-        
-    }
-    
-    
-    
-    
     @IBAction func change(_ sender: Any) {
         
         switch seg.selectedSegmentIndex
@@ -220,13 +209,13 @@ class statController: UIViewController, ChartViewDelegate  {
             configureRadarView()
         case 1:
             
-            setChart(ax: stress2, dates: datesStress , label: "Stress")
+            setChart(ax: stressValues, dates: datesStress , label: "Stress")
         case 2:
             
-            setChart(ax: ax2, dates: datesAnxiete, label: "Anxiety")
+            setChart(ax: anxietyValues, dates: datesAnxiete, label: "Anxiety")
         case 3:
             
-            setChart(ax: dep2, dates: datesDep, label: "Depression")
+            setChart(ax: depressionValues, dates: datesDep, label: "Depression")
             
         default:
             break

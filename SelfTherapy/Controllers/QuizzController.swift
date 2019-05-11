@@ -12,7 +12,7 @@ import UICircularProgressRing
 import CoreData
 
 class QuizzController: UIViewController {
-
+    
     // outlets
     
     @IBOutlet weak var answer1: UIButton!
@@ -36,8 +36,9 @@ class QuizzController: UIViewController {
     var depression = 0
     var currentQuestion : Question?
     var mode:String = "all"
-    let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
- 
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    public var showButton = false
+    public var newPeriodStarted = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -147,42 +148,11 @@ class QuizzController: UIViewController {
         } )
     }
     fileprivate func saveData() {
-        switch mode {
-        case "all":
-            updateCoreData(entityName: "Dep", firstArg: "dep", value : depression)
-            updateCoreData(entityName: "Ax", firstArg: "ax" , value: anxiety)
-            updateCoreData(entityName: "Stress", firstArg: "stress", value: stress)
-        case "Depression":
-            updateCoreData(entityName: "Dep", firstArg: "dep", value: depression)
-        case "anxiete":
-            updateCoreData(entityName: "Ax", firstArg: "ax", value: anxiety)
-        case "stress":
-            updateCoreData(entityName: "Stress", firstArg: "stress", value: stress)
-       default:
-        return
-        }
+        newPeriodStarted ? StatsService.instance.intoNewPeriod(depression: depression, stress: stress, anxiety: anxiety, mode: mode) : StatsService.instance.updatePeriod(depression: depression, stress: stress, anxiety: anxiety, mode: mode)
     }
-    func updateCoreData(entityName: String , firstArg: String , value: Int) {
-     
-        // 2
-        let entity = NSEntityDescription.entity(forEntityName: entityName,in: managedContext)!
-        
-        let person = NSManagedObject(entity: entity,insertInto: managedContext)
-        let a2 : Double = Double((value*10)/6)
-        // 3
-        let str2 = String(a2)
-        person.setValue(str2, forKeyPath: firstArg)
-        person.setValue(Date(), forKeyPath: "date")
-        
-        // 4
-        do {
-            try managedContext.save()
-            
-            print("save for dep")
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
-    }
+    
+    
+    
     
     func animateQuestionOut (at i: Int) {
         if (current < QuestionsService.questions.count-1 ) {
@@ -195,8 +165,6 @@ class QuizzController: UIViewController {
             
             QuestionMarkAnim.animationSpeed = -1
             QuestionMarkAnim.play()
-            
-            
             UIView.animate(withDuration: 1, delay:0 , options: .curveEaseOut, animations: {
                 self.quesTxt.alpha = 0
             } )
@@ -227,45 +195,37 @@ class QuizzController: UIViewController {
             
             
             performSegue(withIdentifier: "rapport", sender: nil)
-
+            
             
             
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "rapport" {
-           
-           
             let viewController:RapportController = segue.destination as! RapportController
-            
             viewController.stress = stress
             viewController.depression = depression
             viewController.anxiety = anxiety
             viewController.mode = mode
-            
+            viewController.showBtn = showButton
         }
         
     }
     
- 
+    
     @IBAction func skipClicked(_ sender: Any) {
-        
+        depression = Int.random(in: 0 ..< 61)
+        anxiety =  Int.random(in: 0 ..< 61)
+        stress = Int.random(in: 0 ..< 61)
         saveData()
         
         performSegue(withIdentifier: "rapport", sender: nil)
-
+        
     }
+    
+    
 }
 extension Date {
     static var yesterday: Date { return Date().dayBefore }

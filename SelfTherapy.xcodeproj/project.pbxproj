@@ -13,11 +13,28 @@
 		2304A8FB22841E5B00606334 /* RadarMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304A8FA22841E5B00606334 /* RadarMarkerView.swift */; };
 		2304A8FD22841E7100606334 /* RadarMarkerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2304A8FC22841E7100606334 /* RadarMarkerView.xib */; };
 		2304A90022841EC300606334 /* radar_marker@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2304A8FF22841EC300606334 /* radar_marker@3x.png */; };
+		2304A90D22850C2400606334 /* StepsCounterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304A90A22850C2400606334 /* StepsCounterVC.swift */; };
+		2304A90E22850C2400606334 /* MusicVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304A90B22850C2400606334 /* MusicVC.swift */; };
+		2304A92922850C6600606334 /* Mighty Fine.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2304A91122850C6500606334 /* Mighty Fine.mp3 */; };
+		2304A92A22850C6600606334 /* Relaxing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2304A91222850C6600606334 /* Relaxing.mp3 */; };
+		2304A92B22850C6600606334 /* Find My Way Home.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2304A91322850C6600606334 /* Find My Way Home.mp3 */; };
+		2304A92C22850C6600606334 /* In Case You Forgot.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2304A91422850C6600606334 /* In Case You Forgot.mp3 */; };
+		2304A92D22850C6600606334 /* Otis McMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2304A91522850C6600606334 /* Otis McMusic.mp3 */; };
+		2304A92E22850C6600606334 /* Fingers.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2304A91622850C6600606334 /* Fingers.mp3 */; };
+		2304A92F22850C6600606334 /* Scarlet Fire.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2304A91722850C6600606334 /* Scarlet Fire.mp3 */; };
+		2304A93022850C6600606334 /* Acceleration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304A91922850C6600606334 /* Acceleration.swift */; };
+		2304A93222850C6600606334 /* PedestrianStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304A91B22850C6600606334 /* PedestrianStatus.swift */; };
+		2304A93522850C6600606334 /* PSEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304A91E22850C6600606334 /* PSEngine.swift */; };
+		2304A94022850DF200606334 /* c2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304A93F22850DF200606334 /* c2.swift */; };
+		233D632622852A11006ACC18 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233D632522852A11006ACC18 /* ContainerViewController.swift */; };
 		233EA1A72275260200812AA7 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233EA1A62275260200812AA7 /* ChatVC.swift */; };
 		233EA1A922752B6900812AA7 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233EA1A822752B6900812AA7 /* Message.swift */; };
 		2342B5A2226C9DA3003B0EAB /* alert.json in Resources */ = {isa = PBXBuildFile; fileRef = 2342B5A1226C9DA3003B0EAB /* alert.json */; };
 		234993EF2273239F00954CDD /* statController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234993EE2273239F00954CDD /* statController.swift */; };
 		234993F2227326BC00954CDD /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 234993F0227326BC00954CDD /* Model.xcdatamodeld */; };
+		2361A4DD2285389A0078F1C5 /* EndVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2361A4DC2285389A0078F1C5 /* EndVC.swift */; };
+		2361A4DF22856FB40078F1C5 /* ImageRecognitionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2361A4DE22856FB40078F1C5 /* ImageRecognitionVC.swift */; };
+		23818E6C2286463900A51E5E /* StatsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23818E6B2286463900A51E5E /* StatsService.swift */; };
 		23841A2222748BBD00086ABB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23841A2122748BBD00086ABB /* GoogleService-Info.plist */; };
 		23841A242274E05D00086ABB /* ChannelsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23841A232274E05D00086ABB /* ChannelsVC.swift */; };
 		23841A262274E43100086ABB /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23841A252274E43100086ABB /* Channel.swift */; };
@@ -39,7 +56,6 @@
 		238F30D4227C606800DF1222 /* channelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238F30D3227C606800DF1222 /* channelCell.swift */; };
 		23BB3C97226CA1BC00373743 /* alert2.json in Resources */ = {isa = PBXBuildFile; fileRef = 23BB3C96226CA1BB00373743 /* alert2.json */; };
 		23BB3C99226CA3DA00373743 /* nuage.json in Resources */ = {isa = PBXBuildFile; fileRef = 23BB3C98226CA3DA00373743 /* nuage.json */; };
-		23BB3C9B2270B81B00373743 /* ImageRecognitionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BB3C9A2270B81B00373743 /* ImageRecognitionVC.swift */; };
 		23BB3C9D2270BA0300373743 /* Food101.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 23BB3C9C2270BA0300373743 /* Food101.mlmodel */; };
 		23BB3C9F2270D5FF00373743 /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = 23BB3C9E2270D5FE00373743 /* success.json */; };
 		23E42E262269C72E00B05EC7 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E42E242269C72D00B05EC7 /* LoginVC.swift */; };
@@ -58,11 +74,28 @@
 		2304A8FA22841E5B00606334 /* RadarMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarMarkerView.swift; sourceTree = "<group>"; };
 		2304A8FC22841E7100606334 /* RadarMarkerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadarMarkerView.xib; sourceTree = "<group>"; };
 		2304A8FF22841EC300606334 /* radar_marker@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radar_marker@3x.png"; sourceTree = "<group>"; };
+		2304A90A22850C2400606334 /* StepsCounterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsCounterVC.swift; sourceTree = "<group>"; };
+		2304A90B22850C2400606334 /* MusicVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVC.swift; sourceTree = "<group>"; };
+		2304A91122850C6500606334 /* Mighty Fine.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Mighty Fine.mp3"; sourceTree = "<group>"; };
+		2304A91222850C6600606334 /* Relaxing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Relaxing.mp3; sourceTree = "<group>"; };
+		2304A91322850C6600606334 /* Find My Way Home.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Find My Way Home.mp3"; sourceTree = "<group>"; };
+		2304A91422850C6600606334 /* In Case You Forgot.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "In Case You Forgot.mp3"; sourceTree = "<group>"; };
+		2304A91522850C6600606334 /* Otis McMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Otis McMusic.mp3"; sourceTree = "<group>"; };
+		2304A91622850C6600606334 /* Fingers.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Fingers.mp3; sourceTree = "<group>"; };
+		2304A91722850C6600606334 /* Scarlet Fire.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Scarlet Fire.mp3"; sourceTree = "<group>"; };
+		2304A91922850C6600606334 /* Acceleration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Acceleration.swift; sourceTree = "<group>"; };
+		2304A91B22850C6600606334 /* PedestrianStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PedestrianStatus.swift; sourceTree = "<group>"; };
+		2304A91E22850C6600606334 /* PSEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PSEngine.swift; sourceTree = "<group>"; };
+		2304A93F22850DF200606334 /* c2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = c2.swift; sourceTree = "<group>"; };
+		233D632522852A11006ACC18 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		233EA1A62275260200812AA7 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		233EA1A822752B6900812AA7 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		2342B5A1226C9DA3003B0EAB /* alert.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = alert.json; sourceTree = "<group>"; };
 		234993EE2273239F00954CDD /* statController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = statController.swift; sourceTree = "<group>"; };
 		234993F1227326BC00954CDD /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		2361A4DC2285389A0078F1C5 /* EndVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndVC.swift; sourceTree = "<group>"; };
+		2361A4DE22856FB40078F1C5 /* ImageRecognitionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRecognitionVC.swift; sourceTree = "<group>"; };
+		23818E6B2286463900A51E5E /* StatsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsService.swift; sourceTree = "<group>"; };
 		23841A2122748BBD00086ABB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		23841A232274E05D00086ABB /* ChannelsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsVC.swift; sourceTree = "<group>"; };
 		23841A252274E43100086ABB /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
@@ -86,7 +119,6 @@
 		238F30D3227C606800DF1222 /* channelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = channelCell.swift; sourceTree = "<group>"; };
 		23BB3C96226CA1BB00373743 /* alert2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = alert2.json; sourceTree = "<group>"; };
 		23BB3C98226CA3DA00373743 /* nuage.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nuage.json; sourceTree = "<group>"; };
-		23BB3C9A2270B81B00373743 /* ImageRecognitionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRecognitionVC.swift; sourceTree = "<group>"; };
 		23BB3C9C2270BA0300373743 /* Food101.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Food101.mlmodel; sourceTree = "<group>"; };
 		23BB3C9E2270D5FE00373743 /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
 		23E42E242269C72D00B05EC7 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -124,6 +156,42 @@
 				2304A8FF22841EC300606334 /* radar_marker@3x.png */,
 			);
 			path = markers;
+			sourceTree = "<group>";
+		};
+		2304A90122850B4D00606334 /* StepperViews */ = {
+			isa = PBXGroup;
+			children = (
+				2361A4DE22856FB40078F1C5 /* ImageRecognitionVC.swift */,
+				233D632522852A11006ACC18 /* ContainerViewController.swift */,
+				2304A90B22850C2400606334 /* MusicVC.swift */,
+				2304A90A22850C2400606334 /* StepsCounterVC.swift */,
+				2361A4DC2285389A0078F1C5 /* EndVC.swift */,
+			);
+			path = StepperViews;
+			sourceTree = "<group>";
+		};
+		2304A91022850C6500606334 /* music */ = {
+			isa = PBXGroup;
+			children = (
+				2304A91122850C6500606334 /* Mighty Fine.mp3 */,
+				2304A91222850C6600606334 /* Relaxing.mp3 */,
+				2304A91322850C6600606334 /* Find My Way Home.mp3 */,
+				2304A91422850C6600606334 /* In Case You Forgot.mp3 */,
+				2304A91522850C6600606334 /* Otis McMusic.mp3 */,
+				2304A91622850C6600606334 /* Fingers.mp3 */,
+				2304A91722850C6600606334 /* Scarlet Fire.mp3 */,
+			);
+			path = music;
+			sourceTree = "<group>";
+		};
+		2304A91822850C6600606334 /* pas */ = {
+			isa = PBXGroup;
+			children = (
+				2304A91922850C6600606334 /* Acceleration.swift */,
+				2304A91B22850C6600606334 /* PedestrianStatus.swift */,
+				2304A91E22850C6600606334 /* PSEngine.swift */,
+			);
+			path = pas;
 			sourceTree = "<group>";
 		};
 		2386E6392260E9320090AA32 = {
@@ -168,6 +236,7 @@
 		2386E6592262284A0090AA32 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2304A90122850B4D00606334 /* StepperViews */,
 				23E42E33226A7D6E00B05EC7 /* StartVC.swift */,
 				23E42E242269C72D00B05EC7 /* LoginVC.swift */,
 				234993EE2273239F00954CDD /* statController.swift */,
@@ -175,7 +244,6 @@
 				2386E6492260E9320090AA32 /* SecondViewController.swift */,
 				2386E65F226229550090AA32 /* QuizzController.swift */,
 				2386E6702263B13B0090AA32 /* RapportController.swift */,
-				23BB3C9A2270B81B00373743 /* ImageRecognitionVC.swift */,
 				23841A232274E05D00086ABB /* ChannelsVC.swift */,
 				233EA1A62275260200812AA7 /* ChatVC.swift */,
 			);
@@ -187,6 +255,7 @@
 			children = (
 				23E42E282269C84F00B05EC7 /* AuthService.swift */,
 				2386E66E226339810090AA32 /* QuestionsService.swift */,
+				23818E6B2286463900A51E5E /* StatsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -198,6 +267,7 @@
 				23E42E2B2269CEF500B05EC7 /* RoundedButton2.swift */,
 				2386E666226234E80090AA32 /* RoundedButton.swift */,
 				23E42E31226A661A00B05EC7 /* QuizzCell.swift */,
+				2304A93F22850DF200606334 /* c2.swift */,
 				238F30D3227C606800DF1222 /* channelCell.swift */,
 			);
 			path = Views;
@@ -206,6 +276,8 @@
 		2386E65C226228740090AA32 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				2304A91022850C6500606334 /* music */,
+				2304A91822850C6600606334 /* pas */,
 				23BB3C9C2270BA0300373743 /* Food101.mlmodel */,
 				2386E6682263378E0090AA32 /* constants.swift */,
 				2304A8FE22841EC300606334 /* markers */,
@@ -323,16 +395,23 @@
 				2386E66522622BA20090AA32 /* QuestionMark.json in Resources */,
 				23BB3C9F2270D5FF00373743 /* success.json in Resources */,
 				2386E6522260E9360090AA32 /* LaunchScreen.storyboard in Resources */,
+				2304A92E22850C6600606334 /* Fingers.mp3 in Resources */,
+				2304A92C22850C6600606334 /* In Case You Forgot.mp3 in Resources */,
+				2304A92B22850C6600606334 /* Find My Way Home.mp3 in Resources */,
+				2304A92A22850C6600606334 /* Relaxing.mp3 in Resources */,
 				2342B5A2226C9DA3003B0EAB /* alert.json in Resources */,
 				2386E64F2260E9360090AA32 /* Assets.xcassets in Resources */,
 				23BB3C99226CA3DA00373743 /* nuage.json in Resources */,
+				2304A92F22850C6600606334 /* Scarlet Fire.mp3 in Resources */,
 				23BB3C97226CA1BC00373743 /* alert2.json in Resources */,
+				2304A92D22850C6600606334 /* Otis McMusic.mp3 in Resources */,
 				2386E64D2260E9320090AA32 /* Main.storyboard in Resources */,
 				2386E6752263F2500090AA32 /* warning.json in Resources */,
 				2304A90022841EC300606334 /* radar_marker@3x.png in Resources */,
 				23841A2222748BBD00086ABB /* GoogleService-Info.plist in Resources */,
 				2386E6742263F2500090AA32 /* welcome.json in Resources */,
 				2304A8FD22841E7100606334 /* RadarMarkerView.xib in Resources */,
+				2304A92922850C6600606334 /* Mighty Fine.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +485,7 @@
 				"${BUILT_PRODUCTS_DIR}/MessageInputBar/MessageInputBar.framework",
 				"${BUILT_PRODUCTS_DIR}/MessageKit/MessageKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/StepView/StepView.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/TransitionButton/TransitionButton.framework",
 				"${BUILT_PRODUCTS_DIR}/TransitionableTab/TransitionableTab.framework",
@@ -434,6 +514,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageInputBar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StepView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionableTab.framework",
@@ -457,17 +538,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				23841A242274E05D00086ABB /* ChannelsVC.swift in Sources */,
+				2304A90D22850C2400606334 /* StepsCounterVC.swift in Sources */,
 				23E42E262269C72E00B05EC7 /* LoginVC.swift in Sources */,
 				23BB3C9D2270BA0300373743 /* Food101.mlmodel in Sources */,
 				2304A8F922840CD100606334 /* BalloonMarker.swift in Sources */,
 				2304A8F722840C4C00606334 /* XYMarkerView.swift in Sources */,
 				234993EF2273239F00954CDD /* statController.swift in Sources */,
+				2304A93222850C6600606334 /* PedestrianStatus.swift in Sources */,
 				2386E6712263B13B0090AA32 /* RapportController.swift in Sources */,
 				238F30D4227C606800DF1222 /* channelCell.swift in Sources */,
 				2386E66F226339810090AA32 /* QuestionsService.swift in Sources */,
 				233EA1A72275260200812AA7 /* ChatVC.swift in Sources */,
+				2304A94022850DF200606334 /* c2.swift in Sources */,
 				2386E64A2260E9320090AA32 /* SecondViewController.swift in Sources */,
 				23841A262274E43100086ABB /* Channel.swift in Sources */,
+				2304A93522850C6600606334 /* PSEngine.swift in Sources */,
 				2386E66D226338890090AA32 /* Question.swift in Sources */,
 				2304A8F32284067F00606334 /* DayAxisValueFormatter.swift in Sources */,
 				234993F2227326BC00954CDD /* Model.xcdatamodeld in Sources */,
@@ -477,12 +562,17 @@
 				23E42E292269C84F00B05EC7 /* AuthService.swift in Sources */,
 				2386E6462260E9320090AA32 /* AppDelegate.swift in Sources */,
 				23E42E32226A661A00B05EC7 /* QuizzCell.swift in Sources */,
+				2304A93022850C6600606334 /* Acceleration.swift in Sources */,
 				2386E6692263378E0090AA32 /* constants.swift in Sources */,
+				23818E6C2286463900A51E5E /* StatsService.swift in Sources */,
 				233EA1A922752B6900812AA7 /* Message.swift in Sources */,
+				2304A90E22850C2400606334 /* MusicVC.swift in Sources */,
+				2361A4DD2285389A0078F1C5 /* EndVC.swift in Sources */,
 				2386E6482260E9320090AA32 /* FirstViewController.swift in Sources */,
-				23BB3C9B2270B81B00373743 /* ImageRecognitionVC.swift in Sources */,
+				2361A4DF22856FB40078F1C5 /* ImageRecognitionVC.swift in Sources */,
 				23E42E5A226B3F2000B05EC7 /* PredictionsCell.swift in Sources */,
 				2386E660226229550090AA32 /* QuizzController.swift in Sources */,
+				233D632622852A11006ACC18 /* ContainerViewController.swift in Sources */,
 				23E42E34226A7D6E00B05EC7 /* StartVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

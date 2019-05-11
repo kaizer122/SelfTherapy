@@ -23,6 +23,7 @@ class RapportController: UIViewController {
     var stress = 0
     var depression = 0
     var mode : String = "all"
+   public  var showBtn : Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,10 +64,11 @@ class RapportController: UIViewController {
             registerBtn.isHidden = true
             warningAnim.isHidden = true
         case "all":
+            backBtn.isHidden  = showBtn ? false : true
             depCircle.isHidden = false
             anxCircle.isHidden = false
              stressCircle.isHidden = false
-            backBtn.isHidden = true
+          
             if (AuthService.instance.isLoggedIn){
                 registerBtn.isHidden = true
                 warningAnim.isHidden = true

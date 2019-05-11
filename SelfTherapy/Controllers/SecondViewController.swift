@@ -31,6 +31,7 @@ class SecondViewController: UIViewController , UITableViewDataSource , UITableVi
             let quizzVC :QuizzController = segue.destination as! QuizzController
             if indexPath.row == 0 {
                   quizzVC.mode = "all"
+                quizzVC.showButton = true
             } else {
                 quizzVC.mode = txts[indexPath.row]
             }
