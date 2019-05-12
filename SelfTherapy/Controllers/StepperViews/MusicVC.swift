@@ -35,18 +35,14 @@ class MusicVC: UIViewController ,UICollectionViewDataSource ,UICollectionViewDel
         try! audioPlayer = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: audioPath!) as URL)
     }
     override func viewDidAppear(_ animated: Bool) {
-    
         audioPlayer.play()
         audioStuffed = true
         slid.maximumValue = Float(audioPlayer.duration)
         Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updatetime), userInfo: nil, repeats: true)
-
     }
     
     func getsongname()
     {
-        
-        
         let url = URL(fileURLWithPath: Bundle.main.resourcePath!)
         do {
             let songpath = try FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
@@ -66,12 +62,8 @@ class MusicVC: UIViewController ,UICollectionViewDataSource ,UICollectionViewDel
                     
                 }
             }
-            
-            
         }
         catch {
-            
-            
         }
     }
     
@@ -86,7 +78,6 @@ class MusicVC: UIViewController ,UICollectionViewDataSource ,UICollectionViewDel
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         
         do
         {
@@ -115,9 +106,6 @@ class MusicVC: UIViewController ,UICollectionViewDataSource ,UICollectionViewDel
         }
     }
     
-    
-    
-    
     func playThis(thisOne:String)
     {
         do
@@ -131,9 +119,6 @@ class MusicVC: UIViewController ,UICollectionViewDataSource ,UICollectionViewDel
             print ("ERROR")
         }
     }
-    
-    
-    
     
     @IBAction func pause(_ sender: Any) {
         if audioStuffed == true && audioPlayer.isPlaying
@@ -149,11 +134,12 @@ class MusicVC: UIViewController ,UICollectionViewDataSource ,UICollectionViewDel
             audioPlayer.play()
         }    }
     
-   
-    
-    
     @IBAction func ch(_ sender: Any) {
        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        audioPlayer.pause()
     }
     
  @objc func updatetime ()

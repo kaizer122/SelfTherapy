@@ -25,6 +25,7 @@ pod 'Kingfisher'
 pod 'TransitionableTab', '~> 0.2.0'
 pod 'TransitionButton'
 pod 'StepView'
+pod 'ChameleonFramework', '~> 2.1'
 
      post_install do |installer|
         installer.pods_project.targets.each do |target|

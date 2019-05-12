@@ -78,6 +78,7 @@ final class ContainerViewController: UIViewController {
         if let controllerToShow = getControllerToShow(from: stepView.selectedStep) {
             if count > 1 {
                  count = 1
+                StatsService.instance.setCurrentStep(stepIndex: 0)
                 performSegue(withIdentifier: "EndToQuizz", sender: nil)
                 return
             }

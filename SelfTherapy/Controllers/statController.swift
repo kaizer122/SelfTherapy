@@ -9,6 +9,7 @@
 import UIKit
 import Charts
 import CoreData
+import ChameleonFramework
 
 class statController: UIViewController, ChartViewDelegate  {
     
@@ -19,20 +20,13 @@ class statController: UIViewController, ChartViewDelegate  {
     
     @IBOutlet weak var seg: UISegmentedControl!
     
-    
-    
-    var ax1 = [0.0]
-    var dep1 = [0.0]
-    var stress1 = [0.0]
     var anxietyValues = [0.0]
     var depressionValues = [0.0]
     var stressValues = [0.0]
     var datesAnxiete: [Date] = []
     var datesDep: [Date] = []
     var datesStress: [Date] = []
-    var startDateComponents = DateComponents()
     var startDate = Date()
-    var scores: [NSManagedObject] = []
     var scores1: [Ax] = []
     var scores2: [Dep] = []
     var scores3: [Stress] = []
@@ -117,12 +111,12 @@ class statController: UIViewController, ChartViewDelegate  {
         l.horizontalAlignment = .center
         l.verticalAlignment = .top
         l.orientation = .horizontal
-        l.drawInside = false
+        l.drawInside = true
         l.font = .systemFont(ofSize: 10, weight: .bold)
         l.xEntrySpace = 7
         l.yEntrySpace = 5
         l.textColor = .black
-        //        chartView.legend = l
+     
         
         self.setRadarChartData()
         
@@ -138,8 +132,8 @@ class statController: UIViewController, ChartViewDelegate  {
         let entries1 = [anxEntry1,stressEntry1,depEntry1]
    
         let set1 = RadarChartDataSet(values: entries1, label: "Current Period")
-        set1.setColor(UIColor(red: 121/255, green: 162/255, blue: 175/255, alpha: 1))
-        set1.fillColor = UIColor(red: 121/255, green: 162/255, blue: 175/255, alpha: 1)
+        set1.setColor(UIColor.flatWatermelonColorDark())
+        set1.fillColor = UIColor.flatWatermelonColorDark()
         set1.drawFilledEnabled = true
         set1.fillAlpha = 0.7
         set1.lineWidth = 2
@@ -162,8 +156,8 @@ class statController: UIViewController, ChartViewDelegate  {
             let entries2 = [anxEntry2,stressEntry2,depEntry2]
 
             let set2 = RadarChartDataSet(values: entries2, label: "Last Period")
-            set2.setColor(UIColor(red: 103/255, green: 110/255, blue: 129/255, alpha: 1))
-            set2.fillColor = UIColor(red: 103/255, green: 110/255, blue: 129/255, alpha: 1)
+            set2.setColor(UIColor.flatPowderBlue())
+            set2.fillColor = UIColor.flatPowderBlue()
             set2.drawFilledEnabled = true
             set2.fillAlpha = 0.7
             set2.lineWidth = 2
