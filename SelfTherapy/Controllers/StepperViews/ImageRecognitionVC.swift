@@ -18,13 +18,37 @@ class ImageRecognitionVC: UIViewController, UIImagePickerControllerDelegate, UIN
     var classificationResults : [VNClassificationObservation] = []
         
         let imagePicker = UIImagePickerController()
-        
+        var foodName = ""
+    var didLoadImg = false
         override func viewDidLoad() {
             super.viewDidLoad()
             
             imagePicker.delegate = self
+      imageView.alpha = 0.4
           
+            foodName = StatsService.instance.getCurrentFood()
+    }
+            
+    override func viewWillAppear(_ animated: Bool) {
+        if !didLoadImg {
+        switch (foodName) {
+        case "pizza":
+            imageView.image = #imageLiteral(resourceName: "pizzabg")
+        case "burger":
+            imageView.image = UIImage(named: "burgerbg")
+        case "pasta":
+            foodName = "spaghetti"
+            imageView.image = UIImage(named: "pastabg")
+        case "hotdog":
+            imageView.image = UIImage(named: "hotdogbg")
+        default :
+            imageView.image = #imageLiteral(resourceName: "pizzabg")
         }
+            didLoadImg = true
+        bottomLabel.text = "Take a picture of "+foodName.capitalized+" !"
+            }
+         }
+    
 
         func detect(image: CIImage) {
             
@@ -36,36 +60,24 @@ class ImageRecognitionVC: UIViewController, UIImagePickerControllerDelegate, UIN
             let request = VNCoreMLRequest(model: model) { request, error in
                 guard let results = request.results as? [VNClassificationObservation],
                     let topResult = results.first
-                   
                     else {
                         fatalError("unexpected result type from VNCoreMLRequest")
-                }
-                debugPrint(results)
-                debugPrint(topResult)
-                
-                if topResult.identifier.contains("pizza") {
-                   
-                        self.bottomLabel.text = "IT IS A PIZZA!!"
-                     self.view.backgroundColor = UIColor.green
-                   
-                        
+                        }
+                      let secondResult = results[1]
+                print(results.first!.identifier)
+                if (topResult.identifier.contains(self.foodName) || secondResult.identifier.contains(self.foodName))  {
+                   NotificationCenter.default.post(name: .didCompleteStep, object: nil)
+                        self.bottomLabel.text = "IT IS REALLY " + self.foodName.uppercased() + "!!"
+                      self.bottomLabel.textColor = UIColor.green
                     }
-                
                 else {
-                    self.bottomLabel.text = "NOT A PIZZA!!"
-                    self.view.backgroundColor = UIColor.red
+                    self.bottomLabel.text = "Not sure this is " + self.foodName + "!"
+                    self.bottomLabel.textColor = UIColor.red
                 }
-                
-                
             }
-            
             let handler = VNImageRequestHandler(ciImage: image)
-            
             do { try handler.perform([request]) }
             catch { print(error) }
-            
-            
-            
         }
         
         
@@ -92,14 +104,26 @@ class ImageRecognitionVC: UIViewController, UIImagePickerControllerDelegate, UIN
         
         
         @IBAction func cameraTapped(_ sender: Any) {
+            DispatchQueue.main.async {
             
-            imagePicker.sourceType = .camera
-            imagePicker.allowsEditing = false
-            
-            present(imagePicker, animated: true, completion: nil)
+            self.imagePicker.sourceType = .camera
+            self.imagePicker.allowsEditing = false
+         
+            self.imagePicker.modalPresentationStyle = .overCurrentContext
+            self.present(self.imagePicker, animated: true, completion: nil)
+                
+            }
         }
         
+    @IBAction func galleryTapped(_ sender: Any) {
+         DispatchQueue.main.async {
+        self.imagePicker.sourceType = .photoLibrary
+
+        self.imagePicker.allowsEditing = false
+          self.imagePicker.modalPresentationStyle = .overCurrentContext
+       self.present(self.imagePicker, animated: true, completion: nil)
     }
+}
     
     
     // Helper function inserted by Swift 4.2 migrator.
@@ -108,5 +132,8 @@ class ImageRecognitionVC: UIViewController, UIImagePickerControllerDelegate, UIN
     }
 
 
+
+
+}
 
 

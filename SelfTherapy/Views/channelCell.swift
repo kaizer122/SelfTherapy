@@ -15,6 +15,9 @@ class channelCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var author: UILabel!
     override func awakeFromNib() {
+        let bgColorView = UIView()
+        bgColorView.backgroundColor = .white
+        self.selectedBackgroundView = bgColorView
         super.awakeFromNib()
         // Initialization code
     }

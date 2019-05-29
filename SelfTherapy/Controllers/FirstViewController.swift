@@ -26,13 +26,15 @@ class FirstViewController: CustomTransitionViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         dateformatter.dateStyle = .short
-        dateformatter.timeStyle = .short
+        dateformatter.timeStyle = .none
+        periods = StatsService.instance.getPeriods()
     }
     override func viewWillAppear(_ animated: Bool) {
-        periods = StatsService.instance.getPeriods()
+        
         setupUserInfo()
         super.viewWillAppear(animated)
     }
+    
     func setupUserInfo () {
         if AuthService.instance.isLoggedIn {
             username.text = Auth.auth().currentUser!.displayName!
@@ -46,18 +48,23 @@ class FirstViewController: CustomTransitionViewController  {
             }
             if (periods.count > 0) {
                 cpStartedAt.text = dateformatter.string(from: periods[periods.count-1].debut!)
+            } else {
+                StatsService.instance.createEmptyFirstPeriod()
             }
             switch periods[periods.count-1].user?.lastStepIndex {
             case 0 :
-                nextTask.text = "Take an image of your favourite pizza !"
+                let foodName = StatsService.instance.getCurrentFood()
+                nextTask.text = "Take an image of your favourite " + foodName.capitalized + "!"
             case 1 :
                  nextTask.text = "Choose any of our therapeutic music and listen to it !"
             case 2 :
-                 nextTask.text = "Take a walk of 2000 Steps!"
+                let stepsNb = StatsService.instance.getCurrentSteps()
+                 nextTask.text = "Take a walk of " + String(stepsNb) + " steps!"
             case 3 :
                   nextTask.text = "You have finished all your tasks ! Now Take your next quizz."
             default :
               nextTask.text = "Take an image of your favourite pizza !"
+           
             }
             
             

@@ -200,6 +200,8 @@ class QuizzController: UIViewController {
             viewController.anxiety = anxiety
             viewController.mode = mode
             viewController.showBtn = showButton
+            viewController.showStat = newPeriodStarted
+          
         }
         
     }

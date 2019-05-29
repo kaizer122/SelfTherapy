@@ -18,20 +18,34 @@ class RapportController: UIViewController {
     @IBOutlet weak var anxCircle: UICircularProgressRing!
     @IBOutlet weak var stressCircle: UICircularProgressRing!
     @IBOutlet weak var depCircle: UICircularProgressRing!
+    @IBOutlet weak var depLbl: UILabel!
+    @IBOutlet weak var axLbl: UILabel!
+    @IBOutlet weak var stressLbl: UILabel!
     let options = UICircularRingGradientOptions(startPosition: .left, endPosition: .right, colors:  [UIColor.green ,UIColor.orange, UIColor.red], colorLocations: [0.1,0.5, 1.0])
     var anxiety = 0
     var stress = 0
     var depression = 0
+    var showStat = false
     var mode : String = "all"
    public  var showBtn : Bool = false
  
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+       depLbl.superview?.bringSubviewToFront(depLbl)
+        axLbl.superview?.bringSubviewToFront(axLbl)
+        stressLbl.superview?.bringSubviewToFront(stressLbl)
         setupCirclesAnims()
         setupMode()
+      
+        }
+    
+    @IBAction func backClicked(_ sender: Any) {
+        performSegue(withIdentifier: "showStart", sender: nil)
     }
+    
+  
+    
     func setupCirclesAnims () {
         warningAnim.setAnimation(named: "nuage")
         warningAnim.loopAnimation = true
@@ -48,17 +62,23 @@ class RapportController: UIViewController {
         switch mode {
         case "Depression":
             anxCircle.isHidden = true
+            axLbl.isHidden = true
+            stressLbl.isHidden = true
             stressCircle.isHidden = true
              backBtn.isHidden = false
             registerBtn.isHidden = true
             warningAnim.isHidden = true
         case "anxiete":
+            depLbl.isHidden = true
+            stressLbl.isHidden = true
             depCircle.isHidden = true
             stressCircle.isHidden = true
              backBtn.isHidden = false
             registerBtn.isHidden = true
             warningAnim.isHidden = true
         case "stress":
+            axLbl.isHidden = true
+            depLbl.isHidden = true
             depCircle.isHidden = true
             anxCircle.isHidden = true
                backBtn.isHidden = false
@@ -69,7 +89,10 @@ class RapportController: UIViewController {
             depCircle.isHidden = false
             anxCircle.isHidden = false
              stressCircle.isHidden = false
-          
+            axLbl.isHidden = false
+            depLbl.isHidden = false
+             stressLbl.isHidden = false
+            
             if (AuthService.instance.isLoggedIn){
                 registerBtn.isHidden = true
                 warningAnim.isHidden = true
@@ -98,6 +121,10 @@ class RapportController: UIViewController {
             viewController.stress = stress
             viewController.depression = depression
             viewController.anxiety = anxiety
+        }
+        if segue.identifier == "showStart" {
+            let viewController:StartVC = segue.destination as! StartVC
+            viewController.showStat = showStat ? true : false
         }
     }
 }

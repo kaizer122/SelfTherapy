@@ -13,16 +13,10 @@ struct Message: MessageType {
   let content: String
   let sentDate: Date
   let sender: Sender
-    let avatar: String?
-    
-    
-  
+  let avatar: String?
   var messageId: String {
     return id ?? UUID().uuidString
   }
-  
-  var image: UIImage? = nil
-  var downloadURL: URL? = nil
   
     init(uid: String , name: String, content: String , sentDate: Date , id: String , avatar: String?) {
     sender = Sender(id: uid, displayName: name)
@@ -41,15 +35,7 @@ struct Message: MessageType {
         self.avatar = avatar ?? nil
     }
   
-  init(user: User, image: UIImage) {
-    sender = Sender(id: user.uid, displayName:  AuthService.instance.username)
-    self.image = image
-    content = ""
-    sentDate = Date()
-    id = user.uid
-      kind = .photo(image as! MediaItem)
-    avatar = user.photoURL?.absoluteString
-  }
+
     func makeRdy()-> [String : Any]{
       
             return [ "created": sentDate,

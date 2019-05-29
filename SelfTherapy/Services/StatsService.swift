@@ -13,6 +13,9 @@ import Firebase
 class StatsService {
     static let instance = StatsService()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    let foods : [String] = ["pizza","burger","pasta","hotdog"]
+   
     var currentStep : Int? {
         get {
             return getCurrentStep()
@@ -47,6 +50,7 @@ class StatsService {
         }
           return nil
     }
+    
     func setCurrentStep(stepIndex: Int) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "UserData")
         fetchRequest.predicate = NSPredicate(format: "email == %@",Auth.auth().currentUser!.email!)
@@ -65,6 +69,37 @@ class StatsService {
             print("error saving")
         }
     }
+    func getCurrentFood()-> String {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "UserData")
+        fetchRequest.predicate = NSPredicate(format: "email == %@",Auth.auth().currentUser!.email!)
+        do{
+            let Result = try context.fetch(fetchRequest)
+            if Result.count > 0 {
+                
+                let user = Result.first as! UserData
+                return user.food!
+            }
+        } catch {
+            print("error saving")
+        }
+        return "pizza"
+    }
+    func getCurrentSteps()-> Int {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "UserData")
+        fetchRequest.predicate = NSPredicate(format: "email == %@",Auth.auth().currentUser!.email!)
+        do{
+            let Result = try context.fetch(fetchRequest)
+            if Result.count > 0 {
+                
+                let user = Result.first as! UserData
+                return Int(user.steps)
+            }
+        } catch {
+            print("error saving")
+        }
+        return 200
+    }
+    
     
     func updatePeriod(depression: Int , stress: Int , anxiety: Int , mode: String) {
         if (Auth.auth().currentUser?.email == nil) {
@@ -106,6 +141,7 @@ class StatsService {
    fileprivate func newPeriod(_ Result: [Any] , depression: Int , stress: Int , anxiety: Int  ) {
         do {
             let periodeAvant =  Result.last as! Periode
+            let user = periodeAvant.user!
             let periode = Periode(context: self.context)
             let depressionv = Dep(context: self.context)
             let anxietev = Ax(context: self.context)
@@ -116,6 +152,14 @@ class StatsService {
             let str3 = String(a3)
             let a4 : Double = Double((stress*10)/6)
             let str4 = String(a4)
+            var rand = foods.randomElement()!
+            while ( rand == user.food ){
+                rand = foods.randomElement()!
+            }
+            user.food = rand
+            debugPrint(user.food)
+            debugPrint(user.steps)
+            user.steps = user.steps + 100
             depressionv.dep  = str2
             anxietev.ax = str3
             stressv.stress = str4
@@ -129,7 +173,7 @@ class StatsService {
             periode.addToDepressions(depressionv)
             periode.addToStresses(stressv)
             periode.user = periodeAvant.user
-            
+        
             try context.save()
         } catch {
             print("error saving")
@@ -203,6 +247,8 @@ class StatsService {
             periode.addToStresses(stressv)
             user.email = Auth.auth().currentUser!.email!
             user.lastStepIndex = Int16(0)
+            user.food = foods.randomElement()!
+            user.steps = 200
             user.addToPeriods(periode)
             try context.save()
         } catch {
@@ -226,6 +272,8 @@ class StatsService {
             periode.id = 1
             user.email = Auth.auth().currentUser!.email!
             user.lastStepIndex = Int16(0)
+            user.food = foods.randomElement()!
+            user.steps = 200
             user.addToPeriods(periode)
             try context.save()
         } catch {

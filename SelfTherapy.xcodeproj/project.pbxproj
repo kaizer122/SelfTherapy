@@ -32,6 +32,8 @@
 		2342B5A2226C9DA3003B0EAB /* alert.json in Resources */ = {isa = PBXBuildFile; fileRef = 2342B5A1226C9DA3003B0EAB /* alert.json */; };
 		234993EF2273239F00954CDD /* statController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234993EE2273239F00954CDD /* statController.swift */; };
 		234993F2227326BC00954CDD /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 234993F0227326BC00954CDD /* Model.xcdatamodeld */; };
+		23548209229782D700BEDD32 /* RapportPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23548207229782D700BEDD32 /* RapportPeriod.swift */; };
+		2354820C2297833E00BEDD32 /* RapportPer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2354820B2297833E00BEDD32 /* RapportPer.xib */; };
 		2361A4DD2285389A0078F1C5 /* EndVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2361A4DC2285389A0078F1C5 /* EndVC.swift */; };
 		2361A4DF22856FB40078F1C5 /* ImageRecognitionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2361A4DE22856FB40078F1C5 /* ImageRecognitionVC.swift */; };
 		23818E6C2286463900A51E5E /* StatsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23818E6B2286463900A51E5E /* StatsService.swift */; };
@@ -93,6 +95,8 @@
 		2342B5A1226C9DA3003B0EAB /* alert.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = alert.json; sourceTree = "<group>"; };
 		234993EE2273239F00954CDD /* statController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = statController.swift; sourceTree = "<group>"; };
 		234993F1227326BC00954CDD /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		23548207229782D700BEDD32 /* RapportPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RapportPeriod.swift; sourceTree = "<group>"; };
+		2354820B2297833E00BEDD32 /* RapportPer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RapportPer.xib; sourceTree = "<group>"; };
 		2361A4DC2285389A0078F1C5 /* EndVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndVC.swift; sourceTree = "<group>"; };
 		2361A4DE22856FB40078F1C5 /* ImageRecognitionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRecognitionVC.swift; sourceTree = "<group>"; };
 		23818E6B2286463900A51E5E /* StatsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsService.swift; sourceTree = "<group>"; };
@@ -246,6 +250,8 @@
 				2386E6702263B13B0090AA32 /* RapportController.swift */,
 				23841A232274E05D00086ABB /* ChannelsVC.swift */,
 				233EA1A62275260200812AA7 /* ChatVC.swift */,
+				23548207229782D700BEDD32 /* RapportPeriod.swift */,
+				2354820B2297833E00BEDD32 /* RapportPer.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -400,6 +406,7 @@
 				2304A92B22850C6600606334 /* Find My Way Home.mp3 in Resources */,
 				2304A92A22850C6600606334 /* Relaxing.mp3 in Resources */,
 				2342B5A2226C9DA3003B0EAB /* alert.json in Resources */,
+				2354820C2297833E00BEDD32 /* RapportPer.xib in Resources */,
 				2386E64F2260E9360090AA32 /* Assets.xcassets in Resources */,
 				23BB3C99226CA3DA00373743 /* nuage.json in Resources */,
 				2304A92F22850C6600606334 /* Scarlet Fire.mp3 in Resources */,
@@ -558,6 +565,7 @@
 				2386E66D226338890090AA32 /* Question.swift in Sources */,
 				2304A8F32284067F00606334 /* DayAxisValueFormatter.swift in Sources */,
 				234993F2227326BC00954CDD /* Model.xcdatamodeld in Sources */,
+				23548209229782D700BEDD32 /* RapportPeriod.swift in Sources */,
 				2304A8FB22841E5B00606334 /* RadarMarkerView.swift in Sources */,
 				2386E667226234E80090AA32 /* RoundedButton.swift in Sources */,
 				23E42E2C2269CEF500B05EC7 /* RoundedButton2.swift in Sources */,
@@ -740,6 +748,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/lottie-ios/Lottie.framework/Headers\"",
 				);
 				INFOPLIST_FILE = SelfTherapy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -831,6 +840,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/lottie-ios/Lottie.framework/Headers\"",
 				);
 				INFOPLIST_FILE = SelfTherapy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

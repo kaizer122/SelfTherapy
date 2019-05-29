@@ -8,6 +8,7 @@
 
 import UIKit
 import StepView
+import ChameleonFramework
 
 final class ContainerViewController: UIViewController {
     @IBOutlet private weak var stepView: StepView!
@@ -25,11 +26,20 @@ final class ContainerViewController: UIViewController {
             
         ]
     }()
-    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+      nextButton.isEnabled = false
         setupControllers()
+        NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveData(_:)), name: .didCompleteStep, object: nil)
+    }
+    
+    @IBAction func skipClicked(_ sender: Any) {
+     NotificationCenter.default.post(name: .didCompleteStep, object: nil)
+    }
+    @objc func onDidReceiveData(_ notification:Notification) {
+      nextButton.isEnabled = true
+      nextButton.backgroundColor = UIColor.flatGreen()
     }
     
     // MARK: - Setup views
@@ -39,6 +49,18 @@ final class ContainerViewController: UIViewController {
         pageViewController.view.frame = containerView.bounds
         containerView.addSubview(pageViewController.view)
         currentStep = StatsService.instance.currentStep ?? 0
+        if currentStep > pages.count-1 {
+            currentStep = pages.count-1
+            StatsService.instance.setCurrentStep(stepIndex: currentStep)
+              nextButton.backgroundColor = UIColor.flatGreen()
+              nextButton.isEnabled = true
+               nextButton.setTitle("Go to Quizz!", for: .normal)
+        }
+        if currentStep == pages.count-1 {
+            nextButton.backgroundColor = UIColor.flatGreen()
+            nextButton.isEnabled = true
+            nextButton.setTitle("Go to Quizz!", for: .normal)
+        }
        let firstController = pages[currentStep]
         stepView.selectedStep = currentStep+1
        pageViewController.setViewControllers([firstController], direction: .forward, animated: true, completion: nil)
@@ -50,10 +72,12 @@ final class ContainerViewController: UIViewController {
     }
     
     private func getControllerToShow(from index: Int) -> UIViewController? {
+        
+             nextButton.backgroundColor = .orange
         if index - 1 < pages.count {
             if (index == pages.count){
                 nextButton.setTitle("Go to Quizz!", for: .normal)
-                nextButton.backgroundColor = .orange
+                nextButton.backgroundColor = UIColor.flatGreen()
             }
             return pages[index - 1]
         }
@@ -74,7 +98,7 @@ final class ContainerViewController: UIViewController {
     
     @IBAction func nextButtonDidPress(_ sender: Any) {
         stepView.showNextStep()
-        
+        nextButton.isEnabled = false
         if let controllerToShow = getControllerToShow(from: stepView.selectedStep) {
             if count > 1 {
                  count = 1
@@ -84,6 +108,7 @@ final class ContainerViewController: UIViewController {
             }
             if (controllerToShow.restorationIdentifier == "EndVC") {
                 count = count+1
+                nextButton.isEnabled = true
             }
             StatsService.instance.setCurrentStep(stepIndex: (StatsService.instance.currentStep ?? 0 )+1)
                 pageViewController.setViewControllers([controllerToShow], direction: .forward, animated: true, completion: nil)
@@ -92,4 +117,8 @@ final class ContainerViewController: UIViewController {
         }
     }
  
+}
+extension Notification.Name {
+    static let didCompleteStep = Notification.Name("didCompleteStep")
+    
 }

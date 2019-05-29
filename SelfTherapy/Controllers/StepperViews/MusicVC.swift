@@ -25,6 +25,7 @@ class MusicVC: UIViewController ,UICollectionViewDataSource ,UICollectionViewDel
     var images:[String] = ["11","22","33","44","55","66","66"]
     var thisSong = 0
     var audioStuffed = false
+    var once = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,11 +79,12 @@ class MusicVC: UIViewController ,UICollectionViewDataSource ,UICollectionViewDel
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        if (indexPath.row > 0 && indexPath.row < images.count){
         do
         {
             image.image =  UIImage(named:images [indexPath.row]   )
            // nom.text = songs [indexPath.row]
+            
             let audioPath = Bundle.main.path(forResource: songs[indexPath.row], ofType: ".mp3")
             try audioPlayer = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: audioPath!) as URL)
             audioPlayer.play()
@@ -97,12 +99,15 @@ class MusicVC: UIViewController ,UICollectionViewDataSource ,UICollectionViewDel
         {
             print ("ERROR")
         }
+        }
     }
+    
     
     @IBAction func change(_ sender: UISlider) {
         if audioStuffed == true
         {
             audioPlayer.volume = sender.value
+     
         }
     }
     
@@ -139,13 +144,19 @@ class MusicVC: UIViewController ,UICollectionViewDataSource ,UICollectionViewDel
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        audioPlayer.pause()
+       
     }
     
- @objc func updatetime ()
+   @objc func updatetime ()
     {
         let currentTime  = Float(audioPlayer.currentTime)
         slid.value = currentTime
+        
+        if (currentTime >= slid.maximumValue-10 && !once) {
+            once = true
+            print("notification sent")
+            NotificationCenter.default.post(name: .didCompleteStep, object: nil)
+        }
     }
     
 }

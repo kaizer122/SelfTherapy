@@ -26,14 +26,16 @@
     </entity>
     <entity name="UserData" representedClassName="UserData" syncable="YES" codeGenerationType="class">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="food" optional="YES" attributeType="String" defaultValueString="pizza" syncable="YES"/>
         <attribute name="lastStepIndex" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="steps" optional="YES" attributeType="Integer 16" defaultValueString="200" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="periods" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Periode" inverseName="user" inverseEntity="Periode" syncable="YES"/>
     </entity>
     <elements>
         <element name="Ax" positionX="-482.9375" positionY="328.96484375" width="128" height="90"/>
         <element name="Dep" positionX="-342.03125" positionY="312.96875" width="128" height="90"/>
-        <element name="Stress" positionX="-607.94140625" positionY="209.0390625" width="128" height="90"/>
         <element name="Periode" positionX="-423.94140625" positionY="66.0078125" width="128" height="148"/>
-        <element name="UserData" positionX="-46.98046875" positionY="195.9921875" width="128" height="88"/>
+        <element name="Stress" positionX="-607.94140625" positionY="209.0390625" width="128" height="90"/>
+        <element name="UserData" positionX="-46.98046875" positionY="195.9921875" width="128" height="120"/>
     </elements>
 </model>
