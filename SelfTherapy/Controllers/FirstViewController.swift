@@ -44,6 +44,7 @@ class FirstViewController: CustomTransitionViewController  {
                 lpStartedAt.text = dateformatter.string(from: periods[periods.count-2].debut!)
                  lpEndedAt.text = dateformatter.string(from: periods[periods.count-2].fin!)
             } else {
+                StatsService.instance.createEmptyFirstPeriod()
                 lpInfo.isHidden = true
             }
             if (periods.count > 0) {
